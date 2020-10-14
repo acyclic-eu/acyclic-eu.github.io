@@ -1,5 +1,19 @@
-theme: minima 
-descriptions: How to build effecient organizations.
+minimal_mistakes_skin: "neon"
 remote_theme: "mmistakes/minimal-mistakes@4.20.2"
+
+ 
 plugins:
   - jekyll-include-cache
+locale: sv-SE
+title_separator: "|"
+
+title: acyclic
+subtitle: focusing on collaboration, way of working, processes and agile.
+descriptions: How to build efficient organisations.
+
+name: "Patrik Gustafsson"
+
+url:https://acyclic-eu.github.io/
+repository: acyclic-eu/acyclic-eu.github.io 
+show_date: true
+read_time: true
