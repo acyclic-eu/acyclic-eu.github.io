@@ -124,7 +124,7 @@ Using Liquid you can also conditionally show the sidebar open on a per-page basi
 
 ## Author
 **wwwBase - Patrik Gustafsson**
-- <https://twitter.com/paven>
+- <https://bsky.app/profile/acyclic.eu>
 
 **Lanyon - Mark Otto**
 - <https://github.com/mdo>

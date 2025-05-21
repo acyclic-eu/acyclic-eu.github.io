@@ -1,9 +1,12 @@
-- title: Regin
+- title: Services
   docs:
-  - kosmologi
-  - regin
-  - panteoner
-- title: Om
+  - services
+  - portfolio
+  - expertise
+- title: About
   docs:
-  - om
+  - about
   - blog
+- title: Contact
+  docs:
+  - contact

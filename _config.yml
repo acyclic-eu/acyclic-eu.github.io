@@ -6,11 +6,11 @@ kramdown:
   input: GFM
 
 # Setup
-title:               wwwBase
-tagline:             'Github page and blog starter'
-description:         'What I(and you) need to start a new github page.'
-url:                 'https://mumma.nu/'
-baseurl:             '/wwwBase/'
+title:               Acyclic.eu
+tagline:             'elevating people and products'
+description:         'Patrik Gustafsson - Software Engineer, Leader, and Product Developer'
+url:                 'https://acyclic.eu/'
+baseurl:             '/'
 paginate:            5
 permalink:           pretty
 paginate_path:       "blog/page:num"
@@ -20,15 +20,15 @@ banner_alt_text:     "banner"
 # About/contact
 author:
   name:              Patrik Gustafsson
-  url:               https://twitter.com/paven
-  email:             wwwBase@mumma.nu
+  url:               https://bsky.app/profile/acyclic.eu
+  email:             contact@acyclic.eu
 
 # Custom vars
 version:          0.0.2
 google_analytics_id: #UA-XXXX-Y
 
 github:
-  repo:           https://github.com/paven/wwwBase
+  repo:           https://github.com/Piktiv/acyclic-eu.github.io
 
 plugins:
   - jekyll-paginate
@@ -36,4 +36,3 @@ plugins:
 
 first_page:
   url: index
-
