@@ -28,7 +28,7 @@ version:          0.0.2
 google_analytics_id: #UA-XXXX-Y
 
 github:
-  repo:           https://github.com/Piktiv/acyclic-eu.github.io
+  repo:           https://github.com/acyclic-eu/acyclic-eu.github.io
 
 plugins:
   - jekyll-paginate
