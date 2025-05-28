@@ -27,9 +27,6 @@ This is set up as I want to start my new pages and blogs. You are free to use it
 In _includes/disqus.html
 replace disqus_shortname = 'wwwbase'
 with a short name of your own.
-### Google Analytics
-In  _includes/analytics.html
-...
 ### Message
 In _includes/message.html
 Write message to display on all message?
