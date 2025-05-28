@@ -14,7 +14,7 @@ baseurl:             '/'
 paginate:            5
 permalink:           pretty
 paginate_path:       "blog/page:num"
-banner:              "banner.jpg"
+banner:              "banner.png"
 banner_alt_text:     "banner"
 
 # About/contact
