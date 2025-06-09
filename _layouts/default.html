@@ -21,7 +21,7 @@
         {% unless banner contains "://" %}
           {% assign banner = "/public/" | append: banner %}
         {% endunless %}
-      <img class="banner" src="{{banner}}" alt="{{banner_alt_text default: 'banner'}}" />
+      <img class="banner" src="{{banner}}" alt="{{ banner_alt_text | default: 'banner' }}" />
       {% endif %}
       <div class="masthead">
         <div class="container">
