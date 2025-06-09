@@ -4,7 +4,12 @@
 
 {% for p in sorted_pages %}
 {% if p.parent == include.parent and p.navigation != false and p.title  %}
-<a class="{% if p.url == (page.url | remove: '/') %}active{% endif %} sidebar-nav-item" href="{{ site.baseurl }}{{ p.url }}#content"> {{ include.prefix }}{{ p.title }}</a>
+{% assign clean_baseurl = site.baseurl %}
+{% if clean_baseurl == '/' %}
+  {% assign clean_baseurl = '' %}
+{% endif %}
+{% assign clean_url = p.url | remove_first: '/' %}
+<a class="{% if p.url == (page.url | remove: '/') %}active{% endif %} sidebar-nav-item" href="{{ clean_baseurl }}/{{ clean_url }}#content"> {{ include.prefix }}{{ p.title }}</a>
 {% include navigation_item.html parent = p.title prefix= "-  " pages = sorted_pages%}
 {% endif %}
 {% endfor %}
