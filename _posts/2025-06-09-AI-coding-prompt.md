@@ -23,8 +23,8 @@ This file contains a simple instruction:
 
 > For all AI-assisted code generation, refactoring, and documentation in this project, follow the guidance and requirements in:
 >
-> - [DESIGN_PRINCIPLES.md](./DESIGN_PRINCIPLES.md)
-> - [PRODUCT_GOAL.md](./PRODUCT_GOAL.md)
+> - [Design Principles]({% post_url 2025-06-09-DESIGN_PRINCIPLES %})
+> - PRODUCT_GOAL.md
 >
 > Do not repeat or summarize their content here—always refer to those documents directly for the latest rules and clarifications.
 >
