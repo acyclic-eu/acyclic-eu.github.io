@@ -19,7 +19,7 @@
       {% endif %}
       {% if banner %}
         {% unless banner contains "://" %}
-          {% assign banner = site.baseurl | append: "public/" | append: banner %}
+          {% assign banner = "/public/" | append: banner %}
         {% endunless %}
       <img class="banner" src="{{banner}}" alt="{{banner_alt_text default: 'banner'}}" />
       {% endif %}
