@@ -20,8 +20,21 @@ permalink: /cv/
   {% endfor %}
 {% endfor %}
 
+<!-- Define the order of tags -->
+{% assign ordered_tags = "" | split: "," %}
+{% if all_tags contains "Organizational" %}
+  {% assign ordered_tags = ordered_tags | push: "Organizational" %}
+{% endif %}
+{% if all_tags contains "Technological" %}
+  {% assign ordered_tags = ordered_tags | push: "Technological" %}
+{% endif %}
+{% if all_tags contains "Product" %}
+  {% assign ordered_tags = ordered_tags | push: "Product" %}
+{% endif %}
+
+<h2>Leadership</h2>
 <form id="cv-tags-form">
-  {% for tag in all_tags %}
+  {% for tag in ordered_tags %}
     <label style="margin-right:1em;"><input type="checkbox" value="{{ tag | uri_escape }}" onchange="filterCV()"> {{ tag }}</label>
   {% endfor %}
 </form>
