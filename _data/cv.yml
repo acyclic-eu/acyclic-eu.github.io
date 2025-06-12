@@ -1,14 +1,15 @@
-experiences:
-  - title: Technology and Leadership Consultant
-    company: ProAgile
-    location: Gothenburg
-    period: "October 2021 - January 2024"
-    descriptions:
-      - text: Increased capabilities of software development teams through targeted code-focused training, emphasizing architectural principles and best practices.
-        tags: ["Technological"]
-      - text: Led product strategy, improving transparency, engagement, and value. Championed agile product development aligned with business goals and technical feasibility.
-        tags: ["Organizational", "Technological", "Product"]
-      - text: Promoted a proactive and adaptive organizational culture through continuous learning and improved software architecture, enabling teams to thrive in dynamic environments.
-        tags: ["Organizational", "Technological"]
-      - text: Improved product transparency, user engagement, and business value.
-        tags: ["Product", "Organizational"]
+cv:
+  experiences:
+    - title: Technology and Leadership Consultant
+      company: ProAgile
+      location: Gothenburg
+      period: "October 2021 - January 2024"
+      descriptions:
+        - text: Increased capabilities of software development teams through targeted code-focused training, emphasizing architectural principles and best practices.
+          tags: ["Technological"]
+        - text: Led product strategy, improving transparency, engagement, and value. Championed agile product development aligned with business goals and technical feasibility.
+          tags: ["Organizational", "Technological", "Product"]
+        - text: Promoted a proactive and adaptive organizational culture through continuous learning and improved software architecture, enabling teams to thrive in dynamic environments.
+          tags: ["Organizational", "Technological"]
+        - text: Improved product transparency, user engagement, and business value.
+          tags: ["Product", "Organizational"]

@@ -8,7 +8,7 @@ permalink: /cv/
 
 <!-- Collect all unique tags from all descriptions -->
 {% assign all_tags = "" | split: "," %}
-{% for exp in site.data.cv.experiences %}
+{% for exp in site.data.cv.cv.experiences %}
   {% for desc in exp.descriptions %}
     {% if desc.tags %}
       {% for tag in desc.tags %}
@@ -40,7 +40,7 @@ permalink: /cv/
 </form>
 
 <div id="cv-content">
-{% assign exps = site.data.cv.experiences %}
+{% assign exps = site.data.cv.cv.experiences %}
 {% for exp in exps %}
   <h2>{{ exp.title }} at {{ exp.company }}</h2>
   <p><strong>Location:</strong> {{ exp.location }}<br>
