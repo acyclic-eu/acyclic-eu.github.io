@@ -1,15 +1,207 @@
-cv:
-  experiences:
-    - title: Technology and Leadership Consultant
-      company: ProAgile
-      location: Gothenburg
-      period: "October 2021 - January 2024"
-      descriptions:
-        - text: Increased capabilities of software development teams through targeted code-focused training, emphasizing architectural principles and best practices.
-          tags: ["Technological"]
-        - text: Led product strategy, improving transparency, engagement, and value. Championed agile product development aligned with business goals and technical feasibility.
-          tags: ["Organizational", "Technological", "Product"]
-        - text: Promoted a proactive and adaptive organizational culture through continuous learning and improved software architecture, enabling teams to thrive in dynamic environments.
-          tags: ["Organizational", "Technological"]
-        - text: Improved product transparency, user engagement, and business value.
-          tags: ["Product", "Organizational"]
+experiences:
+  - title: Technology and Leadership Consultant
+    company: ProAgile
+    location: Gothenburg
+    start_date: "2021-10-01"
+    end_date: "2024-01-31"
+    descriptions:
+      - text: Increased capabilities of software development teams through targeted code-focused training, emphasizing architectural principles and best practices.
+        tags: [ "Technological" ]
+      - text: Led product strategy, improving transparency, engagement, and value. Championed agile product development aligned with business goals and technical feasibility.
+        tags: [ "Organizational", "Technological", "Product" ]
+      - text: Promoted a proactive and adaptive organizational culture through continuous learning and improved software architecture, enabling teams to thrive in dynamic environments.
+        tags: [ "Organizational", "Technological" ]
+      - text: Improved product transparency, user engagement, and business value.
+        tags: [ "Product", "Organizational" ]
+      - text: Strengthened existing business and brought in new business as an active part of Sales and Marketing. Actively part of multiple successful deals.
+        tags: [ "Organizational" ]
+  - title: Software Engineering Manager (Scaleup, AI, Annotations, Data, Automotive)
+    company: Kognic
+    location: Gothenburg
+    start_date: "2024-10-01"
+    end_date: "2025-03-31"
+    descriptions:
+      - text: Guided a newly formed team through initial challenges, fostering a shared understanding of the company's vision.
+        tags: [ "Organizational" ]
+      - text: Enhanced overall team performance through technical development and collaboration. Mentored individual team members to enhance their technical abilities and collaborative effectiveness, leading to improved overall team performance.
+        tags: [ "Organizational", "Technological" ]
+      - text: Implemented organizational development initiatives, ensuring technology strategies directly supported and advanced the company's goals.
+        tags: [ "Organizational", "Technological" ]
+  - title: Software Engineering Manager (Agency, Finance, SaaS)
+    company: Piktiv AB
+    location: Skövde, Vastra Gotaland County, Sweden
+    start_date: "2024-01-01"
+    end_date: "2024-09-30"
+    descriptions:
+      - text: Improved development practices by leading a team to foster innovation and excellence in software development.
+        tags: [ "Technological", "Organizational" ]
+      - text: Supported employees through challenges, both personal and professional.
+        tags: [ "Organizational" ]
+      - text: Actively contributed to Sales and Marketing efforts, resulting in both strengthened existing business and the acquisition of new business. Played a key role in converting two leads into successful deals.
+        tags: [ "Organizational" ]
+      - text: Performed multiple screenings and interviews of software development candidates.
+        tags: [ "Organizational" ]
+  - title: CEO, Organisational & Leadership Coach, Developer
+    company: How To Know
+    location: Gothenburg, Vastra Gotaland County, Sweden
+    start_date: "2021-07-01"
+    end_date: "2099-12-31"
+    descriptions:
+      - text: Most active as part of collaboration with ProAgile. Currently, a side business in coaching, training and product development.
+        tags: [ "Organizational", "Product" ]
+  - title: Interim Lead Product Manager & Payments Product Manager
+    company: Avinode Group
+    location: Gothenburg, Vastra Gotaland County, Sweden
+    start_date: "2022-06-01"
+    end_date: "2023-05-31"
+    descriptions:
+      - text: Started as a Product Coach, leveraging coaching background and software expertise to foster agility and adaptability, ensuring success even in dynamic situations.
+        tags: [ "Product", "Organizational", "Technological" ]
+      - text: Assumed the Product Manager role, demonstrating commitment to success.
+        tags: [ "Product" ]
+      - text: Collaborated closely with stakeholders, prioritized transparency and discovered user and business value with the team, while also maintaining focus on previously set goals.
+        tags: [ "Product", "Organizational" ]
+    tags: [ "extra", "Product" ]
+  - title: Technical WoW Transformation Coach - Product Driven Organisations
+    company: Ford Motor Company
+    location: Ford, England, United Kingdom
+    start_date: "2021-10-01"
+    end_date: "2022-05-31"
+    descriptions:
+      - text: Focused on empowering teams to enhance their capability and autonomy, fostering good software development practices and encouraging self-organization towards company product goals.
+        tags: [ "Organizational", "Technological", "Product" ]
+      - text: Boosted individual developers' skills through code-focused trainings, aiming to elevate their contribution to team and company objectives.
+        tags: [ "Technological", "Organizational" ]
+      - text: Fostered a culture of continuous improvement and self-reliance, enabling teams to thrive in dynamic environments and deliver high-quality products effectively.
+        tags: [ "Organizational", "Product" ]
+    tags: [ "extra" ]
+  - title: Software Department Program Manager (AI, UI, SaaS, Legal)
+    company: Seal Software
+    location: Gothenburg, Sweden
+    start_date: "2019-01-01"
+    end_date: "2021-09-30"
+    descriptions:
+      - text: "Strategic Leadership: Oversaw strategic alignment and collaboration across 14 agile teams, ensuring that software architecture supported organizational goals and scalability."
+        tags: [ "Organizational", "Technological" ]
+      - text: "Risk and Quality Management: Implemented standards for risk management, security, and quality control, ensuring robust project outcomes and adherence to industry best practices in software development and deployment."
+        tags: [ "Organizational", "Technological" ]
+      - text: "Culture Development: Drove departmental initiatives that emphasized collaborative professional leadership, fostering a culture of continuous improvement and proactive problem-solving in the context of complex software systems."
+        tags: [ "Organizational" ]
+  - title: Product Team Lead (UI/UX, Backend, Search, AI, Server, Legal)
+    company: Seal Software
+    location: Gothenburg, Sweden
+    start_date: "2017-08-01"
+    end_date: "2020-05-31"
+    descriptions:
+      - text: Led three multidisciplinary teams comprising UX designers, QA specialists, and developers, focusing on creating integrated software solutions with a strong emphasis on architectural design.
+        tags: [ "Organizational" ]
+      - text: Managed 3 teams of 14 developers, SDET and UX professionals in their work.
+        tags: [ "Organizational" ]
+      - text: Effectively removed impediments and facilitated team discussions to enhance workflow, ensure projects aligned with stakeholder goals, and improve organizational effectiveness.
+        tags: [ "Organizational" ]
+      - text: Established and strengthened self-leadership, self-organization and strong collaboration.
+        tags: [ "Organizational" ]
+  - title: Senior Software Developer (UI/UX, Backend, Search, AI, Server, Legal)
+    company: Seal Software
+    location: Gothenburg, Sweden
+    start_date: "2016-10-01"
+    end_date: "2019-01-31"
+    descriptions:
+      - text: "Innovative Design & Development: Designed and developed cutting-edge software solutions, focusing on enhancing user experience and optimizing contract management systems through sophisticated full-stack architectures."
+        tags: [ "Technological", "Product" ]
+      - text: "AI Integration: Pioneered the development of AI-driven features and integrations, significantly boosting system capabilities and enhancing user interaction."
+        tags: [ "Technological" ]
+      - text: "Cross-functional Collaboration: Worked closely with UX designers and cross-functional teams to ensure seamless integration of front-end and back-end components, thereby improving overall product functionality and performance."
+      - text: "Cross-functional Collaboration: Worked closely with UX designers and cross-functional teams to ensure seamless integration of front-end and back-end components, thereby improving overall product functionality and performance."
+        tags: [ "Technological", "Organizational" ]
+  - title: Software Development Teacher
+    company: Edument
+    location: Göteborg
+    start_date: "2015-08-01"
+    end_date: "2016-09-30"
+    descriptions:
+      - text: Teacher in basic and advance git and gerrit skills for software development professionals.
+        tags: [ "Technological" ]
+    tags: [ "extra" ]
+  - title: Java EE Senior Developer
+    company: Skanova (via Purple Scout)
+    location: Göteborg
+    start_date: "2013-01-01"
+    end_date: "2016-05-31"
+    descriptions:
+      - text: Created a business intelligence system, content management system, used for strategic and financial analysis in an agile (scrum/kanban) team.
+        tags: [ "Technological", "Organizational" ]
+      - text: Part of a well functioning self-organizing team, taking shared decisions on bigger issues like processes and architecture.
+        tags: [ "Organizational", "Technological" ]
+      - text: Software suite built on the Java EE platform with GWT, JPA2, Hibernate, PostgreSQL, GIS, POI, GIT, Gerrit, Jenkins, Jboss and Tomcat.
+        tags: [ "Technological" ]
+    tags: [ "extra" ]
+  - title: Senior Software Developer & Technical Coach (Finance, Telecom, Desktop, Server, Tech)
+    company: Purple Scout AB
+    location: Göteborg, Sweden
+    start_date: "2012-02-01"
+    end_date: "2016-05-31"
+    descriptions:
+      - text: Developed and designed financial BI systems for Skanova, contributing to architecture, design, and testing.
+        tags: [ "Technological" ]
+      - text: Developed the development platform at Ericsson, enhancing productivity.
+        tags: [ "Technological" ]
+      - text: Led advanced Git and Gerrit training for European software professionals, improving team skills and code standards. Regularly conducted software development workshops and presentations.
+        tags: [ "Technological", "Organizational" ]
+  - title: Software Development Teacher
+    company: Neueda Consulting
+    location: Europe
+    start_date: "2015-11-01"
+    end_date: "2016-04-30"
+    descriptions:
+      - text: Taught intermediate git and gerrit skills for software development professionals.
+        tags: [ "Technological" ]
+    tags: [ "extra" ]
+  - title: Eclipse Plugin Developer
+    company: Ericsson
+    location: Lindholmen, Göteborg, Sweden
+    start_date: "2012-02-01"
+    end_date: "2012-12-31"
+    descriptions:
+      - text: Developed Eclipse plugins for developers, integrating Eclipse with the clients build system, debugging system, version control system and code coverage system.
+        tags: [ "Technological" ]
+      - text: Work helped the developers at Ericsson to be more productive by making multiple systems integrate and work seamlessly from within eclipse.
+        tags: [ "Technological" ]
+      - text: Managed the project with SCRUM adding elements of Kanban.
+        tags: [ "Organizational" ]
+    tags: [ "extra" ]
+  - title: Software Development, Design & Computer Science Teacher
+    company: Portalens Gymnasium
+    location: Göteborg
+    start_date: "2007-06-01"
+    end_date: "2012-02-29"
+    descriptions:
+      - text: Taught software development and computer science.
+        tags: [ "Technological", "Organizational" ]
+      - text: Responsible for advanced courses in programming, including teaching database development, user interface programming, object-oriented development and multithread programming.
+        tags: [ "Technological" ]
+      - text: Education focused on empowering students, using individual and group projects where they built their own software based on their own ideas.
+        tags: [ "Organizational", "Technological" ]
+      - text: Projects included 2D and 3D games, communication platforms, scheduling applications for sports events, music organizers etc., using Java, MySQL, Linux, JavaScript, HTML, CSS.
+        tags: [ "Technological" ]
+  - title: Software Development & Computer Science Teacher
+    company: Strömstad Gymnasium
+    location: Strömstad
+    start_date: "2006-08-01"
+    end_date: "2007-06-30"
+    descriptions:
+      - text: Head of all computer education, deciding which courses to run and helping other computer teachers to coordinate their courses.
+        tags: [ "Organizational", "Technological" ]
+      - text: Personally held courses in programming, web design, personal computers, operating systems and local networks, using open source software and the Java programming language.
+        tags: [ "Technological" ]
+      - text: Involvement increased interest in the computer engineering programs in the municipality.
+        tags: [ "Organizational" ]
+  - title: Computer Technician
+    company: PM-data
+    location: Linköping, Helsingborg
+    start_date: "1995-01-01"
+    end_date: "1999-12-31"
+    descriptions:
+      - text: Built computers and managed customer database.
+        tags: [ "Technological" ]
+    tags: [ "extra" ]

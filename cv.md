@@ -8,28 +8,28 @@ permalink: /cv/
 
 <!-- Collect all unique tags from all descriptions -->
 {% assign all_tags = "" | split: "," %}
-{% for exp in site.data.cv.cv.experiences %}
-  {% for desc in exp.descriptions %}
-    {% if desc.tags %}
-      {% for tag in desc.tags %}
-        {% unless all_tags contains tag %}
-          {% assign all_tags = all_tags | push: tag %}
-        {% endunless %}
-      {% endfor %}
-    {% endif %}
-  {% endfor %}
+{% for exp in site.data.cv.experiences %}
+{% for desc in exp.descriptions %}
+{% if desc.tags %}
+{% for tag in desc.tags %}
+{% unless all_tags contains tag %}
+{% assign all_tags = all_tags | push: tag %}
+{% endunless %}
+{% endfor %}
+{% endif %}
+{% endfor %}
 {% endfor %}
 
 <!-- Define the order of tags -->
 {% assign ordered_tags = "" | split: "," %}
 {% if all_tags contains "Organizational" %}
-  {% assign ordered_tags = ordered_tags | push: "Organizational" %}
+{% assign ordered_tags = ordered_tags | push: "Organizational" %}
 {% endif %}
 {% if all_tags contains "Technological" %}
-  {% assign ordered_tags = ordered_tags | push: "Technological" %}
+{% assign ordered_tags = ordered_tags | push: "Technological" %}
 {% endif %}
 {% if all_tags contains "Product" %}
-  {% assign ordered_tags = ordered_tags | push: "Product" %}
+{% assign ordered_tags = ordered_tags | push: "Product" %}
 {% endif %}
 
 <h2>Leadership</h2>
@@ -40,19 +40,24 @@ permalink: /cv/
 </form>
 
 <div id="cv-content">
-{% assign exps = site.data.cv.cv.experiences %}
+{% assign exps = site.data.cv.experiences %}
 {% for exp in exps %}
   <h2>{{ exp.title }} at {{ exp.company }}</h2>
-  <p><strong>Location:</strong> {{ exp.location }}<br>
-     <strong>Period:</strong> {{ exp.period }}</p>
+  <p><strong>Location:</strong> {{ exp.location | default: "N/A" }}<br>
+  <strong>Period:</strong> {{ exp.start_date | default: "N/A" }} - {{ exp.end_date | default: "Present" }}
+  </p>
   <ul>
     {% for desc in exp.descriptions %}
       {% if desc.tags == nil or desc.tags == empty %}
-        <li data-tags="always">{{ desc.text }}</li>
+        <li data-tags="always" class="tag-always">{{ desc.text | escape }}</li>
       {% else %}
-        <li data-tags="{{ desc.tags | join: ',' | uri_escape }}" style="display:none;">{{ desc.text }}</li>
+        <li data-tags="{{ desc.tags | join: ',' | uri_escape }}" class="{{ desc.tags | map: 'downcase' | replace: ' ', '-' | prepend: 'tag-' | join: ' ' }}">
+            {{ desc.text | escape }}
+
+          style="display:none;">{{ desc.text | escape }}</li>
       {% endif %}
     {% endfor %}
+
   </ul>
 {% endfor %}
 </div>
