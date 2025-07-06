@@ -5,15 +5,15 @@ experiences:
     start_date: "2021-10-01"
     end_date: "2024-01-31"
     descriptions:
-      - text: Increased capabilities of software development teams through targeted code-focused training, emphasizing architectural principles and best practices.
+      - text: Elevated software dev teams via code-centric training, coaching three automotive teams in Law of Demeter, SOLID, TDD, and small steps.
+        tags: [ "Technological", "Organizational" ]
+      - text: Directly applied theoretical concepts in Kotlin and .NET with teams.
         tags: [ "Technological" ]
-      - text: Led product strategy, improving transparency, engagement, and value. Championed agile product development aligned with business goals and technical feasibility.
-        tags: [ "Organizational", "Technological", "Product" ]
-      - text: Promoted a proactive and adaptive organizational culture through continuous learning and improved software architecture, enabling teams to thrive in dynamic environments.
+      - text: Cultivated a proactive, adaptive org culture through continuous learning and improved software architecture.
         tags: [ "Organizational", "Technological" ]
-      - text: Improved product transparency, user engagement, and business value.
+      - text: Guided product strategy, boosting transparency, engagement, and value; championed feedback loops aligned with business and technical goals.
         tags: [ "Product", "Organizational" ]
-      - text: Strengthened existing business and brought in new business as an active part of Sales and Marketing. Actively part of multiple successful deals.
+      - text: Bolstered existing business and secured new deals through active Sales and Marketing participation.
         tags: [ "Organizational" ]
   - title: Software Engineering Manager (Scaleup, AI, Annotations, Data, Automotive)
     company: Kognic
@@ -21,11 +21,11 @@ experiences:
     start_date: "2024-10-01"
     end_date: "2025-03-31"
     descriptions:
-      - text: Guided a newly formed team through initial challenges, fostering a shared understanding of the company's vision.
-        tags: [ "Organizational" ]
-      - text: Enhanced overall team performance through technical development and collaboration. Mentored individual team members to enhance their technical abilities and collaborative effectiveness, leading to improved overall team performance.
-        tags: [ "Organizational", "Technological" ]
-      - text: Implemented organizational development initiatives, ensuring technology strategies directly supported and advanced the company's goals.
+      - text: Initiated a restructure of the product's configuration model, applying technical analysis to implement role and domain-based separation.
+        tags: [ "Technological", "Product" ]
+      - text: Conducted technical improvement dialogues and coaching with lead developers for architectural alignment.
+        tags: [ "Technological", "Organizational" ]
+      - text: Guided a new team through complex technical challenges, uniting their technical vision, and optimizing performance through mentorship and technical guidance.
         tags: [ "Organizational", "Technological" ]
   - title: Software Engineering Manager (Agency, Finance, SaaS)
     company: Piktiv AB
@@ -33,14 +33,14 @@ experiences:
     start_date: "2024-01-01"
     end_date: "2024-09-30"
     descriptions:
-      - text: Improved development practices by leading a team to foster innovation and excellence in software development.
+      - text: Mentored technical staff in .NET, applying Law of Demeter, SOLID, DDD, and systems thinking to reduce dependencies and foster innovation.
         tags: [ "Technological", "Organizational" ]
-      - text: Supported employees through challenges, both personal and professional.
+      - text: Developed financial market products.
+        tags: [ "Technological", "Product" ]
+      - text: Collaborated with Sales/Marketing, converting two key leads.
         tags: [ "Organizational" ]
-      - text: Actively contributed to Sales and Marketing efforts, resulting in both strengthened existing business and the acquisition of new business. Played a key role in converting two leads into successful deals.
-        tags: [ "Organizational" ]
-      - text: Performed multiple screenings and interviews of software development candidates.
-        tags: [ "Organizational" ]
+      - text: Directed technical screenings and interviews, assessing problem-solving, product modeling, and automated testing.
+        tags: [ "Organizational", "Technological" ]
   - title: CEO, Organisational & Leadership Coach, Developer
     company: How To Know
     location: Gothenburg, Vastra Gotaland County, Sweden
@@ -81,9 +81,9 @@ experiences:
     start_date: "2019-01-01"
     end_date: "2021-09-30"
     descriptions:
-      - text: "Strategic Leadership: Oversaw strategic alignment and collaboration across 14 agile teams, ensuring that software architecture supported organizational goals and scalability."
+      - text: "Technical Vision & Leadership: Guided 14 agile teams, aligning software architecture with organizational strategy and scalability while fostering a culture of continuous improvement and proactive problem-solving for complex software systems."
         tags: [ "Organizational", "Technological" ]
-      - text: "Risk and Quality Management: Implemented standards for risk management, security, and quality control, ensuring robust project outcomes and adherence to industry best practices in software development and deployment."
+      - text: "Architectural & Quality Assurance: Spearheaded the implementation of risk management, security, and quality control standards, ensuring robust project outcomes and adherence to industry best practices in software development and deploymens."
         tags: [ "Organizational", "Technological" ]
       - text: "Culture Development: Drove departmental initiatives that emphasized collaborative professional leadership, fostering a culture of continuous improvement and proactive problem-solving in the context of complex software systems."
         tags: [ "Organizational" ]
@@ -93,25 +93,29 @@ experiences:
     start_date: "2017-08-01"
     end_date: "2020-05-31"
     descriptions:
-      - text: Led three multidisciplinary teams comprising UX designers, QA specialists, and developers, focusing on creating integrated software solutions with a strong emphasis on architectural design.
+      - text: "Technical Vision & Leadership: Led three multidisciplinary teams in creating integrated software solutions with a strong emphasis on architectural design and system performance. Managed 3 teams of 14 developers, SDET, and UX professionals."
+        tags: [ "Organizational", "Technological" ]
+      - text: "Effectively removed impediments and facilitated team discussions to enhance workflow, ensure projects aligned with stakeholder goals, and improve organizational effectiveness."
         tags: [ "Organizational" ]
-      - text: Managed 3 teams of 14 developers, SDET and UX professionals in their work.
+      - text: "Established and strengthened self-leadership, self-organization, and strong collaboration."
         tags: [ "Organizational" ]
-      - text: Effectively removed impediments and facilitated team discussions to enhance workflow, ensure projects aligned with stakeholder goals, and improve organizational effectiveness.
-        tags: [ "Organizational" ]
-      - text: Established and strengthened self-leadership, self-organization and strong collaboration.
-        tags: [ "Organizational" ]
+      - text: "Architectural & Quality Assurance: Responsible for technical choices and implementations involving React, Java, Scala, TypeScript, AWS, GCP, Docker, Docker Swarm, and Kubernetes."
+        tags: [ "Technological" ]
+      - text: "Proactively engaged in performance measurement and optimization, including re-architecting slow system parts. Made strategic architectural decisions such as separating calls from responses for asynchronous processing to improve flow, efficiency, and accelerate responsiveness."
+        tags: [ "Technological" ]
+      - text: "Orchestrated the integration of AI capabilities, ensuring machine learning outputs were directly tied to enhancing user interaction and core product functionality."
+        tags: [ "Technological", "Product" ]
   - title: Senior Software Developer (UI/UX, Backend, Search, AI, Server, Legal)
     company: Seal Software
     location: Gothenburg, Sweden
     start_date: "2016-10-01"
     end_date: "2019-01-31"
     descriptions:
-      - text: "Innovative Design & Development: Designed and developed cutting-edge software solutions, focusing on enhancing user experience and optimizing contract management systems through sophisticated full-stack architectures."
+      - text: "Innovative Design & Development: Designed and developed cutting-edge AI software solutions using React, Java, TypeScript, and Scala, improving performance, user-friendliness, and brand identity. Established end-to-end tests for system integrity."
         tags: [ "Technological", "Product" ]
-      - text: "AI Integration: Pioneered the development of AI-driven features and integrations, significantly boosting system capabilities and enhancing user interaction."
+      - text: "AI Integration: Pioneered AI-driven features for text review, collaborating with Data Scientists on technical integration of ML models to tag legal concepts, identify entities, and link ML output to user interaction, boosting contract management capabilities."
         tags: [ "Technological" ]
-      - text: "Cross-functional Collaboration: Worked closely with UX designers and cross-functional teams to ensure seamless integration of front-end and back-end components, thereby improving overall product functionality and performance."
+      - text: "Cross-functional Collaboration & Full-Stack Problem Solving: Collaborated with UX designers and cross-functional teams, adopting a full-stack approach to problem-solving, defining core use cases, and identifying crucial user information to improve overall product functionality and performance."
         tags: [ "Technological", "Organizational" ]
   - title: Software Development Teacher
     company: Edument
