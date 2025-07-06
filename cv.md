@@ -22,14 +22,14 @@ permalink: /cv/
 
 <!-- Define the order of tags -->
 {% assign ordered_tags = "" | split: "," %}
-{% if all_tags contains "Organizational" %}
-{% assign ordered_tags = ordered_tags | push: "Organizational" %}
+{% if all_tags contains "Organisation" %}
+{% assign ordered_tags = ordered_tags | push: "Organisation" %}
 {% endif %}
-{% if all_tags contains "Technological" %}
-{% assign ordered_tags = ordered_tags | push: "Technological" %}
+{% if all_tags contains "Technical" %}
+{% assign ordered_tags = ordered_tags | push: "Technical" %}
 {% endif %}
-{% if all_tags contains "Product" %}
-{% assign ordered_tags = ordered_tags | push: "Product" %}
+{% if all_tags contains "Business" %}
+{% assign ordered_tags = ordered_tags | push: "Business" %}
 {% endif %}
 
 <h2>Leadership</h2>
