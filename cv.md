@@ -51,10 +51,7 @@ permalink: /cv/
       {% if desc.tags == nil or desc.tags == empty %}
         <li data-tags="always" class="tag-always">{{ desc.text | escape }}</li>
       {% else %}
-        <li data-tags="{{ desc.tags | join: ',' | uri_escape }}" class="{{ desc.tags | map: 'downcase' | replace: ' ', '-' | prepend: 'tag-' | join: ' ' }}">
-            {{ desc.text | escape }}
-
-          style="display:none;">{{ desc.text | escape }}</li>
+        <li data-tags="{{ desc.tags | join: ',' | uri_escape }}" style="display:none;">{{ desc.text }}</li>
       {% endif %}
     {% endfor %}
 
