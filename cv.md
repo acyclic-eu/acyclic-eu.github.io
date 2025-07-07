@@ -44,15 +44,23 @@ permalink: /cv/
   {% for tag in ordered_tags %}
     <label style="margin-right:1em;"><input type="checkbox" value="{{ tag | uri_escape }}" onchange="filterCV()"> {{ tag }}</label>
   {% endfor %}
+  <div style="margin-top:1em;">
+    <label for="experience-age">Experience Timeframe: <span id="year-depth-value">10</span> years</label>
+    <input type="range" id="experience-age" min="0" max="30" value="10" step="1" style="width:100%;" onchange="updateYearDepthValue(this.value); filterCV();" oninput="updateYearDepthValue(this.value);">
+    <div style="display:flex; justify-content:space-between; font-size:0.8em;">
+      <span>Current only</span>
+      <span>All experience</span>
+    </div>
+  </div>
 </form>
 
 <div id="cv-content">
-{% assign exps = site.data.cv.experiences %}
+{% assign exps = site.data.cv.experiences | sort: "start_date" | reverse %}
 {% for exp in exps %}
   {% if exp.tags %}
-    <div class="experience" data-exp-tags="{{ exp.tags | join: ',' | uri_escape }}" style="display:none;">
+    <div class="experience" data-exp-tags="{{ exp.tags | join: ',' | uri_escape }}" data-end-date="{{ exp.end_date | default: 'Present' }}" style="display:none;">
   {% else %}
-    <div class="experience" data-exp-tags="always">
+    <div class="experience" data-exp-tags="always" data-end-date="{{ exp.end_date | default: 'Present' }}">
   {% endif %}
     <h2>{{ exp.title }} at {{ exp.company }}</h2>
     <p><strong>Location:</strong> {{ exp.location | default: "N/A" }}<br>
@@ -72,14 +80,40 @@ permalink: /cv/
 </div>
 
 <script>
+function updateYearDepthValue(value) {
+  document.getElementById('year-depth-value').textContent = value;
+}
+
 function filterCV() {
   var checked = Array.from(document.querySelectorAll('#cv-tags-form input[type=checkbox]:checked')).map(cb => decodeURIComponent(cb.value).trim());
+  var yearDepth = parseInt(document.getElementById('experience-age').value);
 
-  // Filter experiences based on their tags
+  // Calculate cutoff date based on year depth
+  var today = new Date();
+  var cutoffYear = today.getFullYear() - yearDepth;
+  var cutoffDate = new Date(cutoffYear, today.getMonth(), today.getDate());
+
+  // Filter experiences based on their tags and end date
   var experiences = document.querySelectorAll('#cv-content .experience');
-  experiences.forEach(exp => {
-    var expTags = decodeURIComponent(exp.getAttribute('data-exp-tags')).split(',').map(tag => tag.trim());
-    if (checked.length === 0 || expTags.includes('always') || expTags.some(tag => checked.includes(tag))) {
+  experiences.forEach(function(exp) {
+    var expTags = decodeURIComponent(exp.getAttribute('data-exp-tags')).split(',').map(function(tag) { return tag.trim(); });
+    var endDateStr = exp.getAttribute('data-end-date');
+
+    // Parse the end date
+    var endDate;
+    if (endDateStr === "Present") {
+      endDate = new Date();
+    } else {
+      endDate = new Date(endDateStr);
+    }
+
+    // Show experience if it passes both tag filter and date filter
+    var passesTagFilter = checked.length === 0 || expTags.includes('always') || expTags.some(function(tag) { return checked.includes(tag); });
+    var passesDateFilter = yearDepth === 0 ?
+                          (endDateStr === "Present") :
+                          (endDateStr === "Present" || endDate >= cutoffDate);
+
+    if (passesTagFilter && passesDateFilter) {
       exp.style.display = '';
     } else {
       exp.style.display = 'none';
@@ -88,13 +122,18 @@ function filterCV() {
 
   // Filter descriptions based on their tags
   var lis = document.querySelectorAll('#cv-content li');
-  lis.forEach(li => {
-    var tags = decodeURIComponent(li.getAttribute('data-tags')).split(',').map(tag => tag.trim());
-    if (tags.includes('always') || tags.some(tag => checked.includes(tag))) {
+  lis.forEach(function(li) {
+    var tags = decodeURIComponent(li.getAttribute('data-tags')).split(',').map(function(tag) { return tag.trim(); });
+    if (tags.includes('always') || tags.some(function(tag) { return checked.includes(tag); })) {
       li.style.display = '';
     } else {
       li.style.display = 'none';
     }
   });
 }
+
+// Initialize filtering on page load
+window.addEventListener('DOMContentLoaded', function() {
+  filterCV();
+});
 </script>

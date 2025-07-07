@@ -12,7 +12,7 @@ experiences:
         tags: [ "Technical" ]
       - text: Cultivated a proactive, adaptive org culture through continuous learning and improved software architecture.
         tags: [ "Organisation", "Technical" ]
-      - text: Guided business strategy, boosting transparency, engagement, and value; championed feedback loops aligned with business and technical goals.
+      - text: Guided product strategy, boosting transparency, engagement, and value; championed feedback loops aligned with business and technical goals.
         tags: [ "Business", "Organisation" ]
       - text: Bolstered existing business and secured new deals through active Sales and Marketing participation.
         tags: [ "Organisation" ]
@@ -22,34 +22,33 @@ experiences:
     start_date: "2024-10-01"
     end_date: "2025-03-31"
     descriptions:
-      - text: Initiated a restructure of the business's configuration model, applying technical analysis to implement role and domain-based separation.
+      - text: Initiated a restructure of the product's configuration model, applying technical analysis to implement role and domain-based separation.
         tags: [ "Technical", "Business" ]
       - text: Conducted technical improvement dialogues and coaching with lead developers for architectural alignment.
         tags: [ "Technical", "Organisation" ]
       - text: Guided a new team through complex technical challenges, uniting their technical vision, and optimizing performance through mentorship and technical guidance.
         tags: [ "Organisation", "Technical" ]
   - title: Software Engineering Manager (Agency, Finance, SaaS)
-    company: Piktiv AB
-    location: Skövde, Vastra Gotaland County, Sweden
+    company: Piktiv
+    location: Skövde
     start_date: "2024-01-01"
     end_date: "2024-09-30"
     descriptions:
       - text: Mentored technical staff in .NET, applying Law of Demeter, SOLID, DDD, and systems thinking to reduce dependencies and foster innovation.
         tags: [ "Technical", "Organisation" ]
-      - text: Developed financial market business.
+      - text: Developed financial market products.
         tags: [ "Technical", "Business" ]
       - text: Collaborated with Sales/Marketing, converting two key leads.
         tags: [ "Organisation" ]
-      - text: Directed technical screenings and interviews, assessing problem-solving, business modeling, and automated testing.
+      - text: Directed technical screenings and interviews, assessing problem-solving, product modeling, and automated testing.
         tags: [ "Organisation", "Technical" ]
   - title: CEO, Organisational & Leadership Coach, Developer
     company: How To Know
-    location: Gothenburg, Vastra Gotaland County, Sweden
+    location: Greater Gothenburg
     start_date: "2021-07-01"
-    end_date: "2099-12-31"
     employment_type: "Owner"
     descriptions:
-      - text: Most active as part of collaboration with ProAgile. Currently, a side business in coaching, training and business development.
+      - text: Running my own, side business in coaching, training and product development.
         tags: [ "Organisation", "Business" ]
   - title: Interim Lead Product Manager & Payments Product Manager
     company: Avinode Group
@@ -84,9 +83,9 @@ experiences:
     start_date: "2019-01-01"
     end_date: "2021-09-30"
     descriptions:
-      - text: "Technical Vision & Leadership: Guided 14 agile teams, aligning software architecture with organisation strategy and scalability while fostering a culture of continuous improvement and proactive problem-solving for complex software systems."
+      - text: "Technical Vision & Leadership: Guided 14 agile teams, aligning software architecture with organizational strategy and scalability while fostering a culture of continuous improvement and proactive problem-solving for complex software systems."
         tags: [ "Organisation", "Technical" ]
-      - text: "Architectural & Quality Assurance: Spearheaded the implementation of risk management, security, and quality control standards, ensuring robust project outcomes and adherence to industry best practices in software development and deploymens."
+      - text: "Architectural & Quality Assurance: Spearheaded the implementation of risk management, security, and quality control standards, ensuring robust project outcomes and adherence to industry best practices in software development and deployments."
         tags: [ "Organisation", "Technical" ]
       - text: "Culture Development: Drove departmental initiatives that emphasized collaborative professional leadership, fostering a culture of continuous improvement and proactive problem-solving in the context of complex software systems."
         tags: [ "Organisation" ]
@@ -98,15 +97,15 @@ experiences:
     descriptions:
       - text: "Technical Vision & Leadership: Led three multidisciplinary teams in creating integrated software solutions with a strong emphasis on architectural design and system performance. Managed 3 teams of 14 developers, SDET, and UX professionals."
         tags: [ "Organisation", "Technical" ]
-      - text: "Effectively removed impediments and facilitated team discussions to enhance workflow, ensure projects aligned with stakeholder goals, and improve organisation effectiveness."
+      - text: "Effectively removed impediments and facilitated team discussions to enhance workflow, ensure projects aligned with stakeholder goals, and improve organizational effectiveness."
         tags: [ "Organisation" ]
-      - text: "Established and strengthened self-leadership, self-organisation, and strong collaboration."
+      - text: "Established and strengthened self-leadership, self-organization, and strong collaboration."
         tags: [ "Organisation" ]
       - text: "Architectural & Quality Assurance: Responsible for technical choices and implementations involving React, Java, Scala, TypeScript, AWS, GCP, Docker, Docker Swarm, and Kubernetes."
         tags: [ "Technical" ]
       - text: "Proactively engaged in performance measurement and optimization, including re-architecting slow system parts. Made strategic architectural decisions such as separating calls from responses for asynchronous processing to improve flow, efficiency, and accelerate responsiveness."
         tags: [ "Technical" ]
-      - text: "Orchestrated the integration of AI capabilities, ensuring machine learning outputs were directly tied to enhancing user interaction and core business functionality."
+      - text: "Orchestrated the integration of AI capabilities, ensuring machine learning outputs were directly tied to enhancing user interaction and core product functionality."
         tags: [ "Technical", "Business" ]
   - title: Senior Software Developer (UI/UX, Backend, Search, AI, Server, Legal)
     company: Seal Software
@@ -118,7 +117,7 @@ experiences:
         tags: [ "Technical", "Business" ]
       - text: "AI Integration: Pioneered AI-driven features for text review, collaborating with Data Scientists on technical integration of ML models to tag legal concepts, identify entities, and link ML output to user interaction, boosting contract management capabilities."
         tags: [ "Technical" ]
-      - text: "Cross-functional Collaboration & Full-Stack Problem Solving: Collaborated with UX designers and cross-functional teams, adopting a full-stack approach to problem-solving, defining core use cases, and identifying crucial user information to improve overall business functionality and performance."
+      - text: "Cross-functional Collaboration & Full-Stack Problem Solving: Collaborated with UX designers and cross-functional teams, adopting a full-stack approach to problem-solving, defining core use cases, and identifying crucial user information to improve overall product functionality and performance."
         tags: [ "Technical", "Organisation" ]
   - title: Software Development Teacher
     company: Edument
@@ -149,11 +148,9 @@ experiences:
     start_date: "2012-02-01"
     end_date: "2016-05-31"
     descriptions:
-      - text: Developed and designed financial BI systems for Skanova, contributing to architecture, design, and testing.
+      - text: I drove technical excellence, designing financial BI systems for Skanova (Java, GWT, .NET, JavaScript) and developing Ericsson's E4B Eclipse IDE to boost developer productivity.
         tags: [ "Technical" ]
-      - text: Developed the development platform at Ericsson, enhancing productivity.
-        tags: [ "Technical" ]
-      - text: Led advanced Git and Gerrit training for European software professionals, improving team skills and code standards. Regularly conducted software development workshops and presentations.
+      - text: I also led Git/Gerrit training for European software professionals, improving code standards.
         tags: [ "Technical", "Organisation" ]
   - title: Software Development Teacher
     company: Neueda Consulting
