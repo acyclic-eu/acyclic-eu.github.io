@@ -6,6 +6,15 @@ permalink: /cv/
 
 <h1>Curriculum Vitae</h1>
 
+<style>
+  .traits {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    color: #666;
+    font-size: 0.9em;
+  }
+</style>
+
 <!-- Collect all unique tags from all descriptions and experiences -->
 {% assign all_tags = "" | split: "," %}
 {% for exp in site.data.cv.experiences %}
@@ -45,11 +54,15 @@ permalink: /cv/
     <label style="margin-right:1em;"><input type="checkbox" value="{{ tag | uri_escape }}" onchange="filterCV()"> {{ tag }}</label>
   {% endfor %}
   <div style="margin-top:1em;">
-    <label for="experience-age">Experience Timeframe: <span id="year-depth-value">10</span> years</label>
-    <input type="range" id="experience-age" min="0" max="30" value="10" step="1" style="width:100%;" onchange="updateYearDepthValue(this.value); filterCV();" oninput="updateYearDepthValue(this.value);">
-    <div style="display:flex; justify-content:space-between; font-size:0.8em;">
-      <span>Current only</span>
-      <span>All experience</span>
+    <div style="display:flex; align-items:center; margin-bottom:0.5em;">
+      <label for="experience-age" style="margin-right:1em;">Experience Timeframe: <span id="year-depth-value">10</span> years</label>
+      <div style="flex-grow:1;">
+        <input type="range" id="experience-age" min="0" max="30" value="10" step="1" style="width:100%;" onchange="updateYearDepthValue(this.value); filterCV();" oninput="updateYearDepthValue(this.value);">
+        <div style="display:flex; justify-content:space-between; font-size:0.8em;">
+          <span>Current only</span>
+          <span>All experience</span>
+        </div>
+      </div>
     </div>
   </div>
 </form>
@@ -62,7 +75,16 @@ permalink: /cv/
   {% else %}
     <div class="experience" data-exp-tags="always" data-end-date="{{ exp.end_date | default: 'Present' }}">
   {% endif %}
-    <h2>{{ exp.title }} at {{ exp.company }}</h2>
+    {% assign title_parts = exp.title | split: "(" %}
+    {% if title_parts.size > 1 %}
+      {% assign main_title = title_parts[0] | strip %}
+      {% assign traits_with_paren = title_parts[1] | split: ")" %}
+      {% assign traits = traits_with_paren[0] %}
+      <h2>{{ main_title }} at {{ exp.company }}</h2>
+      <p class="traits"><em>{{ traits }}</em></p>
+    {% else %}
+      <h2>{{ exp.title }} at {{ exp.company }}</h2>
+    {% endif %}
     <p><strong>Location:</strong> {{ exp.location | default: "N/A" }}<br>
     <strong>Period:</strong> {{ exp.start_date | default: "N/A" }} - {{ exp.end_date | default: "Present" }} ({{ exp.employment_type | default: "Employed" }})
     </p>
