@@ -58,7 +58,7 @@ permalink: /cv/
 {% assign exps = site.data.cv.experiences | sort: "start_date" | reverse %}
 {% for exp in exps %}
   {% if exp.tags %}
-    <div class="experience" data-exp-tags="{{ exp.tags | join: ',' | uri_escape }}" data-end-date="{{ exp.end_date | default: 'Present' }}" style="display:none;">
+    <div class="experience" data-exp-tags="{{ exp.tags | join: ',' | uri_escape }}" data-end-date="{{ exp.end_date | default: 'Present' }}">
   {% else %}
     <div class="experience" data-exp-tags="always" data-end-date="{{ exp.end_date | default: 'Present' }}">
   {% endif %}
@@ -71,7 +71,7 @@ permalink: /cv/
         {% if desc.tags == nil or desc.tags == empty %}
           <li data-tags="always" class="tag-always">{{ desc.text | escape }}</li>
         {% else %}
-          <li data-tags="{{ desc.tags | join: ',' | uri_escape }}" style="display:none;">{{ desc.text }}</li>
+          <li data-tags="{{ desc.tags | join: ',' | uri_escape }}">{{ desc.text }}</li>
         {% endif %}
       {% endfor %}
     </ul>
