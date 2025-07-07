@@ -64,7 +64,7 @@ experiences:
         tags: [ "Business" ]
       - text: Collaborated closely with stakeholders, prioritized transparency and discovered user and business value with the team, while also maintaining focus on previously set goals.
         tags: [ "Business", "Organisation" ]
-    tags: [ "extra", "Business" ]
+    tags: [ "extra", "Business", "Organisation" ]
   - title: Technical WoW Transformation Coach - Product Driven Organisations
     company: Ford Motor Company
     location: Ford, England, United Kingdom
@@ -142,7 +142,7 @@ experiences:
         tags: [ "Organisation", "Technical" ]
       - text: Software suite built on the Java EE platform with GWT, JPA2, Hibernate, PostgreSQL, GIS, POI, GIT, Gerrit, Jenkins, Jboss and Tomcat.
         tags: [ "Technical" ]
-    tags: [ "extra" ]
+    tags: [ "extra", "Technical", "Organisation" ]
   - title: Senior Software Developer & Technical Coach (Finance, Telecom, Desktop, Server, Tech)
     company: Purple Scout AB
     location: Göteborg, Sweden
@@ -164,7 +164,7 @@ experiences:
     descriptions:
       - text: Taught intermediate git and gerrit skills for software development professionals.
         tags: [ "Technical" ]
-    tags: [ "extra" ]
+    tags: [ "extra", "Technical" ]
   - title: Eclipse Plugin Developer
     company: Ericsson
     location: Lindholmen, Göteborg, Sweden
@@ -178,7 +178,7 @@ experiences:
         tags: [ "Technical" ]
       - text: Managed the project with SCRUM adding elements of Kanban.
         tags: [ "Organisation" ]
-    tags: [ "extra" ]
+    tags: [ "extra", "Technical" ]
   - title: Software Development, Design & Computer Science Teacher
     company: Portalens Gymnasium
     location: Göteborg
