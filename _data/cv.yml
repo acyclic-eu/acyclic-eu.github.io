@@ -173,8 +173,6 @@ experiences:
         tags: [ "Technical" ]
       - text: Work helped the developers at Ericsson to be more productive by making multiple systems integrate and work seamlessly from within eclipse.
         tags: [ "Technical" ]
-      - text: Managed the project with SCRUM adding elements of Kanban.
-        tags: [ "Organisation" ]
     tags: [ "extra", "Technical" ]
   - title: Software Development, Design & Computer Science Teacher
     company: Portalens Gymnasium
@@ -183,7 +181,7 @@ experiences:
     end_date: "2012-02-29"
     descriptions:
       - text: Taught software development and computer science.
-        tags: [ "Technical", "Organisation" ]
+        tags: [ "Technical" ]
       - text: Responsible for advanced courses in programming, including teaching database development, user interface programming, object-oriented development and multithread programming.
         tags: [ "Technical" ]
       - text: Education focused on empowering students, using individual and group projects where they built their own software based on their own ideas.
