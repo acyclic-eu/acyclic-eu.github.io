@@ -4,6 +4,7 @@ experiences:
     location: Gothenburg
     start_date: "2021-10-01"
     end_date: "2024-01-31"
+    employment_type: "Partner"
     descriptions:
       - text: Elevated software dev teams via code-centric training, coaching three automotive teams in Law of Demeter, SOLID, TDD, and small steps.
         tags: [ "Technical", "Organisation" ]
@@ -46,6 +47,7 @@ experiences:
     location: Gothenburg, Vastra Gotaland County, Sweden
     start_date: "2021-07-01"
     end_date: "2099-12-31"
+    employment_type: "Owner"
     descriptions:
       - text: Most active as part of collaboration with ProAgile. Currently, a side business in coaching, training and business development.
         tags: [ "Organisation", "Business" ]
@@ -54,6 +56,7 @@ experiences:
     location: Gothenburg, Vastra Gotaland County, Sweden
     start_date: "2022-06-01"
     end_date: "2023-05-31"
+    employment_type: "Contract"
     descriptions:
       - text: Started as a Product Coach, leveraging coaching background and software expertise to foster agility and adaptability, ensuring success even in dynamic situations.
         tags: [ "Business", "Organisation", "Technical" ]
@@ -131,6 +134,7 @@ experiences:
     location: Göteborg
     start_date: "2013-01-01"
     end_date: "2016-05-31"
+    employment_type: "Contract"
     descriptions:
       - text: Created a business intelligence system, content management system, used for strategic and financial analysis in an agile (scrum/kanban) team.
         tags: [ "Technical", "Organisation" ]
@@ -156,6 +160,7 @@ experiences:
     location: Europe
     start_date: "2015-11-01"
     end_date: "2016-04-30"
+    employment_type: "Contract"
     descriptions:
       - text: Taught intermediate git and gerrit skills for software development professionals.
         tags: [ "Technical" ]
@@ -165,6 +170,7 @@ experiences:
     location: Lindholmen, Göteborg, Sweden
     start_date: "2012-02-01"
     end_date: "2012-12-31"
+    employment_type: "Contract"
     descriptions:
       - text: Developed Eclipse plugins for developers, integrating Eclipse with the clients build system, debugging system, version control system and code coverage system.
         tags: [ "Technical" ]

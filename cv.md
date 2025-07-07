@@ -56,7 +56,7 @@ permalink: /cv/
   {% endif %}
     <h2>{{ exp.title }} at {{ exp.company }}</h2>
     <p><strong>Location:</strong> {{ exp.location | default: "N/A" }}<br>
-    <strong>Period:</strong> {{ exp.start_date | default: "N/A" }} - {{ exp.end_date | default: "Present" }}
+    <strong>Period:</strong> {{ exp.start_date | default: "N/A" }} - {{ exp.end_date | default: "Present" }} ({{ exp.employment_type | default: "Employed" }})
     </p>
     <ul>
       {% for desc in exp.descriptions %}
