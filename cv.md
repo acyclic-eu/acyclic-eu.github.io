@@ -130,7 +130,8 @@ function filterCV() {
     }
 
     // Show experience if it passes both tag filter and date filter
-    var passesTagFilter = checked.length === 0 || expTags.includes('always') || expTags.some(function(tag) { return checked.includes(tag); });
+    // Modified to hide experiences with tags when no tags are selected
+    var passesTagFilter = (checked.length === 0 && expTags.includes('always')) || expTags.some(function(tag) { return checked.includes(tag); });
     var passesDateFilter = yearDepth === 0 ?
                           (endDateStr === "Present") :
                           (endDateStr === "Present" || endDate >= cutoffDate);
