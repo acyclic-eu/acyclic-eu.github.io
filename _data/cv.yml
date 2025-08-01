@@ -58,7 +58,7 @@ experiences:
       - text: Collaborated with Sales/Marketing, converting two key leads.
         tags: [ "Leader" ]
       - text: Directed technical screenings and interviews, assessing problem-solving, product modeling, and automated testing.
-        tags: [ "Leader", "Teacher" ]
+        tags: [ "Leader" ]
   - title: CEO, Organisational & Leadership Coach, Developer
     company: How To Know
     location: Greater Gothenburg
@@ -88,12 +88,11 @@ experiences:
     end_date: "2022-05-31"
     descriptions:
       - text: Focused on empowering teams to enhance their capability and autonomy, fostering good software development practices and encouraging self-organisation towards company business goals.
-        tags: [ "Leader", "Teacher", "Developer" ]
+        tags: [ "Leader", "Teacher" ]
       - text: Boosted individual developers' skills through code-focused trainings, aiming to elevate their contribution to team and company objectives.
-        tags: [ "Teacher", "Developer" ]
+        tags: [ "Teacher" ]
       - text: Fostered a culture of continuous improvement and self-reliance, enabling teams to thrive in dynamic environments and deliver high-quality business effectively.
         tags: [ "Leader", "Teacher" ]
-    tags: [ "Teacher" ]
   - title: Software Department Program Manager (AI, UI, SaaS, Legal)
     company: Seal Software
     location: Gothenburg, Sweden
@@ -168,7 +167,7 @@ experiences:
       - text: I drove technical excellence, designing financial BI systems for Skanova (Java, GWT, .NET, JavaScript) and developing Ericsson's E4B Eclipse IDE to boost developer productivity.
         tags: [ "Developer" ]
       - text: I also led Git/Gerrit training for European software professionals, improving code standards.
-        tags: [ "Teacher", "Developer" ]
+        tags: [ "Teacher" ]
   - title: Software Development Teacher
     company: Neueda Consulting
     location: Europe
