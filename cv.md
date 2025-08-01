@@ -119,11 +119,7 @@ permalink: /cv/
 <div id="cv-content">
 {% assign exps = site.data.cv.experiences | sort: "start_date" | reverse %}
 {% for exp in exps %}
-  {% if exp.tags %}
-    <div class="experience" data-exp-tags="{{ exp.tags | join: ',' | uri_escape }}" data-end-date="{{ exp.end_date | default: 'Present' }}">
-  {% else %}
-    <div class="experience" data-exp-tags="" data-end-date="{{ exp.end_date | default: 'Present' }}">
-  {% endif %}
+  <div class="experience" data-exp-tags="{{ exp.tags | join: ',' | uri_escape | default: '' }}" data-end-date="{{ exp.end_date | default: 'Present' }}">
     {% assign title_parts = exp.title | split: "(" %}
     {% if title_parts.size > 1 %}
       {% assign main_title = title_parts[0] | strip %}
