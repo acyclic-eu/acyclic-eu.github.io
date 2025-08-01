@@ -3,7 +3,7 @@ tag_filters:
     description: "Software development and technical implementation"
     order: 2
   - name: "Leader"
-    description: "Leadership, management, and organizational roles"
+    description: "Leadership, management, product, and organizational roles"
     order: 1
   - name: "Teacher"
     description: "Teaching, coaching, and knowledge sharing"

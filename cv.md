@@ -20,6 +20,10 @@ permalink: /cv/
     margin-bottom: 0.5em;
   }
 
+  .tag-filter {
+    position: relative;
+  }
+
   .tag-filter label {
     cursor: pointer;
     padding: 0.3em 0.5em;
@@ -32,10 +36,24 @@ permalink: /cv/
   }
 
   .filter-description {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.5em;
+    border-radius: 3px;
+    font-size: 0.85em;
+    width: max-content;
+    max-width: 250px;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    margin-top: 5px;
+  }
+
+  .tag-filter:hover .filter-description {
     display: block;
-    font-size: 0.8em;
-    color: #666;
-    margin-top: 0.2em;
   }
 </style>
 
@@ -48,7 +66,7 @@ permalink: /cv/
     <div class="tag-filter">
       <input type="checkbox" id="tag-{{ tag_filter.name | slugify }}" value="{{ tag_filter.name | uri_escape }}" onchange="filterCV()">
       <label for="tag-{{ tag_filter.name | slugify }}">{{ tag_filter.name }}</label>
-      <span class="filter-description">{{ tag_filter.description }}</span>
+      <div class="filter-description">{{ tag_filter.description }}</div>
     </div>
   {% endfor %}
   <div style="margin-top:1em;">
