@@ -1,5 +1,5 @@
   // Methods for filtering
-  function isVisible(checkedTags, yearDepth)
+  function isVisible(checkedTags)
   {
     // If this item has no tags, show it regardless of filters
     if (!this.tags || this.tags.length === 0) {
