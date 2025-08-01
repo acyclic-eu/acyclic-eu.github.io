@@ -60,6 +60,20 @@ permalink: /cv/
 <!-- Use the tag_filters from the YAML file -->
 {% assign ordered_tags = site.data.cv.tag_filters | sort: "order" %}
 
+<!-- Calculate the maximum timespan based on the earliest start_date -->
+{% assign experiences = site.data.cv.experiences %}
+{% assign current_year = "now" | date: "%Y" | plus: 0 %}
+{% assign earliest_date = current_year %}
+{% for exp in experiences %}
+  {% if exp.start_date %}
+    {% assign year = exp.start_date | slice: 0, 4 | plus: 0 %}
+    {% if year < earliest_date %}
+      {% assign earliest_date = year %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% assign max_years = current_year | minus: earliest_date | plus: 1 %}
+
 <h2>Filter by Role</h2>
 <form id="cv-tags-form">
   {% for tag_filter in ordered_tags %}
@@ -73,10 +87,10 @@ permalink: /cv/
     <div style="display:flex; align-items:center; margin-bottom:0.5em;">
       <label for="experience-age" style="margin-right:1em;">Experience Timeframe: <span id="year-depth-value">10</span> years</label>
       <div style="flex-grow:1;">
-        <input type="range" id="experience-age" min="0" max="30" value="10" step="1" style="width:100%;" onchange="updateYearDepthValue(this.value); filterCV();" oninput="updateYearDepthValue(this.value);">
+        <input type="range" id="experience-age" min="0" max="{{ max_years }}" value="10" step="1" style="width:100%;" onchange="updateYearDepthValue(this.value); filterCV();" oninput="updateYearDepthValue(this.value);">
         <div style="display:flex; justify-content:space-between; font-size:0.8em;">
           <span>Current only</span>
-          <span>All experience</span>
+          <span>All experience ({{ max_years }} years)</span>
         </div>
       </div>
     </div>
