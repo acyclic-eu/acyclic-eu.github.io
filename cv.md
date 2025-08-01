@@ -65,11 +65,7 @@ permalink: /cv/
 </style>
 
 <!-- Use the tag_filters from the YAML file with null check -->
-{% if site.data.cv.tag_filters %}
-  {% assign ordered_tags = site.data.cv.tag_filters | sort: "order" %}
-{% else %}
-  {% assign ordered_tags = '' %}
-{% endif %}
+{% assign ordered_tags = site.data.cv.tag_filters | default: '' | sort: "order" %}
 
 <!-- Calculate the maximum timespan based on the earliest start_date -->
 {% assign experiences = site.data.cv.experiences %}
