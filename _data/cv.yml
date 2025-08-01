@@ -77,7 +77,7 @@ experiences:
         tags: [ "Leader" ]
       - text: Collaborated closely with stakeholders, prioritized transparency and discovered user and business value with the team, while also maintaining focus on previously set goals.
         tags: [ "Leader" ]
-    tags: [ "extra", "Leader" ]
+    tags: [ "Leader" ]
   - title: Technical WoW Transformation Coach - Product Driven Organisations
     company: Ford Motor Company
     location: Ford, England, United Kingdom
@@ -90,7 +90,7 @@ experiences:
         tags: [ "Teacher", "Developer" ]
       - text: Fostered a culture of continuous improvement and self-reliance, enabling teams to thrive in dynamic environments and deliver high-quality business effectively.
         tags: [ "Leader", "Teacher" ]
-    tags: [ "extra", "Teacher" ]
+    tags: [ "Teacher" ]
   - title: Software Department Program Manager (AI, UI, SaaS, Legal)
     company: Seal Software
     location: Gothenburg, Sweden
@@ -141,7 +141,7 @@ experiences:
     descriptions:
       - text: Teacher in basic and advance git and gerrit skills for software development professionals.
         tags: [ "Teacher", "Developer" ]
-    tags: [ "extra", "Teacher" ]
+    tags: [ "Teacher" ]
   - title: Java EE Senior Developer
     company: Skanova (via Purple Scout)
     location: Göteborg
@@ -155,7 +155,7 @@ experiences:
         tags: [ "Developer", "Leader" ]
       - text: Software suite built on the Java EE platform with GWT, JPA2, Hibernate, PostgreSQL, GIS, POI, GIT, Gerrit, Jenkins, Jboss and Tomcat.
         tags: [ "Developer" ]
-    tags: [ "extra", "Developer" ]
+    tags: [ "Developer" ]
   - title: Senior Software Developer & Technical Coach (Finance, Telecom, Desktop, Server, Tech)
     company: Purple Scout AB
     location: Göteborg, Sweden
@@ -175,7 +175,7 @@ experiences:
     descriptions:
       - text: Taught intermediate git and gerrit skills for software development professionals.
         tags: [ "Teacher", "Developer" ]
-    tags: [ "extra", "Teacher" ]
+    tags: [ "Teacher" ]
   - title: Eclipse Plugin Developer
     company: Ericsson
     location: Lindholmen, Göteborg, Sweden
@@ -186,8 +186,8 @@ experiences:
       - text: Developed Eclipse plugins for developers, integrating Eclipse with the clients build system, debugging system, version control system and code coverage system.
         tags: [ "Developer" ]
       - text: Work helped the developers at Ericsson to be more productive by making multiple systems integrate and work seamlessly from within eclipse.
-        tags: [ "Developer" ]
-    tags: [ "extra", "Developer" ]
+        tags: [ ]
+    tags: [ ]
   - title: Software Development, Design & Computer Science Teacher
     company: Portalens Gymnasium
     location: Göteborg
@@ -221,5 +221,6 @@ experiences:
     end_date: "1999-12-31"
     descriptions:
       - text: Built computers and managed customer database.
-        tags: [ "Developer" ]
-    tags: [ "extra", "Developer" ]
+        tags: [ "Other" ]
+        tags: [ "Other" ]
+    tags: [ "Other" ]

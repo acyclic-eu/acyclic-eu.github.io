@@ -180,10 +180,10 @@ function filterCV() {
       endDate = new Date(endDateStr);
     }
 
-    // Simple tag filter logic:
-    // 1. If data-exp-tags is 'always', always show the experience
-    // 2. Otherwise, show if any tag matches the checked filters
-    var passesTagFilter = expTagsAttr === 'always' ||
+    // Tag filter logic:
+    // 1. If data-exp-tags is 'always' or empty, always show the experience when no filters are checked
+    // 2. If filters are checked, show only if a tag matches the checked filters
+    var passesTagFilter = (expTagsAttr === 'always' || expTags.length === 0) && checked.length === 0 ||
                          (checked.length > 0 && expTags.some(function(tag) {
                            // Only consider tags that are defined in the YAML file
                            const normalizedTag = normalizeTag(tag);
