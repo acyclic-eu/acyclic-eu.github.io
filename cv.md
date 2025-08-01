@@ -275,20 +275,23 @@ function exportToMarkdown() {
   const a = document.createElement('a');
   a.href = url;
 
-  // Create a filename using the date, optionally including name if available
+  // Create a filename with name and date
   const now = new Date();
   const dateStr = now.toISOString().split('T')[0]; // YYYY-MM-DD format
 
-  let filename = 'cv_' + dateStr;
+  // Get name from data file or fallback to configured value
+  let nameForFilename = '{{ site.data.cv.name }}';
 
-  // Add name to filename if available
-  const nameSlug = '{{ site.data.cv.name | slugify }}';
-  if (nameSlug && nameSlug !== '{{ site.data.cv.name | slugify }}') {
-    filename = nameSlug + '_' + filename;
+  // If the template variable doesn't render, use site author name
+  if (!nameForFilename || nameForFilename === '{{ site.data.cv.name }}') {
+    nameForFilename = '{{ site.author.name }}';
   }
 
-  // Add extension
-  filename += '.md';
+  // Slugify the name manually (convert to lowercase, replace spaces with hyphens)
+  const nameSlug = nameForFilename.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
+  // Create the filename with the name
+  let filename = nameSlug + '_cv_' + dateStr + '.md';
 
   a.download = filename;
   document.body.appendChild(a);
