@@ -94,6 +94,9 @@ permalink: /cv/
         </div>
       </div>
     </div>
+    <div style="text-align: right; margin-top: 1em;">
+      <button id="export-markdown" class="btn" style="padding: 0.5em 1em; background-color: #f5f5f5; border: 1px solid #ddd; border-radius: 3px; cursor: pointer;" onclick="exportToMarkdown()">Export as Markdown</button>
+    </div>
   </div>
 </form>
 
@@ -216,4 +219,56 @@ function filterCV() {
 window.addEventListener('DOMContentLoaded', function() {
   filterCV();
 });
+
+function exportToMarkdown() {
+  // Get the active filters
+  const activeFilters = Array.from(document.querySelectorAll('#cv-tags-form input[type=checkbox]:checked'))
+    .map(cb => decodeURIComponent(cb.value).trim());
+  const yearDepth = document.getElementById('year-depth-value').textContent;
+
+  // Start building the markdown content
+  let markdown = `# Curriculum Vitae\n\n`;
+
+  // Add filter information
+  if (activeFilters.length > 0) {
+    markdown += `*Filtered by roles: ${activeFilters.join(', ')}*\n\n`;
+  }
+  markdown += `*Experience timeframe: ${yearDepth} years*\n\n`;
+
+  // Get all visible experiences
+  const visibleExperiences = Array.from(document.querySelectorAll('.experience'))
+    .filter(exp => exp.style.display !== 'none');
+
+  visibleExperiences.forEach(exp => {
+    // Get the title
+    const title = exp.querySelector('h2').textContent;
+    markdown += `## ${title}\n\n`;
+
+    // Get location and period
+    const details = exp.querySelector('p').textContent;
+    markdown += `${details}\n\n`;
+
+    // Get the visible description items
+    const visibleItems = Array.from(exp.querySelectorAll('li'))
+      .filter(li => li.style.display !== 'none');
+
+    if (visibleItems.length > 0) {
+      visibleItems.forEach(item => {
+        markdown += `- ${item.textContent}\n`;
+      });
+      markdown += '\n';
+    }
+  });
+
+  // Create and trigger download
+  const blob = new Blob([markdown], {type: 'text/markdown'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'filtered-cv.md';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
 </script>
