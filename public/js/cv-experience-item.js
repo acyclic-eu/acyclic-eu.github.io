@@ -1,7 +1,13 @@
   // Methods for filtering
-  isVisible(checkedTags, yearDepth) {
-    // Get tags directly from the component's tags property
-    // If no filters are selected, show all experiences
-    // Otherwise, only show if one of its tags matches the selected filters
-    const passesTagFilter = checkedTags.length === 0 ||
-                          (checkedTags.length > 0 && this.tags.length > 0 && this.tags.some(tag => checkedTags.includes(tag)));
+  function isVisible(checkedTags, yearDepth)
+  {
+    // If this item has no tags, show it regardless of filters
+    if (!this.tags || this.tags.length === 0) {
+      return true;
+    }
+
+    // If it has tags:
+    // - Hide it when no filters are selected
+    // - Only show it if one of its tags matches the checked filters
+    return checkedTags.length > 0 && this.tags.some(tag => checkedTags.includes(tag));
+  }

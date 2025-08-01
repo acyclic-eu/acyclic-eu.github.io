@@ -169,13 +169,18 @@ function filterCV() {
   function passesTagFiltering(tagsAttr) {
     var tags = tagsAttr ? decodeURIComponent(tagsAttr).split(',').map(function(tag) { return tag.trim(); }) : [];
 
-    // 1. If no filters are checked, show everything
-    // 2. If filters are checked, show only if a tag matches the checked filters
-    return checked.length === 0 ||
-           (checked.length > 0 && tags.length > 0 && tags.some(function(tag) {
-             const normalizedTag = normalizeTag(tag);
-             return availableTags.includes(normalizedTag) && checked.includes(normalizedTag);
-           }));
+    // If no tags, show it regardless of filters
+    if (!tags.length) {
+      return true;
+    }
+
+    // If it has tags:
+    // - Hide it when no filters are selected
+    // - Only show it if one of its tags matches the checked filters
+    return checked.length > 0 && tags.some(function(tag) {
+      const normalizedTag = normalizeTag(tag);
+      return availableTags.includes(normalizedTag) && checked.includes(normalizedTag);
+    });
   }
 
   // Filter experiences based on their tags and end date
