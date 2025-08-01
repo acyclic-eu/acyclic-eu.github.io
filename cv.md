@@ -115,7 +115,7 @@ permalink: /cv/
   {% if exp.tags %}
     <div class="experience" data-exp-tags="{{ exp.tags | join: ',' | uri_escape }}" data-end-date="{{ exp.end_date | default: 'Present' }}">
   {% else %}
-    <div class="experience" data-exp-tags="always" data-end-date="{{ exp.end_date | default: 'Present' }}">
+    <div class="experience" data-exp-tags="" data-end-date="{{ exp.end_date | default: 'Present' }}">
   {% endif %}
     {% assign title_parts = exp.title | split: "(" %}
     {% if title_parts.size > 1 %}
@@ -133,7 +133,7 @@ permalink: /cv/
     <ul>
       {% for desc in exp.descriptions %}
         {% if desc.tags == nil or desc.tags == empty %}
-          <li data-tags="always" class="tag-always">{{ desc.text | escape }}</li>
+          <li data-tags="" class="tag-no-tags">{{ desc.text | escape }}</li>
         {% else %}
           <li data-tags="{{ desc.tags | join: ',' | uri_escape }}">{{ desc.text }}</li>
         {% endif %}
@@ -165,11 +165,23 @@ function filterCV() {
   var cutoffYear = today.getFullYear() - yearDepth;
   var cutoffDate = new Date(cutoffYear, today.getMonth(), today.getDate());
 
+  // Common tag filter logic function
+  function passesTagFiltering(tagsAttr) {
+    var tags = tagsAttr ? decodeURIComponent(tagsAttr).split(',').map(function(tag) { return tag.trim(); }) : [];
+
+    // 1. If no filters are checked, show everything
+    // 2. If filters are checked, show only if a tag matches the checked filters
+    return checked.length === 0 ||
+           (checked.length > 0 && tags.length > 0 && tags.some(function(tag) {
+             const normalizedTag = normalizeTag(tag);
+             return availableTags.includes(normalizedTag) && checked.includes(normalizedTag);
+           }));
+  }
+
   // Filter experiences based on their tags and end date
   var experiences = document.querySelectorAll('#cv-content .experience');
   experiences.forEach(function(exp) {
     var expTagsAttr = exp.getAttribute('data-exp-tags');
-    var expTags = expTagsAttr ? decodeURIComponent(expTagsAttr).split(',').map(function(tag) { return tag.trim(); }) : [];
     var endDateStr = exp.getAttribute('data-end-date');
 
     // Parse the end date
@@ -180,16 +192,7 @@ function filterCV() {
       endDate = new Date(endDateStr);
     }
 
-    // Tag filter logic:
-    // 1. If data-exp-tags is 'always' or empty, always show the experience when no filters are checked
-    // 2. If filters are checked, show only if a tag matches the checked filters
-    var passesTagFilter = (expTagsAttr === 'always' || expTags.length === 0) && checked.length === 0 ||
-                         (checked.length > 0 && expTags.some(function(tag) {
-                           // Only consider tags that are defined in the YAML file
-                           const normalizedTag = normalizeTag(tag);
-                           return availableTags.includes(normalizedTag) && checked.includes(normalizedTag);
-                         }));
-
+    var passesTagFilter = passesTagFiltering(expTagsAttr);
     var passesDateFilter = yearDepth === 0 ?
                           (endDateStr === "Present") :
                           (endDateStr === "Present" || endDate >= cutoffDate);
@@ -205,21 +208,12 @@ function filterCV() {
   var lis = document.querySelectorAll('#cv-content li');
   lis.forEach(function(li) {
     var tagsAttr = li.getAttribute('data-tags');
-    // If data-tags="always", always show this description
-    if (tagsAttr === 'always') {
+    var passesTagFilter = passesTagFiltering(tagsAttr);
+
+    if (passesTagFilter) {
       li.style.display = '';
     } else {
-      // Otherwise parse the tags and check if any match the filters
-      var tags = decodeURIComponent(tagsAttr).split(',').map(function(tag) { return tag.trim(); });
-      if (checked.length > 0 && tags.some(function(tag) {
-        const normalizedTag = normalizeTag(tag);
-        // Only consider tags that are defined in the YAML file
-        return availableTags.includes(normalizedTag) && checked.includes(normalizedTag);
-      })) {
-        li.style.display = '';
-      } else {
-        li.style.display = 'none';
-      }
+      li.style.display = 'none';
     }
   });
 }
