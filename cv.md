@@ -4,7 +4,14 @@ title: CV
 permalink: /cv/
 ---
 
+{% if site.data.cv.name %}
+<div style="display: flex; align-items: baseline; gap: 15px;">
+  <h1 style="margin-bottom: 0;">{{ site.data.cv.name }}</h1>
+  <h3 style="margin-bottom: 0; font-weight: normal; color: #777;">Curriculum Vitae</h3>
+</div>
+{% else %}
 <h1>Curriculum Vitae</h1>
+{% endif %}
 
 <style>
   .traits {
