@@ -296,8 +296,16 @@ function exportToMarkdown() {
   // Slugify the name manually (convert to lowercase, replace spaces with hyphens)
   const nameSlug = nameForFilename.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 
-  // Create the filename with the name
-  let filename = nameSlug + '_cv_' + dateStr + '.md';
+  // Create the filename with the name and selected filters
+  let filename = nameSlug;
+
+  // Add selected filters to filename
+  if (activeFilters.length > 0) {
+    filename += '_' + activeFilters.map(tag => tag.toLowerCase().replace(/\s+/g, '-')).join('-');
+  }
+
+  // Add date and extension
+  filename += '_cv_' + dateStr + '.md';
 
   a.download = filename;
   document.body.appendChild(a);
