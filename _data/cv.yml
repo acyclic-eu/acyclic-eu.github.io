@@ -1,3 +1,14 @@
+tag_filters:
+  - name: "Developer"
+    description: "Software development and technical implementation"
+    order: 2
+  - name: "Leader"
+    description: "Leadership, management, and organizational roles"
+    order: 1
+  - name: "Teacher"
+    description: "Teaching, coaching, and knowledge sharing"
+    order: 3
+
 experiences:
   - title: Technology and Leadership Consultant
     company: ProAgile
@@ -7,15 +18,15 @@ experiences:
     employment_type: "Partner"
     descriptions:
       - text: Elevated software dev teams via code-centric training, coaching three automotive teams in Law of Demeter, SOLID, TDD, and small steps.
-        tags: [ "Technical", "Organisation" ]
+        tags: [ "Teacher", "Developer" ]
       - text: Directly applied theoretical concepts in Kotlin and .NET with teams.
-        tags: [ "Technical" ]
+        tags: [ "Developer" ]
       - text: Cultivated a proactive, adaptive org culture through continuous learning and improved software architecture.
-        tags: [ "Organisation", "Technical" ]
+        tags: [ "Leader", "Developer" ]
       - text: Guided product strategy, boosting transparency, engagement, and value; championed feedback loops aligned with business and technical goals.
-        tags: [ "Business", "Organisation" ]
+        tags: [ "Leader" ]
       - text: Bolstered existing business and secured new deals through active Sales and Marketing participation.
-        tags: [ "Organisation" ]
+        tags: [ "Leader" ]
   - title: Software Engineering Manager (Scaleup, AI, Annotations, Data, Automotive)
     company: Kognic
     location: Gothenburg
@@ -23,11 +34,11 @@ experiences:
     end_date: "2025-03-31"
     descriptions:
       - text: Initiated a restructure of the product's configuration model, applying technical analysis to implement role and domain-based separation.
-        tags: [ "Technical", "Business" ]
+        tags: [ "Developer", "Leader" ]
       - text: Conducted technical improvement dialogues and coaching with lead developers for architectural alignment.
-        tags: [ "Technical", "Organisation" ]
+        tags: [ "Leader", "Teacher" ]
       - text: Guided a new team through complex technical challenges, uniting their technical vision, and optimizing performance through mentorship and technical guidance.
-        tags: [ "Organisation", "Technical" ]
+        tags: [ "Leader", "Teacher" ]
   - title: Software Engineering Manager (Agency, Finance, SaaS)
     company: Piktiv
     location: Skövde
@@ -35,13 +46,13 @@ experiences:
     end_date: "2024-09-30"
     descriptions:
       - text: Mentored technical staff in .NET, applying Law of Demeter, SOLID, DDD, and systems thinking to reduce dependencies and foster innovation.
-        tags: [ "Technical", "Organisation" ]
+        tags: [ "Teacher", "Developer" ]
       - text: Developed financial market products.
-        tags: [ "Technical", "Business" ]
+        tags: [ "Developer" ]
       - text: Collaborated with Sales/Marketing, converting two key leads.
-        tags: [ "Organisation" ]
+        tags: [ "Leader" ]
       - text: Directed technical screenings and interviews, assessing problem-solving, product modeling, and automated testing.
-        tags: [ "Organisation", "Technical" ]
+        tags: [ "Leader", "Teacher" ]
   - title: CEO, Organisational & Leadership Coach, Developer
     company: How To Know
     location: Greater Gothenburg
@@ -49,7 +60,7 @@ experiences:
     employment_type: "Owner"
     descriptions:
       - text: Running my own, side business in coaching, training and product development.
-        tags: [ "Organisation", "Business" ]
+        tags: [ "Leader", "Teacher", "Developer" ]
   - title: Interim Lead Product Manager & Payments Product Manager
     company: Avinode Group
     location: Gothenburg, Vastra Gotaland County, Sweden
@@ -58,12 +69,12 @@ experiences:
     employment_type: "Contract"
     descriptions:
       - text: Started as a Product Coach, leveraging coaching background and software expertise to foster agility and adaptability, ensuring success even in dynamic situations.
-        tags: [ "Business", "Organisation", "Technical" ]
+        tags: [ "Leader", "Teacher" ]
       - text: Assumed the Product Manager role, demonstrating commitment to success.
-        tags: [ "Business" ]
+        tags: [ "Leader" ]
       - text: Collaborated closely with stakeholders, prioritized transparency and discovered user and business value with the team, while also maintaining focus on previously set goals.
-        tags: [ "Business", "Organisation" ]
-    tags: [ "extra", "Business", "Organisation" ]
+        tags: [ "Leader" ]
+    tags: [ "extra", "Leader" ]
   - title: Technical WoW Transformation Coach - Product Driven Organisations
     company: Ford Motor Company
     location: Ford, England, United Kingdom
@@ -71,12 +82,12 @@ experiences:
     end_date: "2022-05-31"
     descriptions:
       - text: Focused on empowering teams to enhance their capability and autonomy, fostering good software development practices and encouraging self-organisation towards company business goals.
-        tags: [ "Organisation", "Technical", "Business" ]
+        tags: [ "Leader", "Teacher", "Developer" ]
       - text: Boosted individual developers' skills through code-focused trainings, aiming to elevate their contribution to team and company objectives.
-        tags: [ "Technical", "Organisation" ]
+        tags: [ "Teacher", "Developer" ]
       - text: Fostered a culture of continuous improvement and self-reliance, enabling teams to thrive in dynamic environments and deliver high-quality business effectively.
-        tags: [ "Organisation", "Business" ]
-    tags: [ "extra" ]
+        tags: [ "Leader", "Teacher" ]
+    tags: [ "extra", "Teacher" ]
   - title: Software Department Program Manager (AI, UI, SaaS, Legal)
     company: Seal Software
     location: Gothenburg, Sweden
@@ -84,11 +95,11 @@ experiences:
     end_date: "2021-09-30"
     descriptions:
       - text: "Technical Vision & Leadership: Guided 14 agile teams, aligning software architecture with organizational strategy and scalability while fostering a culture of continuous improvement and proactive problem-solving for complex software systems."
-        tags: [ "Organisation", "Technical" ]
+        tags: [ "Leader", "Developer" ]
       - text: "Architectural & Quality Assurance: Spearheaded the implementation of risk management, security, and quality control standards, ensuring robust project outcomes and adherence to industry best practices in software development and deployments."
-        tags: [ "Organisation", "Technical" ]
+        tags: [ "Leader", "Developer" ]
       - text: "Culture Development: Drove departmental initiatives that emphasized collaborative professional leadership, fostering a culture of continuous improvement and proactive problem-solving in the context of complex software systems."
-        tags: [ "Organisation" ]
+        tags: [ "Leader" ]
   - title: Product Team Lead (UI/UX, Backend, Search, AI, Server, Legal)
     company: Seal Software
     location: Gothenburg, Sweden
@@ -96,17 +107,17 @@ experiences:
     end_date: "2020-05-31"
     descriptions:
       - text: "Technical Vision & Leadership: Led three multidisciplinary teams in creating integrated software solutions with a strong emphasis on architectural design and system performance. Managed 3 teams of 14 developers, SDET, and UX professionals."
-        tags: [ "Organisation", "Technical" ]
+        tags: [ "Leader", "Developer" ]
       - text: "Effectively removed impediments and facilitated team discussions to enhance workflow, ensure projects aligned with stakeholder goals, and improve organizational effectiveness."
-        tags: [ "Organisation" ]
+        tags: [ "Leader" ]
       - text: "Established and strengthened self-leadership, self-organization, and strong collaboration."
-        tags: [ "Organisation" ]
+        tags: [ "Leader" ]
       - text: "Architectural & Quality Assurance: Responsible for technical choices and implementations involving React, Java, Scala, TypeScript, AWS, GCP, Docker, Docker Swarm, and Kubernetes."
-        tags: [ "Technical" ]
+        tags: [ "Developer" ]
       - text: "Proactively engaged in performance measurement and optimization, including re-architecting slow system parts. Made strategic architectural decisions such as separating calls from responses for asynchronous processing to improve flow, efficiency, and accelerate responsiveness."
-        tags: [ "Technical" ]
+        tags: [ "Developer" ]
       - text: "Orchestrated the integration of AI capabilities, ensuring machine learning outputs were directly tied to enhancing user interaction and core product functionality."
-        tags: [ "Technical", "Business" ]
+        tags: [ "Developer", "Leader" ]
   - title: Senior Software Developer (UI/UX, Backend, Search, AI, Server, Legal)
     company: Seal Software
     location: Gothenburg, Sweden
@@ -114,11 +125,11 @@ experiences:
     end_date: "2019-01-31"
     descriptions:
       - text: "Innovative Design & Development: Designed and developed cutting-edge AI software solutions using React, Java, TypeScript, and Scala, improving performance, user-friendliness, and brand identity. Established end-to-end tests for system integrity."
-        tags: [ "Technical", "Business" ]
+        tags: [ "Developer" ]
       - text: "AI Integration: Pioneered AI-driven features for text review, collaborating with Data Scientists on technical integration of ML models to tag legal concepts, identify entities, and link ML output to user interaction, boosting contract management capabilities."
-        tags: [ "Technical" ]
+        tags: [ "Developer" ]
       - text: "Cross-functional Collaboration & Full-Stack Problem Solving: Collaborated with UX designers and cross-functional teams, adopting a full-stack approach to problem-solving, defining core use cases, and identifying crucial user information to improve overall product functionality and performance."
-        tags: [ "Technical", "Organisation" ]
+        tags: [ "Developer", "Leader" ]
   - title: Software Development Teacher
     company: Edument
     location: Göteborg
@@ -126,8 +137,8 @@ experiences:
     end_date: "2016-09-30"
     descriptions:
       - text: Teacher in basic and advance git and gerrit skills for software development professionals.
-        tags: [ "Technical" ]
-    tags: [ "extra" ]
+        tags: [ "Teacher", "Developer" ]
+    tags: [ "extra", "Teacher" ]
   - title: Java EE Senior Developer
     company: Skanova (via Purple Scout)
     location: Göteborg
@@ -136,12 +147,12 @@ experiences:
     employment_type: "Contract"
     descriptions:
       - text: Created a business intelligence system, content management system, used for strategic and financial analysis in an agile (scrum/kanban) team.
-        tags: [ "Technical", "Organisation" ]
+        tags: [ "Developer" ]
       - text: Part of a well functioning self-organising team, taking shared decisions on bigger issues like processes and architecture.
-        tags: [ "Organisation", "Technical" ]
+        tags: [ "Developer", "Leader" ]
       - text: Software suite built on the Java EE platform with GWT, JPA2, Hibernate, PostgreSQL, GIS, POI, GIT, Gerrit, Jenkins, Jboss and Tomcat.
-        tags: [ "Technical" ]
-    tags: [ "extra", "Technical", "Organisation" ]
+        tags: [ "Developer" ]
+    tags: [ "extra", "Developer" ]
   - title: Senior Software Developer & Technical Coach (Finance, Telecom, Desktop, Server, Tech)
     company: Purple Scout AB
     location: Göteborg, Sweden
@@ -149,9 +160,9 @@ experiences:
     end_date: "2016-05-31"
     descriptions:
       - text: I drove technical excellence, designing financial BI systems for Skanova (Java, GWT, .NET, JavaScript) and developing Ericsson's E4B Eclipse IDE to boost developer productivity.
-        tags: [ "Technical" ]
+        tags: [ "Developer" ]
       - text: I also led Git/Gerrit training for European software professionals, improving code standards.
-        tags: [ "Technical", "Organisation" ]
+        tags: [ "Teacher", "Developer" ]
   - title: Software Development Teacher
     company: Neueda Consulting
     location: Europe
@@ -160,8 +171,8 @@ experiences:
     employment_type: "Contract"
     descriptions:
       - text: Taught intermediate git and gerrit skills for software development professionals.
-        tags: [ "Technical" ]
-    tags: [ "extra", "Technical" ]
+        tags: [ "Teacher", "Developer" ]
+    tags: [ "extra", "Teacher" ]
   - title: Eclipse Plugin Developer
     company: Ericsson
     location: Lindholmen, Göteborg, Sweden
@@ -170,10 +181,10 @@ experiences:
     employment_type: "Contract"
     descriptions:
       - text: Developed Eclipse plugins for developers, integrating Eclipse with the clients build system, debugging system, version control system and code coverage system.
-        tags: [ "Technical" ]
+        tags: [ "Developer" ]
       - text: Work helped the developers at Ericsson to be more productive by making multiple systems integrate and work seamlessly from within eclipse.
-        tags: [ "Technical" ]
-    tags: [ "extra", "Technical" ]
+        tags: [ "Developer" ]
+    tags: [ "extra", "Developer" ]
   - title: Software Development, Design & Computer Science Teacher
     company: Portalens Gymnasium
     location: Göteborg
@@ -181,13 +192,13 @@ experiences:
     end_date: "2012-02-29"
     descriptions:
       - text: Taught software development and computer science.
-        tags: [ "Technical" ]
+        tags: [ "Teacher", "Developer" ]
       - text: Responsible for advanced courses in programming, including teaching database development, user interface programming, object-oriented development and multithread programming.
-        tags: [ "Technical" ]
+        tags: [ "Teacher", "Developer" ]
       - text: Education focused on empowering students, using individual and group projects where they built their own software based on their own ideas.
-        tags: [ "Organisation", "Technical" ]
+        tags: [ "Teacher", "Leader" ]
       - text: Projects included 2D and 3D games, communication platforms, scheduling applications for sports events, music organizers etc., using Java, MySQL, Linux, JavaScript, HTML, CSS.
-        tags: [ "Technical" ]
+        tags: [ "Teacher", "Developer" ]
   - title: Software Development & Computer Science Teacher
     company: Strömstad Gymnasium
     location: Strömstad
@@ -195,11 +206,11 @@ experiences:
     end_date: "2007-06-30"
     descriptions:
       - text: Head of all computer education, deciding which courses to run and helping other computer teachers to coordinate their courses.
-        tags: [ "Organisation", "Technical" ]
+        tags: [ "Leader", "Teacher" ]
       - text: Personally held courses in programming, web design, personal computers, operating systems and local networks, using open source software and the Java programming language.
-        tags: [ "Technical" ]
+        tags: [ "Teacher", "Developer" ]
       - text: Involvement increased interest in the computer engineering programs in the municipality.
-        tags: [ "Organisation" ]
+        tags: [ "Leader" ]
   - title: Computer Technician
     company: PM-data
     location: Linköping, Helsingborg
@@ -207,5 +218,5 @@ experiences:
     end_date: "1999-12-31"
     descriptions:
       - text: Built computers and managed customer database.
-        tags: [ "Technical" ]
-    tags: [ "extra" ]
+        tags: [ "Developer" ]
+    tags: [ "extra", "Developer" ]

@@ -13,45 +13,43 @@ permalink: /cv/
     color: #666;
     font-size: 0.9em;
   }
+
+  .tag-filter {
+    display: inline-block;
+    margin-right: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .tag-filter label {
+    cursor: pointer;
+    padding: 0.3em 0.5em;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+  }
+
+  .tag-filter input:checked + label {
+    background-color: #e0e0e0;
+  }
+
+  .filter-description {
+    display: block;
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 0.2em;
+  }
 </style>
 
-<!-- Collect all unique tags from all descriptions and experiences -->
-{% assign all_tags = "" | split: "," %}
-{% for exp in site.data.cv.experiences %}
-{% if exp.tags %}
-{% for tag in exp.tags %}
-{% unless all_tags contains tag %}
-{% assign all_tags = all_tags | push: tag %}
-{% endunless %}
-{% endfor %}
-{% endif %}
-{% for desc in exp.descriptions %}
-{% if desc.tags %}
-{% for tag in desc.tags %}
-{% unless all_tags contains tag %}
-{% assign all_tags = all_tags | push: tag %}
-{% endunless %}
-{% endfor %}
-{% endif %}
-{% endfor %}
-{% endfor %}
+<!-- Use the tag_filters from the YAML file -->
+{% assign ordered_tags = site.data.cv.tag_filters | sort: "order" %}
 
-<!-- Define the order of tags -->
-{% assign ordered_tags = "" | split: "," %}
-{% if all_tags contains "Organisation" %}
-{% assign ordered_tags = ordered_tags | push: "Organisation" %}
-{% endif %}
-{% if all_tags contains "Technical" %}
-{% assign ordered_tags = ordered_tags | push: "Technical" %}
-{% endif %}
-{% if all_tags contains "Business" %}
-{% assign ordered_tags = ordered_tags | push: "Business" %}
-{% endif %}
-
-<h2>Leadership</h2>
+<h2>Filter by Role</h2>
 <form id="cv-tags-form">
-  {% for tag in ordered_tags %}
-    <label style="margin-right:1em;"><input type="checkbox" value="{{ tag | uri_escape }}" onchange="filterCV()"> {{ tag }}</label>
+  {% for tag_filter in ordered_tags %}
+    <div class="tag-filter">
+      <input type="checkbox" id="tag-{{ tag_filter.name | slugify }}" value="{{ tag_filter.name | uri_escape }}" onchange="filterCV()">
+      <label for="tag-{{ tag_filter.name | slugify }}">{{ tag_filter.name }}</label>
+      <span class="filter-description">{{ tag_filter.description }}</span>
+    </div>
   {% endfor %}
   <div style="margin-top:1em;">
     <div style="display:flex; align-items:center; margin-bottom:0.5em;">
@@ -106,7 +104,15 @@ function updateYearDepthValue(value) {
   document.getElementById('year-depth-value').textContent = value;
 }
 
+// Simple normalize function to trim whitespace
+function normalizeTag(tag) {
+  return tag.trim();
+}
+
 function filterCV() {
+  // Available tags from the YAML file
+  const availableTags = [{% for tag_filter in site.data.cv.tag_filters %}"{{ tag_filter.name }}"{% unless forloop.last %},{% endunless %}{% endfor %}];
+
   var checked = Array.from(document.querySelectorAll('#cv-tags-form input[type=checkbox]:checked')).map(cb => decodeURIComponent(cb.value).trim());
   var yearDepth = parseInt(document.getElementById('experience-age').value);
 
@@ -134,7 +140,11 @@ function filterCV() {
     // 1. If data-exp-tags is 'always', always show the experience
     // 2. Otherwise, show if any tag matches the checked filters
     var passesTagFilter = expTagsAttr === 'always' ||
-                         (checked.length > 0 && expTags.some(function(tag) { return checked.includes(tag); }));
+                         (checked.length > 0 && expTags.some(function(tag) {
+                           // Only consider tags that are defined in the YAML file
+                           const normalizedTag = normalizeTag(tag);
+                           return availableTags.includes(normalizedTag) && checked.includes(normalizedTag);
+                         }));
 
     var passesDateFilter = yearDepth === 0 ?
                           (endDateStr === "Present") :
@@ -157,7 +167,11 @@ function filterCV() {
     } else {
       // Otherwise parse the tags and check if any match the filters
       var tags = decodeURIComponent(tagsAttr).split(',').map(function(tag) { return tag.trim(); });
-      if (checked.length > 0 && tags.some(function(tag) { return checked.includes(tag); })) {
+      if (checked.length > 0 && tags.some(function(tag) {
+        const normalizedTag = normalizeTag(tag);
+        // Only consider tags that are defined in the YAML file
+        return availableTags.includes(normalizedTag) && checked.includes(normalizedTag);
+      })) {
         li.style.display = '';
       } else {
         li.style.display = 'none';

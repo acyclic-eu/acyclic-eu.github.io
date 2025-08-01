@@ -3,6 +3,9 @@
       const initialExpCount = getVisibleExperiencesCount();
       assertTest(initialExpCount > 0, 'Experiences without tags are visible with no tags selected');
 
+      // Define the new tag categories
+      const tagCategories = ['Developer', 'Leader', 'Teacher'];
+
       // Create a test experience without tags to verify it always shows
       const testExp = document.createElement('cv-experience-item');
       testExp.title = 'Test No Tags';
