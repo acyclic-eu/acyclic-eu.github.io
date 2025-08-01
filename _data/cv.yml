@@ -11,6 +11,9 @@ tag_filters:
   - name: "Teacher"
     description: "Teaching, coaching, and knowledge sharing"
     order: 3
+  - name: "Other"
+    description: "Other roles and experiences not fitting into the main categories"
+    order: 4
 
 experiences:
   - title: Technology and Leadership Consultant
