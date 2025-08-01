@@ -57,8 +57,12 @@ permalink: /cv/
   }
 </style>
 
-<!-- Use the tag_filters from the YAML file -->
-{% assign ordered_tags = site.data.cv.tag_filters | sort: "order" %}
+<!-- Use the tag_filters from the YAML file with null check -->
+{% if site.data.cv.tag_filters %}
+  {% assign ordered_tags = site.data.cv.tag_filters | sort: "order" %}
+{% else %}
+  {% assign ordered_tags = '' %}
+{% endif %}
 
 <!-- Calculate the maximum timespan based on the earliest start_date -->
 {% assign experiences = site.data.cv.experiences %}
@@ -76,13 +80,18 @@ permalink: /cv/
 
 <h2>Filter by Role</h2>
 <form id="cv-tags-form">
-  {% for tag_filter in ordered_tags %}
-    <div class="tag-filter">
-      <input type="checkbox" id="tag-{{ tag_filter.name | slugify }}" value="{{ tag_filter.name | uri_escape }}" onchange="filterCV()">
-      <label for="tag-{{ tag_filter.name | slugify }}">{{ tag_filter.name }}</label>
-      <div class="filter-description">{{ tag_filter.description }}</div>
-    </div>
-  {% endfor %}
+  {% if ordered_tags != '' %}
+    {% for tag_filter in ordered_tags %}
+      <div class="tag-filter">
+        <input type="checkbox" id="tag-{{ tag_filter.name | slugify }}" value="{{ tag_filter.name | uri_escape }}" onchange="filterCV()">
+        <label for="tag-{{ tag_filter.name | slugify }}">{{ tag_filter.name }}</label>
+        <div class="filter-description">{{ tag_filter.description }}</div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <!-- No tag filters available -->
+    <div><em>No filters available</em></div>
+  {% endif %}
   <div style="margin-top:1em;">
     <div style="display:flex; align-items:center; margin-bottom:0.5em;">
       <label for="experience-age" style="margin-right:1em;">Experience Timeframe: <span id="year-depth-value">10</span> years</label>
@@ -265,7 +274,23 @@ function exportToMarkdown() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'filtered-cv.md';
+
+  // Create a filename using the date, optionally including name if available
+  const now = new Date();
+  const dateStr = now.toISOString().split('T')[0]; // YYYY-MM-DD format
+
+  let filename = 'cv_' + dateStr;
+
+  // Add name to filename if available
+  const nameSlug = '{{ site.data.cv.name | slugify }}';
+  if (nameSlug && nameSlug !== '{{ site.data.cv.name | slugify }}') {
+    filename = nameSlug + '_' + filename;
+  }
+
+  // Add extension
+  filename += '.md';
+
+  a.download = filename;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
