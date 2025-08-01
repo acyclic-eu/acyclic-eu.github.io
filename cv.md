@@ -118,7 +118,8 @@ function filterCV() {
   // Filter experiences based on their tags and end date
   var experiences = document.querySelectorAll('#cv-content .experience');
   experiences.forEach(function(exp) {
-    var expTags = decodeURIComponent(exp.getAttribute('data-exp-tags')).split(',').map(function(tag) { return tag.trim(); });
+    var expTagsAttr = exp.getAttribute('data-exp-tags');
+    var expTags = expTagsAttr ? decodeURIComponent(expTagsAttr).split(',').map(function(tag) { return tag.trim(); }) : [];
     var endDateStr = exp.getAttribute('data-end-date');
 
     // Parse the end date
@@ -129,9 +130,12 @@ function filterCV() {
       endDate = new Date(endDateStr);
     }
 
-    // Show experience if it passes both tag filter and date filter
-    // Modified to hide experiences with tags when no tags are selected
-    var passesTagFilter = (checked.length === 0 && expTags.includes('always')) || expTags.some(function(tag) { return checked.includes(tag); });
+    // Simple tag filter logic:
+    // 1. If data-exp-tags is 'always', always show the experience
+    // 2. Otherwise, show if any tag matches the checked filters
+    var passesTagFilter = expTagsAttr === 'always' ||
+                         (checked.length > 0 && expTags.some(function(tag) { return checked.includes(tag); }));
+
     var passesDateFilter = yearDepth === 0 ?
                           (endDateStr === "Present") :
                           (endDateStr === "Present" || endDate >= cutoffDate);
@@ -146,11 +150,18 @@ function filterCV() {
   // Filter descriptions based on their tags
   var lis = document.querySelectorAll('#cv-content li');
   lis.forEach(function(li) {
-    var tags = decodeURIComponent(li.getAttribute('data-tags')).split(',').map(function(tag) { return tag.trim(); });
-    if (tags.includes('always') || tags.some(function(tag) { return checked.includes(tag); })) {
+    var tagsAttr = li.getAttribute('data-tags');
+    // If data-tags="always", always show this description
+    if (tagsAttr === 'always') {
       li.style.display = '';
     } else {
-      li.style.display = 'none';
+      // Otherwise parse the tags and check if any match the filters
+      var tags = decodeURIComponent(tagsAttr).split(',').map(function(tag) { return tag.trim(); });
+      if (checked.length > 0 && tags.some(function(tag) { return checked.includes(tag); })) {
+        li.style.display = '';
+      } else {
+        li.style.display = 'none';
+      }
     }
   });
 }
