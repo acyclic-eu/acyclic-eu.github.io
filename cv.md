@@ -102,7 +102,7 @@ permalink: /cv/
 
 <!-- Import the tag-toggle web component -->
 <script type="module">
-  import "/public/js/tag-toggle.js";
+  import "/public/Componenets/tag-toggle.js";
 </script>
 
 <script>

@@ -12,8 +12,11 @@ function toggleState(host) {
 
 export default define({
   tag: "tag-toggle",
+  /** @type {string} */
   name: "",
+  /** @type {string} */
   description: "toggle this tag",
+  /** @type {boolean} */
   checked: false,
   render: ({ name, description, checked }) => html`
     <style>
