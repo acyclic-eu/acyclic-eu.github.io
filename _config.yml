@@ -33,5 +33,9 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
 
+# Include node_modules in the Jekyll build
+include:
+  - node_modules
+
 first_page:
   url: index
