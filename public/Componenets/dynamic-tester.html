@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Component Tester</title>
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #fbbc05;
+            --dark-color: #333;
+            --light-color: #f9f9f9;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h1 {
+            color: var(--primary-color);
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .component-container {
+            margin-top: 2rem;
+        }
+
+        .component-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .component-header {
+            background-color: var(--light-color);
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .component-name {
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        .component-content {
+            padding: 1rem;
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .property-card {
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1rem;
+            background-color: var(--light-color);
+        }
+
+        .property-name {
+            font-weight: bold;
+            margin: 0 0 0.5rem 0;
+            color: var(--dark-color);
+        }
+
+        .property-type {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .example-values {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .example-value {
+            padding: 0.5rem;
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        .demo-section {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        .demo-title {
+            margin: 0 0 1rem 0;
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dynamic Component Tester</h1>
+        <p>This page automatically discovers and tests Hybrids components in this directory</p>
+    </header>
+
+    <div id="component-tester" class="loading">
+        Discovering and analyzing components...
+    </div>
+
+    <script type="module">
+        import { initComponentTester } from './auto-tester.js';
+
+        // Predefined list of component files
+        const componentFiles = [
+            './simple-counter.js',
+            './tag-toggle.js'
+            // Add any new components here as they are created
+        ];
+
+        // Initialize the component tester
+        document.addEventListener('DOMContentLoaded', () => {
+            // Pass the component files list to the tester
+            initComponentTester('component-tester', componentFiles);
+        });
+    </script>
+</body>
+</html>

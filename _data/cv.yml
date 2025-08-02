@@ -2,12 +2,12 @@
 name: "Patrik Gustafsson"
 
 tag_filters:
-  - name: "Developer"
-    description: "Software development and technical implementation"
-    order: 2
   - name: "Leader"
     description: "Leadership, management, product, and organizational roles"
     order: 1
+  - name: "Developer"
+    description: "Software development and technical implementation"
+    order: 2
   - name: "Teacher"
     description: "Teaching, coaching, and knowledge sharing"
     order: 3
