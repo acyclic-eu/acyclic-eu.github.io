@@ -1,4 +1,4 @@
-import { html, define } from "/node_modules/hybrids/src/index.js";
+import { html, define } from "https://cdn.jsdelivr.net/npm/hybrids@9.1.18/src/index.js";
 
 function increaseCount(host) {
   host.count += 1;
