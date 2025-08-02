@@ -3,9 +3,8 @@ import { html, define } from "/node_modules/hybrids/src/index.js";
 function toggleState(host) {
   host.checked = !host.checked;
 
-  // Dispatch a custom event when the state changes
-  host.dispatchEvent(new CustomEvent('toggle-changed', {
-    detail: { checked: host.checked },
+  // Dispatch a standard change event
+  host.dispatchEvent(new Event('change', {
     bubbles: true,
     composed: true
   }));
