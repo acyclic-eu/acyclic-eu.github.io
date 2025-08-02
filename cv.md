@@ -20,48 +20,6 @@ permalink: /cv/
     color: #666;
     font-size: 0.9em;
   }
-
-  .tag-filter {
-    display: inline-block;
-    margin-right: 1.5em;
-    margin-bottom: 0.5em;
-  }
-
-  .tag-filter {
-    position: relative;
-  }
-
-  .tag-filter label {
-    cursor: pointer;
-    padding: 0.3em 0.5em;
-    border-radius: 3px;
-    transition: all 0.2s ease;
-  }
-
-  .tag-filter input:checked + label {
-    background-color: #e0e0e0;
-  }
-
-  .filter-description {
-    display: none;
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 0.5em;
-    border-radius: 3px;
-    font-size: 0.85em;
-    width: max-content;
-    max-width: 250px;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 100;
-    margin-top: 5px;
-  }
-
-  .tag-filter:hover .filter-description {
-    display: block;
-  }
 </style>
 
 <!-- Use the tag_filters from the YAML file with null check -->
@@ -85,11 +43,11 @@ permalink: /cv/
 <form id="cv-tags-form">
   {% if ordered_tags != '' %}
     {% for tag_filter in ordered_tags %}
-      <div class="tag-filter">
-        <input type="checkbox" id="tag-{{ tag_filter.name | slugify }}" value="{{ tag_filter.name | uri_escape }}" onchange="filterCV()">
-        <label for="tag-{{ tag_filter.name | slugify }}">{{ tag_filter.name }}</label>
-        <div class="filter-description">{{ tag_filter.description }}</div>
-      </div>
+      <tag-toggle
+        id="tag-{{ tag_filter.name | slugify }}"
+        name="{{ tag_filter.name }}"
+        description="{{ tag_filter.description | escape }}"
+      ></tag-toggle>
     {% endfor %}
   {% else %}
     <!-- No tag filters available -->
@@ -142,6 +100,11 @@ permalink: /cv/
 {% endfor %}
 </div>
 
+<!-- Import the tag-toggle web component -->
+<script type="module">
+  import "/public/js/tag-toggle.js";
+</script>
+
 <script>
 function updateYearDepthValue(value) {
   document.getElementById('year-depth-value').textContent = value;
@@ -152,35 +115,52 @@ function normalizeTag(tag) {
   return tag.trim();
 }
 
+// Helper function to get selected tags
+function getSelectedTags() {
+  return Array.from(document.querySelectorAll('#cv-tags-form tag-toggle'))
+    .filter(toggle => toggle.checked)
+    .map(toggle => toggle.name.trim());
+}
+
 function filterCV() {
   // Available tags from the YAML file
   const availableTags = [{% for tag_filter in site.data.cv.tag_filters %}"{{ tag_filter.name }}"{% unless forloop.last %},{% endunless %}{% endfor %}];
 
-  var checked = Array.from(document.querySelectorAll('#cv-tags-form input[type=checkbox]:checked')).map(cb => decodeURIComponent(cb.value).trim());
-  var yearDepth = parseInt(document.getElementById('experience-age').value);
+  const selectedTags = getSelectedTags();
+  console.log('Selected tags:', selectedTags);
+
+var yearDepth = parseInt(document.getElementById('experience-age').value);
 
   // Calculate cutoff date based on year depth
   var today = new Date();
   var cutoffYear = today.getFullYear() - yearDepth;
   var cutoffDate = new Date(cutoffYear, today.getMonth(), today.getDate());
 
-  // Common tag filter logic function
+  // Simple inline tag filtering function
   function passesTagFiltering(tagsAttr) {
-    var tags = tagsAttr ? decodeURIComponent(tagsAttr).split(',').map(function(tag) { return tag.trim(); }) : [];
+    // Parse the tags from the attribute
+    var tags = tagsAttr ? decodeURIComponent(tagsAttr).split(',').map(tag => tag.trim()) : [];
 
     // If no tags, show it regardless of filters
     if (!tags.length) {
       return true;
     }
 
-    // If it has tags:
-    // - Hide it when no filters are selected
-    // - Only show it if one of its tags matches the checked filters
-    return checked.length > 0 && tags.some(function(tag) {
-      const normalizedTag = normalizeTag(tag);
-      return availableTags.includes(normalizedTag) && checked.includes(normalizedTag);
+    // If no filters selected, always hide tagged items
+    if (selectedTags.length === 0) {
+      return false;
+    }
+
+    // Check if any tag matches the checked filters
+    const passes = tags.some(tag => {
+      const matches = availableTags.includes(tag) && selectedTags.includes(tag);
+      return matches;
     });
+
+    return passes;
   }
+
+  console.log('Checked tags:', selectedTags);
 
   // Filter experiences based on their tags and end date
   var experiences = document.querySelectorAll('#cv-content .experience');
@@ -200,6 +180,7 @@ function filterCV() {
     var passesDateFilter = yearDepth === 0 ?
                           (endDateStr === "Present") :
                           (endDateStr === "Present" || endDate >= cutoffDate);
+
 
     if (passesTagFilter && passesDateFilter) {
       exp.style.display = '';
@@ -224,13 +205,23 @@ function filterCV() {
 
 // Initialize filtering on page load
 window.addEventListener('DOMContentLoaded', function() {
-  filterCV();
+  // Wait for web components to be defined
+  setTimeout(() => {
+    // Add change event listeners to all tag-toggle components
+    document.querySelectorAll('tag-toggle').forEach(toggle => {
+      toggle.addEventListener('change', () => {
+        console.log(`Toggle changed: ${toggle.name} is now ${toggle.checked ? 'checked' : 'unchecked'}`);
+        filterCV();
+      });
+    });
+
+    filterCV();
+  }, 100);
 });
 
 function exportToMarkdown() {
   // Get the active filters
-  const activeFilters = Array.from(document.querySelectorAll('#cv-tags-form input[type=checkbox]:checked'))
-    .map(cb => decodeURIComponent(cb.value).trim());
+  const activeFilters = getSelectedTags();
   const yearDepth = document.getElementById('year-depth-value').textContent;
 
   // Start building the markdown content
