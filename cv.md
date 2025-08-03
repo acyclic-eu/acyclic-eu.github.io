@@ -54,16 +54,15 @@ permalink: /cv/
     <div><em>No filters available</em></div>
   {% endif %}
   <div style="margin-top:1em;">
-    <div style="display:flex; align-items:center; margin-bottom:0.5em;">
-      <label for="experience-age" style="margin-right:1em;">Experience Timeframe: <span id="year-depth-value">10</span> years</label>
-      <div style="flex-grow:1;">
-        <input type="range" id="experience-age" min="0" max="{{ max_years }}" value="10" step="1" style="width:100%;" onchange="updateYearDepthValue(this.value); filterCV();" oninput="updateYearDepthValue(this.value);">
-        <div style="display:flex; justify-content:space-between; font-size:0.8em;">
-          <span>Current only</span>
-          <span>All experience ({{ max_years }} years)</span>
-        </div>
-      </div>
-    </div>
+    <time-filter
+      id="experience-filter"
+      value="10"
+      min="0"
+      max="{{ max_years }}"
+      label="Experience Timeframe"
+      minLabel="Current only"
+      maxLabel="All experience"
+    ></time-filter>
     <div style="text-align: right; margin-top: 1em;">
       <button id="export-markdown" class="btn" style="padding: 0.5em 1em; background-color: #f5f5f5; border: 1px solid #ddd; border-radius: 3px; cursor: pointer;" onclick="exportToMarkdown()">Export as Markdown</button>
     </div>
@@ -100,15 +99,13 @@ permalink: /cv/
 {% endfor %}
 </div>
 
-<!-- Import the tag-toggle web component -->
+<!-- Import the web components -->
 <script type="module">
   import "/public/Componenets/tag-toggle.js";
+  import "/public/Componenets/time-filter.js";
 </script>
 
 <script>
-function updateYearDepthValue(value) {
-  document.getElementById('year-depth-value').textContent = value;
-}
 
 // Simple normalize function to trim whitespace
 function normalizeTag(tag) {
@@ -129,7 +126,7 @@ function filterCV() {
   const selectedTags = getSelectedTags();
   console.log('Selected tags:', selectedTags);
 
-var yearDepth = parseInt(document.getElementById('experience-age').value);
+var yearDepth = parseInt(document.getElementById('experience-filter').value);
 
   // Calculate cutoff date based on year depth
   var today = new Date();
@@ -215,6 +212,15 @@ window.addEventListener('DOMContentLoaded', function() {
       });
     });
 
+    // Add change event listener to time-filter component
+    const timeFilter = document.getElementById('experience-filter');
+    if (timeFilter) {
+      timeFilter.addEventListener('change', () => {
+        console.log(`Time filter changed: ${timeFilter.value} years`);
+        filterCV();
+      });
+    }
+
     filterCV();
   }, 100);
 });
@@ -222,7 +228,7 @@ window.addEventListener('DOMContentLoaded', function() {
 function exportToMarkdown() {
   // Get the active filters
   const activeFilters = getSelectedTags();
-  const yearDepth = document.getElementById('year-depth-value').textContent;
+  const yearDepth = document.getElementById('experience-filter').value;
 
   // Start building the markdown content
   let markdown = `# Curriculum Vitae\n\n`;
