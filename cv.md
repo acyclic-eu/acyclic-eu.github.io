@@ -14,6 +14,14 @@ permalink: /cv/
 {% endif %}
 
 <style>
+  :root {
+    /* Theme colors for components */
+    --secondary: #d291ff;
+    --secondary-contrast: black;
+    --button-bg: #f0f0f0;
+    --button-text: black;
+  }
+
   .traits {
     margin-top: -10px;
     margin-bottom: 10px;
