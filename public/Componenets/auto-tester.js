@@ -61,8 +61,10 @@ async function analyzeComponent(url) {
   try {
     // Fetch the component file
     const response = await fetch(url);
-    if (!response.ok) throw new Error(`Failed to fetch ${url}`);
-
+    if (!response.ok) {
+      console.warn(`Skipped: Failed to fetch ${url}`);
+      return null;
+    }
     const code = await response.text();
 
     // Extract tag name
