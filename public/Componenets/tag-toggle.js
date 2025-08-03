@@ -21,8 +21,11 @@ export default define({
   render: ({ name, description, checked }) => html`
     <style>
       :host {
-        --selected-bg: #d291ff;
-        --unselected-bg: #f0f0f0;
+        /* Use global variables, fallback to theme variables or reasonable defaults */
+        --tag-toggle-selected-bg: var(--secondary, #d291ff);
+        --tag-toggle-selected-color: var(--secondary-contrast, inherit);
+        --tag-toggle-unselected-bg: var(--button-bg, #f0f0f0);
+        --tag-toggle-unselected-color: var(--button-text, inherit);
 
         display: inline-block;
         margin-right: 1.5em;
@@ -40,17 +43,21 @@ export default define({
         padding: 0.3em 0.5em;
         border-radius: 3px;
         transition: all 0.2s ease;
-        background-color: var(--unselected-bg);
-        &:hover {
-          border: 1px solid var(--selected-bg);
-        }
+        background-color: var(--tag-toggle-unselected-bg);
+        color: var(--tag-toggle-unselected-color);
+      }
+
+      .toggle-label:hover {
+        border: 1px solid var(--tag-toggle-selected-bg);
       }
 
       .toggle-container.checked .toggle-label {
-        background-color: var(--selected-bg);
-        &:hover {
-          border: 1px dashed var(--unselected-bg);
-        }
+        background-color: var(--tag-toggle-selected-bg);
+        color: var(--tag-toggle-selected-color);
+      }
+
+      .toggle-container.checked .toggle-label:hover {
+        border: 1px dashed var(--tag-toggle-unselected-bg);
       }
 
       .filter-description {
@@ -79,5 +86,5 @@ export default define({
       <span class="toggle-label">${name}</span>
     </div>
     <div class="filter-description">${description}</div>
-  `,
+  `
 });
