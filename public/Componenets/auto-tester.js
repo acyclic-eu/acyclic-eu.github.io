@@ -195,18 +195,18 @@ function renderComponentTestPanel(component, container) {
   header.textContent = `${component.fileName} - <${component.tag}>`;
   panel.appendChild(header);
 
-  // Create basic instance
-  const basicTest = document.createElement('div');
-  basicTest.className = 'basic-test';
-  basicTest.innerHTML = '<h3>Basic Test</h3>';
-
-  // Create a container for property dropdowns
-  const propControls = document.createElement('div');
-  propControls.className = 'prop-controls';
-
   // Store current prop values
   const currentProps = {};
-  // HTML code preview element
+
+  // --- PROPS PANEL ---
+  const propsPanel = document.createElement('div');
+  propsPanel.className = 'props-panel';
+
+  // --- EXAMPLE PANEL ---
+  const examplePanel = document.createElement('div');
+  examplePanel.className = 'example-panel';
+
+  // --- CODE PREVIEW ---
   const codePreview = document.createElement('pre');
   codePreview.className = 'component-html-preview';
   codePreview.style.marginTop = '1em';
@@ -231,9 +231,9 @@ function renderComponentTestPanel(component, container) {
     codePreview.textContent = `<${component.tag}${attrs ? ' ' + attrs : ''}></${component.tag}>`;
   }
 
+  // --- PROP CONTROLS ---
   Object.entries(component.properties).forEach(([propName, propDetails]) => {
     if (propName === 'tag' || propName === 'render') return;
-    // Dropdown for property values
     const select = document.createElement('select');
     select.className = 'prop-dropdown';
     let options = generateSampleValues(propDetails.type, propDetails.defaultValue);
@@ -247,7 +247,6 @@ function renderComponentTestPanel(component, container) {
     emptyOption.textContent = '(unset)';
     select.appendChild(emptyOption);
     options.forEach(value => {
-      // Skip undefined or empty string (already handled by empty option)
       if (value === undefined || value === '') return;
       const option = document.createElement('option');
       option.value = typeof value === 'object' ? JSON.stringify(value) : value;
@@ -266,7 +265,7 @@ function renderComponentTestPanel(component, container) {
     label.textContent = propName + ': ';
     label.appendChild(select);
     label.style.marginRight = '1em';
-    propControls.appendChild(label);
+    propsPanel.appendChild(label);
     // Update prop on change
     select.addEventListener('change', () => {
       if (select.value === '') {
@@ -276,21 +275,22 @@ function renderComponentTestPanel(component, container) {
       }
       // Replace the instance with a new one with updated props
       const newInstance = generateTestInstance(component, currentProps);
-      basicTest.replaceChild(newInstance, basicInstanceEl);
-      basicInstanceEl = newInstance;
+      examplePanel.replaceChild(newInstance, examplePanel.firstChild);
       updateCodePreview();
     });
   });
-  basicTest.appendChild(propControls);
 
-  // Create the instance and allow updating
+  // --- EXAMPLE INSTANCE ---
   let basicInstanceEl = generateTestInstance(component, currentProps);
-  basicTest.appendChild(basicInstanceEl);
+  examplePanel.appendChild(basicInstanceEl);
 
   // Initial code preview
   updateCodePreview();
-  panel.appendChild(basicTest);
-  panel.appendChild(codePreview);
+
+  // --- CONTROL ORDER HERE ---
+  panel.appendChild(propsPanel);      // Props controls first
+  panel.appendChild(codePreview);    // HTML code preview third
+  panel.appendChild(examplePanel);   // Example instance second
 
   container.appendChild(panel);
 }
