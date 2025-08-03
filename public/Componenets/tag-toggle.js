@@ -13,7 +13,7 @@ function toggleState(host) {
 export default define({
   tag: "tag-toggle",
   /** @type {string} */
-  name: "",
+  name: "name",
   /** @type {string} */
   description: "toggle this tag",
   /** @type {boolean} */

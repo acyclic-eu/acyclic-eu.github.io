@@ -75,11 +75,16 @@ async function analyzeComponent(url) {
     // Extract file name from URL
     const fileName = url.split('/').pop();
 
-    // Extract properties
+    // Extract properties ONLY from the main define({ ... }) block
+    const defineMatch = code.match(/define\s*\(\s*{([\s\S]*?)}\s*\)/m);
+    if (!defineMatch) return null;
+
+    const defineBlock = defineMatch[1];
+
     const properties = {};
 
-    // Find all property blocks with JSDoc
-    const propBlocks = [...code.matchAll(/(\/\*\*([\s\S]*?)\*\/)?\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\s*:\s*([^,]+),?/g)];
+    // Find all property blocks with JSDoc inside define({ ... })
+    const propBlocks = [...defineBlock.matchAll(/(\/\*\*([\s\S]*?)\*\/)?\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\s*:\s*([^,]+),?/g)];
     for (const block of propBlocks) {
       const jsdoc = block[2] || '';
       const propName = block[3].trim();
@@ -143,11 +148,13 @@ async function analyzeComponent(url) {
 function generateTestInstance(component, customProps = {}) {
   const element = document.createElement(component.tag);
 
-  // Set properties
+  // Set properties only if value is not undefined or empty string
   Object.entries(component.properties).forEach(([name, details]) => {
     if (name in customProps) {
-      element[name] = customProps[name];
-    } else if (details.defaultValue !== undefined) {
+      if (customProps[name] !== undefined && customProps[name] !== '') {
+        element[name] = customProps[name];
+      }
+    } else if (details.defaultValue !== undefined && details.defaultValue !== '') {
       element[name] = details.defaultValue;
     }
   });
@@ -199,6 +206,31 @@ function renderComponentTestPanel(component, container) {
 
   // Store current prop values
   const currentProps = {};
+  // HTML code preview element
+  const codePreview = document.createElement('pre');
+  codePreview.className = 'component-html-preview';
+  codePreview.style.marginTop = '1em';
+  codePreview.style.background = '#f4f4f4';
+  codePreview.style.padding = '0.5em';
+  codePreview.style.borderRadius = '0.25em';
+
+  // Helper to update the HTML code preview
+  function updateCodePreview() {
+    const attrs = Object.entries(currentProps)
+      .map(([k, v]) => {
+        if (typeof v === 'boolean') {
+          return v ? k : '';
+        }
+        if (typeof v === 'object') {
+          return `${k}='${JSON.stringify(v)}'`;
+        }
+        return `${k}="${String(v)}"`;
+      })
+      .filter(Boolean)
+      .join(' ');
+    codePreview.textContent = `<${component.tag}${attrs ? ' ' + attrs : ''}></${component.tag}>`;
+  }
+
   Object.entries(component.properties).forEach(([propName, propDetails]) => {
     if (propName === 'tag' || propName === 'render') return;
     // Dropdown for property values
@@ -209,7 +241,14 @@ function renderComponentTestPanel(component, container) {
       options = [propDetails.defaultValue, ...options];
     }
     options = Array.from(new Set(options));
+    // Add an empty option at the top
+    const emptyOption = document.createElement('option');
+    emptyOption.value = '';
+    emptyOption.textContent = '(unset)';
+    select.appendChild(emptyOption);
     options.forEach(value => {
+      // Skip undefined or empty string (already handled by empty option)
+      if (value === undefined || value === '') return;
       const option = document.createElement('option');
       option.value = typeof value === 'object' ? JSON.stringify(value) : value;
       option.textContent = propDetails.type === 'object' || propDetails.type === 'array'
@@ -218,7 +257,10 @@ function renderComponentTestPanel(component, container) {
       select.appendChild(option);
     });
     // Set initial value
-    currentProps[propName] = parseDropdownValue(select.value, propDetails.type);
+    select.value = propDetails.defaultValue !== undefined && propDetails.defaultValue !== '' ? select.options[1]?.value : '';
+    if (select.value) {
+      currentProps[propName] = parseDropdownValue(select.value, propDetails.type);
+    }
     // Label
     const label = document.createElement('label');
     label.textContent = propName + ': ';
@@ -227,11 +269,16 @@ function renderComponentTestPanel(component, container) {
     propControls.appendChild(label);
     // Update prop on change
     select.addEventListener('change', () => {
-      currentProps[propName] = parseDropdownValue(select.value, propDetails.type);
+      if (select.value === '') {
+        delete currentProps[propName];
+      } else {
+        currentProps[propName] = parseDropdownValue(select.value, propDetails.type);
+      }
       // Replace the instance with a new one with updated props
       const newInstance = generateTestInstance(component, currentProps);
       basicTest.replaceChild(newInstance, basicInstanceEl);
       basicInstanceEl = newInstance;
+      updateCodePreview();
     });
   });
   basicTest.appendChild(propControls);
@@ -239,7 +286,11 @@ function renderComponentTestPanel(component, container) {
   // Create the instance and allow updating
   let basicInstanceEl = generateTestInstance(component, currentProps);
   basicTest.appendChild(basicInstanceEl);
+
+  // Initial code preview
+  updateCodePreview();
   panel.appendChild(basicTest);
+  panel.appendChild(codePreview);
 
   container.appendChild(panel);
 }
@@ -367,3 +418,18 @@ export {
   renderComponentTestPanel,
   initComponentTester
 };
+
+// ---
+// Example usage in HTML:
+//
+// <div id="component-tester"></div>
+// <script type="module">
+//   import { initComponentTester } from '/public/Componenets/auto-tester.js';
+//   // To auto-discover all components:
+//   initComponentTester('component-tester');
+//   // Or, to test specific files only:
+//   // initComponentTester('component-tester', [
+//   //   '/public/Componenets/my-component.js',
+//   //   '/public/Componenets/another-component.js'
+//   // ]);
+// </script>
