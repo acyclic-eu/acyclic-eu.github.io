@@ -55,7 +55,7 @@ async function discoverComponents() {
 }
 
 /**
- * Analyze a component file to extract its properties
+ * Analyze a component file to extract its properties, including JSDoc info
  */
 async function analyzeComponent(url) {
   try {
@@ -78,20 +78,38 @@ async function analyzeComponent(url) {
     // Extract properties
     const properties = {};
 
-    // Look for property definitions
-    const propRegex = /([a-zA-Z_$][a-zA-Z0-9_$]*)\s*:\s*([^,]+),?/g;
-    let match;
+    // Find all property blocks with JSDoc
+    const propBlocks = [...code.matchAll(/(\/\*\*([\s\S]*?)\*\/)?\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\s*:\s*([^,]+),?/g)];
+    for (const block of propBlocks) {
+      const jsdoc = block[2] || '';
+      const propName = block[3].trim();
+      const propValue = block[4].trim();
+      if (propName === 'tag' || propName === 'render' || propValue.includes('function') || propValue.includes('=>')) continue;
 
-    while ((match = propRegex.exec(code)) !== null) {
-      const propName = match[1].trim();
-      const propValue = match[2].trim();
+      let type = 'string';
+      let defaultValue = '';
+      let fromJSDoc = false;
+      let jsdocExample = undefined;
+      let jsdocType = undefined;
 
-      // Skip tag, render, and other method-like properties
-      if (propName !== 'tag' && propName !== 'render' && !propValue.includes('function') && !propValue.includes('=>')) {
-        let type = 'string';
-        let defaultValue = '';
+      // Parse JSDoc for @type and @example
+      if (jsdoc) {
+        const typeMatch = jsdoc.match(/@type\s+{([^}]+)}/);
+        if (typeMatch) {
+          jsdocType = typeMatch[1].trim();
+          type = jsdocType;
+          fromJSDoc = true;
+        }
+        const exampleMatch = jsdoc.match(/@example\s+([\s\S]*?)(?=@|\*\/)/);
+        if (exampleMatch) {
+          jsdocExample = exampleMatch[1].trim();
+          defaultValue = jsdocExample;
+          fromJSDoc = true;
+        }
+      }
 
-        // Determine type and default value
+      // If no JSDoc type/example, infer type/default as before
+      if (!fromJSDoc) {
         if (propValue === 'false' || propValue === 'true') {
           type = 'boolean';
           defaultValue = propValue === 'true';
@@ -102,15 +120,14 @@ async function analyzeComponent(url) {
           type = propValue.startsWith('{') ? 'object' : 'array';
           defaultValue = propValue;
         } else {
-          // Check for string values
-          const stringMatch = propValue.match(/['"](.*)['"]/m);
+          const stringMatch = propValue.match(/["'](.*)["']/m);
           if (stringMatch) {
             defaultValue = stringMatch[1];
           }
         }
-
-        properties[propName] = { type, defaultValue };
       }
+
+      properties[propName] = { type, defaultValue, fromJSDoc, syntax: propValue, jsdocType, jsdocExample };
     }
 
     return { tag, fileName, properties, url };
@@ -176,53 +193,54 @@ function renderComponentTestPanel(component, container) {
   basicTest.className = 'basic-test';
   basicTest.innerHTML = '<h3>Basic Test</h3>';
 
-  const basicInstance = generateTestInstance(component);
-  basicTest.appendChild(basicInstance);
-  panel.appendChild(basicTest);
+  // Create a container for property dropdowns
+  const propControls = document.createElement('div');
+  propControls.className = 'prop-controls';
 
-  // Create property testers
-  const propTests = document.createElement('div');
-  propTests.className = 'prop-tests';
-  propTests.innerHTML = '<h3>Property Tests</h3>';
-
+  // Store current prop values
+  const currentProps = {};
   Object.entries(component.properties).forEach(([propName, propDetails]) => {
     if (propName === 'tag' || propName === 'render') return;
-
-    const propTester = document.createElement('div');
-    propTester.className = 'prop-tester';
-
-    const propLabel = document.createElement('h4');
-    propLabel.textContent = `${propName} (${propDetails.type}${propDetails.fromJSDoc ? ' ⓙ' : ''})`;
-    propTester.appendChild(propLabel);
-
-    const valueContainer = document.createElement('div');
-    valueContainer.className = 'value-container';
-
-    // Generate sample values for this property
-    const sampleValues = generateSampleValues(propDetails.type, propDetails.defaultValue);
-
-    sampleValues.forEach(value => {
-      const valueTest = document.createElement('div');
-      valueTest.className = 'value-test';
-
-      const valueLabel = document.createElement('div');
-      valueLabel.className = 'value-label';
-      valueLabel.textContent = propDetails.type === 'object' || propDetails.type === 'array'
+    // Dropdown for property values
+    const select = document.createElement('select');
+    select.className = 'prop-dropdown';
+    let options = generateSampleValues(propDetails.type, propDetails.defaultValue);
+    if (!options.includes(propDetails.defaultValue)) {
+      options = [propDetails.defaultValue, ...options];
+    }
+    options = Array.from(new Set(options));
+    options.forEach(value => {
+      const option = document.createElement('option');
+      option.value = typeof value === 'object' ? JSON.stringify(value) : value;
+      option.textContent = propDetails.type === 'object' || propDetails.type === 'array'
         ? JSON.stringify(value)
         : String(value);
-      valueTest.appendChild(valueLabel);
-
-      const instance = generateTestInstance(component, { [propName]: value });
-      valueTest.appendChild(instance);
-
-      valueContainer.appendChild(valueTest);
+      select.appendChild(option);
     });
-
-    propTester.appendChild(valueContainer);
-    propTests.appendChild(propTester);
+    // Set initial value
+    currentProps[propName] = parseDropdownValue(select.value, propDetails.type);
+    // Label
+    const label = document.createElement('label');
+    label.textContent = propName + ': ';
+    label.appendChild(select);
+    label.style.marginRight = '1em';
+    propControls.appendChild(label);
+    // Update prop on change
+    select.addEventListener('change', () => {
+      currentProps[propName] = parseDropdownValue(select.value, propDetails.type);
+      // Replace the instance with a new one with updated props
+      const newInstance = generateTestInstance(component, currentProps);
+      basicTest.replaceChild(newInstance, basicInstanceEl);
+      basicInstanceEl = newInstance;
+    });
   });
+  basicTest.appendChild(propControls);
 
-  panel.appendChild(propTests);
+  // Create the instance and allow updating
+  let basicInstanceEl = generateTestInstance(component, currentProps);
+  basicTest.appendChild(basicInstanceEl);
+  panel.appendChild(basicTest);
+
   container.appendChild(panel);
 }
 
@@ -269,8 +287,9 @@ async function initComponentTester(containerId, componentFiles = []) {
     return;
   }
 
-  // Randomize the order of components
-  const randomizedComponents = [...components].sort(() => Math.random() - 0.5);
+  // Do not randomize the order of components
+  // const randomizedComponents = [...components].sort(() => Math.random() - 0.5);
+  const orderedComponents = components;
 
   container.innerHTML = '';
 
@@ -326,10 +345,20 @@ async function initComponentTester(containerId, componentFiles = []) {
   `;
   document.head.appendChild(style);
 
-  // Render each component (in randomized order)
-  randomizedComponents.forEach(component => {
+  // Render each component (in order)
+  orderedComponents.forEach(component => {
     renderComponentTestPanel(component, container);
   });
+}
+
+// Helper to parse dropdown value to correct type
+function parseDropdownValue(value, type) {
+  if (type === 'boolean') return value === 'true';
+  if (type === 'number') return Number(value);
+  if (type === 'object' || type === 'array') {
+    try { return JSON.parse(value); } catch { return value; }
+  }
+  return value;
 }
 
 export {
