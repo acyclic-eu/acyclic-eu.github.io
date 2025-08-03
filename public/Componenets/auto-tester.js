@@ -395,6 +395,19 @@ async function initComponentTester(containerId, componentFiles = []) {
       border-radius: 0.25rem;
       word-break: break-all;
     }
+
+    /* Make unchecked tag-toggles look clickable */
+    .tag-toggle:not(:checked) + label,
+    .tag-toggle:not(:checked) {
+      cursor: pointer;
+      opacity: 0.85;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .tag-toggle:not(:checked) + label:hover,
+    .tag-toggle:not(:checked):hover {
+      background: pink;
+      box-shadow: 0 0 0 2px #a5b4fc;
+    }
   `;
   document.head.appendChild(style);
 

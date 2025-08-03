@@ -21,6 +21,9 @@ export default define({
   render: ({ name, description, checked }) => html`
     <style>
       :host {
+        --selected-bg: #d291ff;
+        --unselected-bg: #f0f0f0;
+
         display: inline-block;
         margin-right: 1.5em;
         margin-bottom: 0.5em;
@@ -37,10 +40,17 @@ export default define({
         padding: 0.3em 0.5em;
         border-radius: 3px;
         transition: all 0.2s ease;
+        background-color: var(--unselected-bg);
+        &:hover {
+          border: 1px solid var(--selected-bg);
+        }
       }
 
       .toggle-container.checked .toggle-label {
-        background-color: #e0e0e0;
+        background-color: var(--selected-bg);
+        &:hover {
+          border: 1px dashed var(--unselected-bg);
+        }
       }
 
       .filter-description {
