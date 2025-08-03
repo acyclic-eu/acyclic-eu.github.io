@@ -187,7 +187,7 @@ function generateSampleValues(propType, currentValue) {
 /**
  * Render a component test panel
  */
-function renderComponentTestPanel(component, container) {
+function renderComponentTestPanel(component) {
   // Create panel
   const panel = document.createElement('div');
   panel.className = 'component-test-panel';
@@ -291,10 +291,11 @@ function renderComponentTestPanel(component, container) {
 
   // --- CONTROL ORDER HERE ---
   panel.appendChild(propsPanel);      // Props controls first
-  panel.appendChild(codePreview);    // HTML code preview third
-  panel.appendChild(examplePanel);   // Example instance second
+  panel.appendChild(codePreview);    // HTML code preview second
+  panel.appendChild(examplePanel);   // Example instance third
 
-  container.appendChild(panel);
+  // Instead of appending to container, just return the panel
+  return panel;
 }
 
 /**
@@ -309,142 +310,215 @@ async function initComponentTester(containerId, componentFiles = []) {
     return;
   }
 
-  container.innerHTML = '<p>Analyzing components...</p>';
+  // Clear container and add theme switcher at the top
+  container.innerHTML = '';
+  renderThemeSwitcher(container);
+
+  // Add a placeholder/loading below the theme switcher
+  const loading = document.createElement('div');
+  loading.className = 'loading';
+  loading.textContent = 'Analyzing components...';
+  container.appendChild(loading);
 
   let components = [];
 
   if (componentFiles && componentFiles.length > 0) {
     // Use the provided component files
     for (const file of componentFiles) {
-      const url = new URL(file, window.location.href).href;
+      // Ensure the file path is relative to the current script location
+      let url = file;
+      if (!/^([a-z]+:)?\/\//i.test(file)) {
+        // If not absolute, resolve relative to current location
+        url = new URL(file, window.location.origin + '/public/Componenets/').href;
+      }
       const component = await analyzeComponent(url);
 
       if (component) {
         components.push(component);
-        // Import the component
         try {
           await import(url);
-          console.log(`Loaded component: ${component.tag}`);
         } catch (err) {
           console.error(`Error loading component ${component.tag}:`, err);
         }
       }
     }
   } else {
-    // Try to auto-discover components
     components = await discoverComponents();
   }
 
-  if (components.length === 0) {
-    container.innerHTML = '<p>No components found</p>';
-    return;
-  }
+  // Remove loading indicator
+  loading.remove();
 
-  // Do not randomize the order of components
-  // const randomizedComponents = [...components].sort(() => Math.random() - 0.5);
-  const orderedComponents = components;
-
-  container.innerHTML = '';
-
-  // Add CSS
-  const style = document.createElement('style');
-  style.textContent = `
-    .component-test-panel {
-      margin-bottom: 2rem;
-      padding: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 0.5rem;
-      background-color: #f9f9f9;
-      /* Ensure consistent display regardless of position */
-      display: flex;
-      flex-direction: column;
-    }
-
-    .component-test-panel h2 {
-      color: #4285f4;
-      margin-top: 0;
-    }
-
-    .basic-test, .prop-tests {
-      margin: 1rem 0;
-    }
-
-    .prop-tester {
-      margin-bottom: 1.5rem;
-    }
-
-    .value-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-
-    .value-test {
-      padding: 0.5rem;
-      background-color: white;
-      border: 1px solid #eee;
-      border-radius: 0.25rem;
-    }
-
-    .value-label {
-      font-family: monospace;
-      font-size: 0.8rem;
-      margin-bottom: 0.5rem;
-      padding: 0.25rem;
-      background-color: #f0f0f0;
-      border-radius: 0.25rem;
-      word-break: break-all;
-    }
-
-    /* Make unchecked tag-toggles look clickable */
-    .tag-toggle:not(:checked) + label,
-    .tag-toggle:not(:checked) {
-      cursor: pointer;
-      opacity: 0.85;
-      transition: background 0.2s, box-shadow 0.2s;
-    }
-    .tag-toggle:not(:checked) + label:hover,
-    .tag-toggle:not(:checked):hover {
-      background: pink;
-      box-shadow: 0 0 0 2px #a5b4fc;
-    }
-  `;
-  document.head.appendChild(style);
-
-  // Render each component (in order)
-  orderedComponents.forEach(component => {
-    renderComponentTestPanel(component, container);
-  });
+  // Render all component panels after the theme switcher
+  components.forEach(component => container.appendChild(renderComponentTestPanel(component)));
 }
 
-// Helper to parse dropdown value to correct type
+// --- Theme Switcher ---
+// Theme is now controlled by CSS variables in dynamic-tester.html
+// via the data-theme attribute on the theme-scope element
+
+function renderThemeSwitcher(container) {
+  // Remove any previous switcher
+  const prev = container.querySelector('.theme-switcher');
+  if (prev) prev.remove();
+
+  const switcher = document.createElement('div');
+  switcher.className = 'theme-switcher';
+  switcher.style.display = 'flex';
+  switcher.style.alignItems = 'center';
+  switcher.style.gap = '1em';
+  switcher.style.marginBottom = '1.5em';
+  switcher.style.padding = '0.5em 0';
+
+  const label = document.createElement('span');
+  label.textContent = 'Theme:';
+
+  const lightBtn = document.createElement('button');
+  lightBtn.textContent = 'Light';
+  lightBtn.type = 'button';
+  lightBtn.style.cursor = 'pointer';
+
+  const darkBtn = document.createElement('button');
+  darkBtn.textContent = 'Dark';
+  darkBtn.type = 'button';
+  darkBtn.style.cursor = 'pointer';
+
+  function setActive(theme) {
+    if (theme === 'light') {
+      lightBtn.disabled = true;
+      darkBtn.disabled = false;
+      lightBtn.style.fontWeight = 'bold';
+      darkBtn.style.fontWeight = '';
+    } else {
+      darkBtn.disabled = true;
+      lightBtn.disabled = false;
+      darkBtn.style.fontWeight = 'bold';
+      lightBtn.style.fontWeight = '';
+    }
+  }
+
+  // Get the theme scope element from the document
+  const themeScope = document.getElementById('theme-scope');
+
+  // Function to set theme using the data-theme attribute
+  function setThemeAttribute(theme) {
+    if (themeScope) {
+      if (theme === 'dark') {
+        themeScope.setAttribute('data-theme', 'dark');
+      } else {
+        themeScope.setAttribute('data-theme', 'light');
+      }
+    }
+    setActive(theme);
+  }
+
+  lightBtn.onclick = () => {
+    setThemeAttribute('light');
+  };
+
+  darkBtn.onclick = () => {
+    setThemeAttribute('dark');
+  };
+
+  // Default to light theme
+  setThemeAttribute('light');
+
+  switcher.appendChild(label);
+  switcher.appendChild(lightBtn);
+  switcher.appendChild(darkBtn);
+
+  // Insert at the top of the container
+  container.prepend(switcher);
+}
+
+// --- Style Injection ---
+const style = document.createElement('style');
+style.textContent = `
+  .component-test-panel {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid var(--theme-panel-border, #ddd);
+    border-radius: 0.5rem;
+    background-color: var(--theme-panel-bg, #f9f9f9);
+    color: var(--theme-panel-text, #222);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .component-test-panel h2 {
+    color: var(--theme-tag-toggle-selected-bg, #4285f4);
+    margin-top: 0;
+  }
+
+  .basic-test, .prop-tests {
+    margin: 1rem 0;
+  }
+
+  .prop-tester {
+    margin-bottom: 1.5rem;
+  }
+
+  .value-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .value-test {
+    padding: 0.5rem;
+    background-color: white;
+    border: 1px solid #eee;
+    border-radius: 0.25rem;
+  }
+
+  .value-label {
+    font-family: monospace;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem;
+    background-color: #f0f0f0;
+    border-radius: 0.25rem;
+    word-break: break-all;
+  }
+
+  .component-html-preview {
+    background: var(--theme-html-preview-bg, #f4f4f4);
+    color: inherit;
+  }
+
+  /* Make unchecked tag-toggles look clickable */
+  .tag-toggle:not(:checked) + label,
+  .tag-toggle:not(:checked) {
+    cursor: pointer;
+    opacity: 0.85;
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+  .tag-toggle:not(:checked) + label:hover,
+  .tag-toggle:not(:checked):hover {
+    background: var(--theme-tag-toggle-selected-bg, #e0e7ff);
+    box-shadow: 0 0 0 2px #a5b4fc;
+  }
+`;
+document.head.appendChild(style);
+
+// --- Utility ---
 function parseDropdownValue(value, type) {
-  if (type === 'boolean') return value === 'true';
+  if (type === 'boolean') return value === 'true' || value === true;
   if (type === 'number') return Number(value);
   if (type === 'object' || type === 'array') {
-    try { return JSON.parse(value); } catch { return value; }
+    try {
+      return JSON.parse(value);
+    } catch {
+      return value;
+    }
   }
   return value;
 }
 
+// --- Exports ---
 export {
   discoverComponents,
   generateTestInstance,
   renderComponentTestPanel,
   initComponentTester
 };
-
-// ---
-// Example usage in HTML:
-//
-// <div id="component-tester"></div>
-// <script type="module">
-//   import { initComponentTester } from '/public/Componenets/auto-tester.js';
-//   // To auto-discover all components:
-//   initComponentTester('component-tester');
-//   // Or, to test specific files only:
-//   // initComponentTester('component-tester', [
-//   //   '/public/Componenets/my-component.js',
-//   //   '/public/Componenets/another-component.js'
-//   // ]);
-// </script>
