@@ -65,6 +65,7 @@ export default define({
         height: 8px;
         -webkit-appearance: none;
         appearance: none;
+        /*noinspection CssUnresolvedCustomProperty*/
         background: var(--slider-track-color);
         border-radius: 4px;
         outline: none;
@@ -76,6 +77,7 @@ export default define({
         width: 18px;
         height: 18px;
         border-radius: 50%;
+        /*noinspection CssUnresolvedCustomProperty*/
         background: var(--slider-thumb-color);
         cursor: pointer;
         transition: background 0.2s;
