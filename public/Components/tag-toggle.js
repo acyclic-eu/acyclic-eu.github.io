@@ -43,20 +43,26 @@ export default define({
         padding: 0.3em 0.5em;
         border-radius: 3px;
         transition: all 0.2s ease;
+        /*noinspection CssUnresolvedCustomProperty*/
         background-color: var(--tag-toggle-unselected-bg);
+        /*noinspection CssUnresolvedCustomProperty*/
         color: var(--tag-toggle-unselected-color);
       }
 
       .toggle-label:hover {
+        /*noinspection CssUnresolvedCustomProperty*/
         border: 1px solid var(--tag-toggle-selected-bg);
       }
 
       .toggle-container.checked .toggle-label {
+        /*noinspection CssUnresolvedCustomProperty*/
         background-color: var(--tag-toggle-selected-bg);
+        /*noinspection CssUnresolvedCustomProperty*/
         color: var(--tag-toggle-selected-color);
       }
 
       .toggle-container.checked .toggle-label:hover {
+        /*noinspection CssUnresolvedCustomProperty*/
         border: 1px dashed var(--tag-toggle-unselected-bg);
       }
 

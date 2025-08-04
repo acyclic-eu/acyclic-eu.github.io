@@ -1,3 +1,4 @@
+// noinspection JSFileReferences
 import { html, define } from "https://cdn.jsdelivr.net/npm/hybrids@9.1.18/src/index.js";
 
 function updateValue(host, event) {
@@ -87,6 +88,7 @@ export default define({
         width: 18px;
         height: 18px;
         border-radius: 50%;
+        /*noinspection CssUnresolvedCustomProperty*/
         background: var(--slider-thumb-color);
         cursor: pointer;
         transition: background 0.2s;
@@ -94,10 +96,12 @@ export default define({
       }
 
       input[type="range"]::-webkit-slider-thumb:hover {
+        /*noinspection CssUnresolvedCustomProperty*/
         background: var(--slider-thumb-hover-color);
       }
 
       input[type="range"]::-moz-range-thumb:hover {
+        /*noinspection CssUnresolvedCustomProperty*/
         background: var(--slider-thumb-hover-color);
       }
 
