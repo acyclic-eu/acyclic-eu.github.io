@@ -109,8 +109,8 @@ permalink: /cv/
 
 <!-- Import the web components -->
 <script type="module">
-  import "/public/Componenets/tag-toggle.js";
-  import "/public/Componenets/time-filter.js";
+  import "/public/Components/tag-toggle.js";
+  import "/public/Components/time-filter.js";
 </script>
 
 <script>

@@ -14,7 +14,7 @@ let discoveredComponents = [];
 async function discoverComponents() {
   try {
     // Get all JS files in the components directory
-    const response = await fetch('/public/Componenets/');
+    const response = await fetch('/public/Components/');
     const html = await response.text();
 
     // Parse HTML to find component files
@@ -32,7 +32,7 @@ async function discoverComponents() {
 
     // Process each JS file
     for (const file of jsFiles) {
-      const url = new URL(file, window.location.origin + '/public/Componenets/').href;
+      const url = new URL(file, window.location.origin + '/public/Components/').href;
       const component = await analyzeComponent(url);
 
       if (component) {
@@ -304,32 +304,29 @@ function renderComponentTestPanel(component) {
  * @param {Array<string>} componentFiles - Optional list of component file paths
  */
 async function initComponentTester(containerId, componentFiles = []) {
+  // Find the grid container and the tester container
   const container = document.getElementById(containerId);
-  if (!container) {
-    console.error(`Container element #${containerId} not found`);
+  const grid = container.closest('.component-grid');
+  if (!container || !grid) {
+    console.error(`Container element #${containerId} or .component-grid not found`);
     return;
   }
 
-  // Clear container and add theme switcher at the top
-  container.innerHTML = '';
-  renderThemeSwitcher(container);
-
-  // Add a placeholder/loading below the theme switcher
+  // Clear only the grid, not the theme toggle or header
+  grid.innerHTML = '';
+  // Add a placeholder/loading
   const loading = document.createElement('div');
   loading.className = 'loading';
   loading.textContent = 'Analyzing components...';
-  container.appendChild(loading);
+  grid.appendChild(loading);
 
   let components = [];
 
   if (componentFiles && componentFiles.length > 0) {
-    // Use the provided component files
     for (const file of componentFiles) {
-      // Ensure the file path is relative to the current script location
       let url = file;
       if (!/^([a-z]+:)?\/\//i.test(file)) {
-        // If not absolute, resolve relative to current location
-        url = new URL(file, window.location.origin + '/public/Componenets/').href;
+        url = new URL(file, window.location.origin + '/public/Components/').href;
       }
       const component = await analyzeComponent(url);
 
@@ -349,8 +346,8 @@ async function initComponentTester(containerId, componentFiles = []) {
   // Remove loading indicator
   loading.remove();
 
-  // Render all component panels after the theme switcher
-  components.forEach(component => container.appendChild(renderComponentTestPanel(component)));
+  // Render all component panels inside the grid
+  components.forEach(component => grid.appendChild(renderComponentTestPanel(component)));
 }
 
 // --- Theme Switcher ---
