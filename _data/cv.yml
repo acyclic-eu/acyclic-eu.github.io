@@ -31,7 +31,9 @@ experiences:
         tags: [ "Leader", "Developer" ]
       - text: Guided product strategy, boosting transparency, engagement, and value; championed feedback loops aligned with business and technical goals.
         tags: [ "Leader" ]
-      - text: Bolstered existing business and secured new deals through active Sales and Marketing participation.
+      - text: Grew existing business through active participation in Sales and Marketing.
+        tags: [ "Leader" ]
+      - text: Secured new deals through a hands-on approach to Sales and Marketing initiatives.
         tags: [ "Leader" ]
   - title: Software Engineering Manager (Scaleup, AI, Annotations, Data, Automotive)
     company: Kognic
@@ -74,9 +76,9 @@ experiences:
     end_date: "2023-05-31"
     employment_type: "Contract"
     descriptions:
-      - text: Started as a Product Coach, leveraging coaching background and software expertise to foster agility and adaptability, ensuring success even in dynamic situations.
+      - text: Leveraged coaching and software expertise to foster agility and adaptability as a Product Coach.
         tags: [ "Leader", "Teacher" ]
-      - text: Assumed the Product Manager role, demonstrating commitment to success.
+      - text: Ensured success in dynamic situations by guiding teams and aligning work with business goals.
         tags: [ "Leader" ]
       - text: Collaborated closely with stakeholders, prioritized transparency and discovered user and business value with the team, while also maintaining focus on previously set goals.
         tags: [ "Leader" ]
@@ -87,10 +89,10 @@ experiences:
     start_date: "2021-10-01"
     end_date: "2022-05-31"
     descriptions:
-      - text: Focused on empowering teams to enhance their capability and autonomy, fostering good software development practices and encouraging self-organisation towards company business goals.
+      - text: Empowered teams to enhance their capability and autonomy through the adoption of good software development practices.
         tags: [ "Leader", "Teacher" ]
-      - text: Boosted individual developers' skills through code-focused trainings, aiming to elevate their contribution to team and company objectives.
-        tags: [ "Teacher" ]
+      - text: Encouraged self-organization and aligned team efforts toward achieving company business goals.
+        tags: [ "Leader" ]
       - text: Fostered a culture of continuous improvement and self-reliance, enabling teams to thrive in dynamic environments and deliver high-quality business effectively.
         tags: [ "Leader", "Teacher" ]
   - title: Software Department Program Manager (AI, UI, SaaS, Legal)
@@ -99,11 +101,15 @@ experiences:
     start_date: "2019-01-01"
     end_date: "2021-09-30"
     descriptions:
-      - text: "Technical Vision & Leadership: Guided 14 agile teams, aligning software architecture with organizational strategy and scalability while fostering a culture of continuous improvement and proactive problem-solving for complex software systems."
+      - text: "Technical Vision & Leadership: Guided 14 agile teams, aligning software architecture with organizational strategy and scalability."
+        tags: [ "Leader", "Developer" ]
+      - text: "Technical Vision & Leadership: Fostered a culture of continuous improvement and proactive problem-solving for complex software systems."
         tags: [ "Leader", "Developer" ]
       - text: "Architectural & Quality Assurance: Spearheaded the implementation of risk management, security, and quality control standards, ensuring robust project outcomes and adherence to industry best practices in software development and deployments."
         tags: [ "Leader", "Developer" ]
-      - text: "Culture Development: Drove departmental initiatives that emphasized collaborative professional leadership, fostering a culture of continuous improvement and proactive problem-solving in the context of complex software systems."
+      - text: "Culture Development: Drove departmental initiatives that fostered a culture of continuous improvement and proactive problem-solving."
+        tags: [ "Leader" ]
+      - text: "Culture Development: Emphasized collaborative professional leadership to strengthen team autonomy within the context of complex software systems."
         tags: [ "Leader" ]
   - title: Product Team Lead (UI/UX, Backend, Search, AI, Server, Legal)
     company: Seal Software
@@ -117,7 +123,9 @@ experiences:
         tags: [ "Leader" ]
       - text: "Established and strengthened self-leadership, self-organization, and strong collaboration."
         tags: [ "Leader" ]
-      - text: "Architectural & Quality Assurance: Responsible for technical choices and implementations involving React, Java, Scala, TypeScript, AWS, GCP, Docker, Docker Swarm, and Kubernetes."
+      - text: "Architectural & Quality Assurance: Defined and implemented the technical choices for solutions, leveraging technologies such as React, Java, and Scala."
+        tags: [ "Developer" ]
+      - text: "Architectural & Quality Assurance: Orchestrated the use of modern DevOps technologies including TypeScript, AWS, GCP, Docker, Docker Swarm, and Kubernetes to ensure robust deployments."
         tags: [ "Developer" ]
       - text: "Proactively engaged in performance measurement and optimization, including re-architecting slow system parts. Made strategic architectural decisions such as separating calls from responses for asynchronous processing to improve flow, efficiency, and accelerate responsiveness."
         tags: [ "Developer" ]
@@ -129,11 +137,17 @@ experiences:
     start_date: "2016-10-01"
     end_date: "2019-01-31"
     descriptions:
-      - text: "Innovative Design & Development: Designed and developed cutting-edge AI software solutions using React, Java, TypeScript, and Scala, improving performance, user-friendliness, and brand identity. Established end-to-end tests for system integrity."
+      - text: "Innovative Design & Development: Designed and developed innovative AI software solutions using React, Java, TypeScript, and Scala, improving performance, user-friendliness, and brand identity."
         tags: [ "Developer" ]
-      - text: "AI Integration: Pioneered AI-driven features for text review, collaborating with Data Scientists on technical integration of ML models to tag legal concepts, identify entities, and link ML output to user interaction, boosting contract management capabilities."
+      - text: "Innovative Design & Development: Enhanced product quality by establishing end-to-end tests for system integrity, improving performance and user experience."
         tags: [ "Developer" ]
-      - text: "Cross-functional Collaboration & Full-Stack Problem Solving: Collaborated with UX designers and cross-functional teams, adopting a full-stack approach to problem-solving, defining core use cases, and identifying crucial user information to improve overall product functionality and performance."
+      - text: "AI Integration: Collaborated with Data Scientists to technically integrate ML models for AI-driven features in text review."
+        tags: [ "Developer" ]
+      - text: "AI Integration: Pioneered AI features to tag legal concepts, identify entities, and link ML output to user interaction, significantly boosting contract management capabilities."
+        tags: [ "Developer" ]
+      - text: "Cross-functional Collaboration & Full-Stack Problem Solving: Collaborated with UX designers and cross-functional teams, adopting a full-stack approach to problem-solving."
+        tags: [ "Developer", "Leader" ]
+      - text: "Cross-functional Collaboration & Full-Stack Problem Solving: Defined core use cases and identified crucial user information to improve overall product functionality and performance."
         tags: [ "Developer", "Leader" ]
   - title: Software Development Teacher
     company: Edument
@@ -187,8 +201,8 @@ experiences:
     descriptions:
       - text: Developed Eclipse plugins for developers, integrating Eclipse with the clients build system, debugging system, version control system and code coverage system.
         tags: [ "Developer" ]
-      - text: Work helped the developers at Ericsson to be more productive by making multiple systems integrate and work seamlessly from within eclipse.
-        tags: [ ]
+      - text: Enhanced developer productivity by seamlessly integrating multiple plugins within Eclipse.
+        tags: [ "Developer" ]
     tags: [ ]
   - title: Software Development, Design & Computer Science Teacher
     company: Portalens Gymnasium
