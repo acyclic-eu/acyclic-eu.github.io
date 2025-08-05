@@ -123,9 +123,18 @@ async function analyzeComponent(url) {
         } else if (!isNaN(Number(propValue))) {
           type = 'number';
           defaultValue = Number(propValue);
-        } else if (propValue.startsWith('{') || propValue.startsWith('[')) {
-          type = propValue.startsWith('{') ? 'object' : 'array';
+        } else if (propValue.startsWith('{')) {
+          type = 'object';
           defaultValue = propValue;
+        } else if (propValue.startsWith('[')) {
+          type = 'array';
+          // Provide a string value for arrays for testing
+          try {
+            const arr = JSON.parse(propValue);
+            defaultValue = Array.isArray(arr) ? arr.map(String) : propValue;
+          } catch {
+            defaultValue = propValue;
+          }
         } else {
           const stringMatch = propValue.match(/["'](.*)["']/m);
           if (stringMatch) {
@@ -178,7 +187,7 @@ function generateSampleValues(propType, currentValue) {
     case 'object':
       return [{}];
     case 'array':
-      return [[], [1, 2, 3]];
+      return [[], [1, 2, 3], ["Saab", "Volvo", "BMW"]];
     default:
       return [currentValue];
   }
@@ -220,18 +229,37 @@ function renderComponentTestPanel(component) {
   function updateCodePreview() {
     const attrs = Object.entries(currentProps)
       .map(([k, v]) => {
+        const kebab = camelToKebab(k);
         if (typeof v === 'boolean') {
-          return v ? k : '';
+          return v ? kebab : '';
         }
         if (typeof v === 'object') {
-          return `${k}='${JSON.stringify(v)}'`;
+          return `${kebab}='${JSON.stringify(v)}'`;
         }
-        return `${k}="${String(v)}"`;
+        return `${kebab}="${String(v)}"`;
       })
       .filter(Boolean)
       .join(' ');
-    codePreview.textContent = `<${component.tag}${attrs ? ' ' + attrs : ''}></${component.tag}>`;
+    codePreview.textContent = `<${component.tag}${attrs ? ' ' + attrs : ''}>${slotContent}</${component.tag}>`;
   }
+
+  // Always show slot control
+  let slotContent = '';
+  const slotLabel = document.createElement('label');
+  slotLabel.textContent = 'Slot: ';
+  const slotCheckbox = document.createElement('input');
+  slotCheckbox.type = 'checkbox';
+  slotCheckbox.style.marginRight = '0.5em';
+  slotLabel.appendChild(slotCheckbox);
+  propsPanel.appendChild(slotLabel);
+  slotCheckbox.addEventListener('change', () => {
+    slotContent = slotCheckbox.checked ? '<div style="width:40px;height:40px;background:red;"></div>' : '';
+    updateCodePreview();
+    // Update example instance
+    const newInstance = generateTestInstance(component, currentProps);
+    newInstance.innerHTML = slotContent;
+    examplePanel.replaceChild(newInstance, examplePanel.firstChild);
+  });
 
   // --- PROP CONTROLS ---
   Object.entries(component.properties).forEach(([propName, propDetails]) => {
@@ -498,7 +526,19 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+// /**
+//  * Convert camelCase to kebab-case
+//  */
+function camelToKebab(str) {
+  return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+}
+
 // --- Utility ---
+function componentHasSlot(component) {
+  // Simple heuristic: if the render function uses 'slot', assume it supports a slot
+  return /slot/.test(component.properties?.render?.syntax || '');
+}
+
 function parseDropdownValue(value, type) {
   if (type === 'boolean') return value === 'true' || value === true;
   if (type === 'number') return Number(value);

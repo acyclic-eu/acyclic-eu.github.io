@@ -80,20 +80,16 @@ permalink: /cv/
 <div id="cv-content">
 {% assign exps = site.data.cv.experiences | sort: "start_date" | reverse %}
 {% for exp in exps %}
-  <div class="experience" data-exp-tags="{{ exp.tags | join: ',' | uri_escape | default: '' }}" data-end-date="{{ exp.end_date | default: 'Present' }}">
-    {% assign title_parts = exp.title | split: "(" %}
-    {% if title_parts.size > 1 %}
-      {% assign main_title = title_parts[0] | strip %}
-      {% assign traits_with_paren = title_parts[1] | split: ")" %}
-      {% assign traits = traits_with_paren[0] %}
-      <h2>{{ main_title }} at {{ exp.company }}</h2>
-      <p class="traits"><em>{{ traits }}</em></p>
-    {% else %}
-      <h2>{{ exp.title }} at {{ exp.company }}</h2>
-    {% endif %}
-    <p><strong>Location:</strong> {{ exp.location | default: "N/A" }}<br>
-    <strong>Period:</strong> {{ exp.start_date | default: "N/A" }} - {{ exp.end_date | default: "Present" }} ({{ exp.employment_type | default: "Employed" }})
-    </p>
+  <cv-experience
+    title="{{ exp.title }}"
+    company="{{ exp.company }}"
+    traits="{{ exp.traits | default: '' }}"
+    location="{{ exp.location | default: 'N/A' }}"
+    start-date="{{ exp.start_date | default: 'N/A' }}"
+    end-date="{{ exp.end_date | default: 'Present' }}"
+    employment-type="{{ exp.employment_type | default: 'Employed' }}"
+    exp-tags="{{ exp.tags | join: ',' | uri_escape | default: '' }}"
+  >
     <ul>
       {% for desc in exp.descriptions %}
         {% if desc.tags == nil or desc.tags == empty %}
@@ -103,7 +99,7 @@ permalink: /cv/
         {% endif %}
       {% endfor %}
     </ul>
-  </div>
+  </cv-experience>
 {% endfor %}
 </div>
 
@@ -111,6 +107,7 @@ permalink: /cv/
 <script type="module">
   import "/public/Components/tag-toggle.js";
   import "/public/Components/time-filter.js";
+  import "/public/Components/cv-experience.js";
 </script>
 
 <script>
