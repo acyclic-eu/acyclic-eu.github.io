@@ -35,7 +35,8 @@ experiences:
         tags: [ "Leader" ]
       - text: Grew existing business and secured new deals through active, hands-on participation in Sales and Marketing initiatives.
         tags: [ "Leader" ]
-  - title: Software Engineering Manager (Scaleup, AI, Annotations, Data, Automotive)
+  - title: Software Engineering Manager
+    traits: [Scaleup, AI, Annotations, Data, Automotive]
     company: Kognic
     location: Gothenburg
     start_date: "2024-10-01"
@@ -47,7 +48,8 @@ experiences:
         tags: [ "Leader", "Teacher", "Developer" ]
       - text: Guided a new team through complex technical challenges, uniting their technical vision and optimizing performance through mentorship and technical guidance.
         tags: [ "Leader", "Teacher", "Developer" ]
-  - title: Software Engineering Manager (Agency, Finance, SaaS)
+  - title: Software Engineering Manager
+    traits: [Agency, Finance, SaaS]
     company: Piktiv
     location: Skövde
     start_date: "2024-01-01"
@@ -95,8 +97,9 @@ experiences:
         tags: [ "Leader" ]
       - text: Fostered a culture of continuous improvement and self-reliance, enabling teams to thrive in dynamic environments and deliver high-quality products effectively.
         tags: [ "Leader", "Teacher" ]
-  - title: Software Department Program Manager (AI, UI, SaaS, Legal)
+  - title: Software Department Program Manager
     company: Seal Software
+    traits: [AI, UI, SaaS, Legal]
     location: Gothenburg, Sweden
     start_date: "2019-01-01"
     end_date: "2021-09-30"
@@ -111,7 +114,8 @@ experiences:
         tags: [ "Leader" ]
       - text: Emphasized collaborative professional leadership to strengthen team autonomy within the context of complex software systems.
         tags: [ "Leader" ]
-  - title: Product Team Lead (UI/UX, Backend, Search, AI, Server, Legal)
+  - title: Product Team Lead
+    traits: [UI/UX, Backend, Search, AI, Server, Legal]
     company: Seal Software
     location: Gothenburg, Sweden
     start_date: "2017-08-01"
@@ -133,7 +137,8 @@ experiences:
         tags: [ "Developer", "Leader" ]
       - text: Orchestrated the integration of AI capabilities, ensuring that machine learning outputs directly enhanced user interaction and core product functionality.
         tags: [ "Developer", "Leader" ]
-  - title: Senior Software Developer (UI/UX, Backend, Search, AI, Server, Legal)
+  - title: Senior Software Developer
+    traits: [UI/UX, Backend, Search, AI, Server, Legal]
     company: Seal Software
     location: Gothenburg, Sweden
     start_date: "2016-10-01"
@@ -174,7 +179,8 @@ experiences:
       - text: Software suite built on the Java EE platform with GWT, JPA2, Hibernate, PostgreSQL, GIS, POI, GIT, Gerrit, Jenkins, Jboss and Tomcat.
         tags: [ "Developer" ]
     tags: [ "Developer" ]
-  - title: Senior Software Developer & Technical Coach (Finance, Telecom, Desktop, Server, Tech)
+  - title: Senior Software Developer & Technical Coach
+    traits: [Finance, Telecom, Desktop, Server, Tech]
     company: Purple Scout AB
     location: Göteborg, Sweden
     start_date: "2012-02-01"

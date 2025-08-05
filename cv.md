@@ -22,12 +22,6 @@ permalink: /cv/
     --button-text: black;
   }
 
-  .traits {
-    margin-top: -10px;
-    margin-bottom: 10px;
-    color: #666;
-    font-size: 0.9em;
-  }
 </style>
 
 <!-- Use the tag_filters from the YAML file with null check -->
@@ -83,7 +77,7 @@ permalink: /cv/
   <cv-experience
     title="{{ exp.title }}"
     company="{{ exp.company }}"
-    traits="{{ exp.traits | default: '' }}"
+    traits="{{ exp.traits | join: ', ' | default: '' }}"
     location="{{ exp.location | default: 'N/A' }}"
     start-date="{{ exp.start_date | default: 'N/A' }}"
     end-date="{{ exp.end_date | default: 'Present' }}"
