@@ -5,16 +5,12 @@ name: "Patrik Gustafsson"
 tag_filters:
   - name: "Leader"
     description: "Leadership, management, product strategy, and organizational design"
-    order: 1
   - name: "Developer"
     description: "Software development, technical implementation, and architectural design"
-    order: 2
   - name: "Teacher"
     description: "Mentoring, coaching, training, and knowledge sharing"
-    order: 3
   - name: "Other"
     description: "Other roles and experiences not fitting into the main categories"
-    order: 4
 
 experiences:
   - title: Technology and Leadership Consultant
