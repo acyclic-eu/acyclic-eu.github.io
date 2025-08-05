@@ -19,7 +19,7 @@ tag_filters:
 experiences:
   - title: Technology and Leadership Consultant
     company: ProAgile
-    location: Gothenburg
+    location: Gothenburg, Sweden
     start_date: "2021-10-01"
     end_date: "2024-01-31"
     employment_type: "Partner"
@@ -39,7 +39,7 @@ experiences:
   - title: Software Engineering Manager
     traits: [Scaleup, AI, Annotations, Data, Automotive]
     company: Kognic
-    location: Gothenburg
+    location: Gothenburg, Sweden
     start_date: "2024-10-01"
     end_date: "2025-03-31"
     descriptions:
@@ -52,7 +52,7 @@ experiences:
   - title: Software Engineering Manager
     traits: [Agency, Finance, SaaS]
     company: Piktiv
-    location: Skövde
+    location: Skövde, Sweden
     start_date: "2024-01-01"
     end_date: "2024-09-30"
     descriptions:
@@ -66,7 +66,7 @@ experiences:
         tags: [ "Leader" ]
   - title: CEO, Organisational & Leadership Coach, Developer
     company: How To Know
-    location: Greater Gothenburg
+    location: Gothenburg, Sweden
     start_date: "2021-07-01"
     employment_type: "Owner"
     descriptions:
@@ -75,7 +75,7 @@ experiences:
   - title: Interim Lead Product Manager & Payments Product Manager
     company: Avinode
     via: ProAgile
-    location: Gothenburg, Vastra Gotaland County, Sweden
+    location: Gothenburg, Sweden
     start_date: "2022-06-01"
     end_date: "2023-05-31"
     employment_type: "Contract"
@@ -90,7 +90,7 @@ experiences:
   - title: Technical WoW Transformation Coach - Product Driven Organisations
     company: Ford
     via: ProAgile
-    location: Remote, England, United Kingdom
+    location: Remote, England
     start_date: "2021-10-01"
     end_date: "2022-05-31"
     descriptions:
@@ -162,7 +162,7 @@ experiences:
   - title: Software Development Teacher
     company: Edument
     via: Purple Scout
-    location: Göteborg
+    location: Gothenburg, Sweden
     start_date: "2015-08-01"
     end_date: "2016-09-30"
     descriptions:
@@ -172,7 +172,7 @@ experiences:
   - title: Java EE Senior Developer
     company: Skanova
     via: Purple Scout
-    location: Göteborg
+    location: Gothenburg, Sweden
     start_date: "2013-01-01"
     end_date: "2016-05-31"
     employment_type: "Contract"
@@ -187,7 +187,7 @@ experiences:
   - title: Senior Software Developer & Technical Coach
     traits: [Finance, Telecom, Desktop, Server, Tech]
     company: Purple Scout
-    location: Göteborg, Sweden
+    location: Gothenburg, Sweden
     start_date: "2012-02-01"
     end_date: "2016-05-31"
     descriptions:
@@ -208,7 +208,7 @@ experiences:
     tags: [ "Teacher" ]
   - title: Eclipse Plugin Developer
     company: Ericsson
-    location: Lindholmen, Göteborg, Sweden
+    location: Gothenburg, Sweden
     start_date: "2012-02-01"
     end_date: "2012-12-31"
     employment_type: "Contract"
@@ -221,7 +221,7 @@ experiences:
     tags: [ "Developer" ]
   - title: Software Development, Design & Computer Science Teacher
     company: Portalens Gymnasium
-    location: Göteborg
+    location: Gothenburg, Sweden
     start_date: "2007-06-01"
     end_date: "2012-02-29"
     descriptions:
@@ -235,7 +235,7 @@ experiences:
         tags: [ "Teacher", "Developer" ]
   - title: Software Development & Computer Science Teacher
     company: Strömstad Gymnasium
-    location: Strömstad
+    location: Strömstad, Sweden
     start_date: "2006-08-01"
     end_date: "2007-06-30"
     descriptions:
@@ -247,7 +247,7 @@ experiences:
         tags: [ "Leader" ]
   - title: Computer Technician
     company: PM-data
-    location: Linköping, Helsingborg
+    location: Linköping, Sweden
     start_date: "1995-01-01"
     end_date: "1999-12-31"
     descriptions:
