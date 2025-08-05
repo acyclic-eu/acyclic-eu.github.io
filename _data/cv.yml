@@ -73,7 +73,8 @@ experiences:
       - text: Operating my own side business, focused on coaching, training, and product development.
         tags: [ "Leader", "Teacher", "Developer" ]
   - title: Interim Lead Product Manager & Payments Product Manager
-    company: Avinode Group
+    company: Avinode
+    via: ProAgile
     location: Gothenburg, Vastra Gotaland County, Sweden
     start_date: "2022-06-01"
     end_date: "2023-05-31"
@@ -87,8 +88,9 @@ experiences:
         tags: [ "Leader" ]
     tags: [ "Leader" ]
   - title: Technical WoW Transformation Coach - Product Driven Organisations
-    company: Ford Motor Company
-    location: Ford, England, United Kingdom
+    company: Ford
+    via: ProAgile
+    location: Remote, England, United Kingdom
     start_date: "2021-10-01"
     end_date: "2022-05-31"
     descriptions:
@@ -159,6 +161,7 @@ experiences:
         tags: [ "Developer", "Leader" ]
   - title: Software Development Teacher
     company: Edument
+    via: Purple Scout
     location: Göteborg
     start_date: "2015-08-01"
     end_date: "2016-09-30"
@@ -167,7 +170,8 @@ experiences:
         tags: [ "Teacher", "Developer" ]
     tags: [ "Teacher" ]
   - title: Java EE Senior Developer
-    company: Skanova (via Purple Scout)
+    company: Skanova
+    via: Purple Scout
     location: Göteborg
     start_date: "2013-01-01"
     end_date: "2016-05-31"
@@ -182,7 +186,7 @@ experiences:
     tags: [ "Developer" ]
   - title: Senior Software Developer & Technical Coach
     traits: [Finance, Telecom, Desktop, Server, Tech]
-    company: Purple Scout AB
+    company: Purple Scout
     location: Göteborg, Sweden
     start_date: "2012-02-01"
     end_date: "2016-05-31"
@@ -197,6 +201,7 @@ experiences:
     start_date: "2015-11-01"
     end_date: "2016-04-30"
     employment_type: "Contract"
+    via: Purple Scout
     descriptions:
       - text: Taught intermediate Git and Gerrit skills to software development professionals.
         tags: [ "Teacher", "Developer" ]
@@ -207,6 +212,7 @@ experiences:
     start_date: "2012-02-01"
     end_date: "2012-12-31"
     employment_type: "Contract"
+    via: Purple Scout
     descriptions:
       - text: Developed Eclipse plugins for developers, integrating Eclipse with the clients build system, debugging system, version control system and code coverage system.
         tags: [ "Developer" ]
