@@ -71,31 +71,7 @@ permalink: /cv/
   </div>
 </form>
 
-<div id="cv-content">
-{% assign exps = site.data.cv.experiences | sort: "start_date" | reverse %}
-{% for exp in exps %}
-  <cv-experience
-    title="{{ exp.title }}"
-    company="{{ exp.company }}"
-    traits="{{ exp.traits | join: ', ' | default: '' }}"
-    location="{{ exp.location | default: 'N/A' }}"
-    start-date="{{ exp.start_date | default: 'N/A' }}"
-    end-date="{{ exp.end_date | default: 'Present' }}"
-    employment-type="{{ exp.employment_type | default: 'Employed' }}"
-    exp-tags="{{ exp.tags | join: ',' | uri_escape | default: '' }}"
-  >
-    <ul>
-      {% for desc in exp.descriptions %}
-        {% if desc.tags == nil or desc.tags == empty %}
-          <li data-tags="" class="tag-no-tags">{{ desc.text | escape }}</li>
-        {% else %}
-          <li data-tags="{{ desc.tags | join: ',' | uri_escape }}">{{ desc.text }}</li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </cv-experience>
-{% endfor %}
-</div>
+<div id="cv-content"></div>
 
 <!-- Import the web components -->
 <script type="module">
@@ -105,6 +81,109 @@ permalink: /cv/
 </script>
 
 <script>
+
+let cvData = null;
+let filteredCvData = null;
+
+fetch('/public/cv/cv.json')
+  .then(response => response.json())
+  .then(data => {
+    cvData = data;
+    filteredCvData = filterCvData();
+    console.log('cv:', cvData);
+    console.log('filteredCvData:', filteredCvData);
+  })
+  .catch(err => console.error('Failed to load cv.json', err));
+
+function filterCvData() {
+  if (!cvData) return null;
+  const selectedTags = getSelectedTags ? getSelectedTags() : [];
+  const yearDepth = parseInt(document.getElementById('experience-filter')?.value || '0');
+  const today = new Date();
+  const cutoffYear = today.getFullYear() - yearDepth;
+  const cutoffDate = new Date(cutoffYear, today.getMonth(), today.getDate());
+
+  function passesTagFiltering(tags) {
+    if (!tags || !Array.isArray(tags) || tags.length === 0) {
+      return true;
+    }
+    if (selectedTags.length === 0) {
+      return false;
+    }
+    return tags.some(tag => selectedTags.includes(tag));
+  }
+
+  return {
+    ...cvData,
+    experiences: cvData.experiences
+      .filter(exp => {
+        // Date filter
+        let isCurrent = exp.end_date === "Present" || !exp.end_date;
+        let endDateObj = isCurrent ? today : new Date(exp.end_date);
+        let passesDate = yearDepth === 0 ? isCurrent : (isCurrent || endDateObj >= cutoffDate);
+        if (!passesDate) return false;
+        if (!passesTagFiltering(exp.tags)) return false;
+        return true;
+      })
+      .sort((a, b) => {
+        // Sort by end_date (newest first), then start_date (newest first)
+        function parseDate(dateStr, fallback) {
+          if (!dateStr || dateStr === "Present") return new Date(8640000000000000); // Far future
+          const d = new Date(dateStr);
+          return isNaN(d) ? fallback : d;
+        }
+        const aEnd = parseDate(a.end_date, new Date(0));
+        const bEnd = parseDate(b.end_date, new Date(0));
+        if (bEnd - aEnd !== 0) return bEnd - aEnd;
+        const aStart = parseDate(a.start_date, new Date(0));
+        const bStart = parseDate(b.start_date, new Date(0));
+        return bStart - aStart;
+      })
+      .map(exp => ({
+        ...exp,
+        descriptions: (exp.descriptions || []).filter(desc => passesTagFiltering(desc.tags))
+      }))
+  };
+}
+
+function renderCvContent() {
+  const container = document.getElementById('cv-content');
+  if (!filteredCvData || !filteredCvData.experiences) {
+    container.innerHTML = '<em>No experiences to display.</em>';
+    return;
+  }
+  container.innerHTML = filteredCvData.experiences.map(exp => {
+    const traits = exp.traits ? exp.traits.join(', ') : '';
+    const tags = exp.tags ? exp.tags.join(',') : '';
+    const employmentType = exp.employment_type || 'Employed';
+    const endDate = exp.end_date || 'Present';
+    const descriptions = (exp.descriptions || []).map(desc => {
+      const descTags = desc.tags ? desc.tags.join(',') : '';
+      return `<li data-tags="${encodeURIComponent(descTags)}">${desc.text}</li>`;
+    }).join('');
+    return `
+      <cv-experience
+        title="${exp.title}"
+        company="${exp.company}"
+        traits="${traits}"
+        location="${exp.location || 'N/A'}"
+        start-date="${exp.start_date || 'N/A'}"
+        end-date="${endDate}"
+        employment-type="${employmentType}"
+        exp-tags="${encodeURIComponent(tags)}"
+        class="experience"
+      >
+        <ul>${descriptions}</ul>
+      </cv-experience>
+    `;
+  }).join('');
+}
+
+function onFilterChange() {
+  filteredCvData = filterCvData();
+  console.log('filteredCvData:', filteredCvData);
+  renderCvContent();
+}
 
 // Simple normalize function to trim whitespace
 function normalizeTag(tag) {
@@ -123,7 +202,7 @@ function filterCV() {
   const availableTags = [{% for tag_filter in site.data.cv.tag_filters %}"{{ tag_filter.name }}"{% unless forloop.last %},{% endunless %}{% endfor %}];
 
   const selectedTags = getSelectedTags();
-  console.log('Selected tags:', selectedTags);
+console.log('Selected tags:', selectedTags);
 
 var yearDepth = parseInt(document.getElementById('experience-filter').value);
 
@@ -156,7 +235,18 @@ var yearDepth = parseInt(document.getElementById('experience-filter').value);
     return passes;
   }
 
-  console.log('Checked tags:', selectedTags);
+  // Helper for date filtering
+  function passesDateFiltering(endDateStr) {
+    if (!endDateStr || endDateStr === "Present") return true;
+    var endDate = new Date(endDateStr);
+    if (isNaN(endDate)) return false;
+    if (yearDepth === 0) {
+      // Only current (no end date or 'Present')
+      return false;
+    } else {
+      return endDate >= cutoffDate;
+    }
+  }
 
   // Filter experiences based on their tags and end date
   var experiences = document.querySelectorAll('#cv-content .experience');
@@ -164,21 +254,10 @@ var yearDepth = parseInt(document.getElementById('experience-filter').value);
     var expTagsAttr = exp.getAttribute('data-exp-tags');
     var endDateStr = exp.getAttribute('data-end-date');
 
-    // Parse the end date
-    var endDate;
-    if (endDateStr === "Present") {
-      endDate = new Date();
-    } else {
-      endDate = new Date(endDateStr);
-    }
-
     var passesTagFilter = passesTagFiltering(expTagsAttr);
-    var passesDateFilter = yearDepth === 0 ?
-                          (endDateStr === "Present") :
-                          (endDateStr === "Present" || endDate >= cutoffDate);
+    var passesDateFilter = passesDateFiltering(endDateStr);
 
-
-    if (passesTagFilter && passesDateFilter) {
+    if ((selectedTags.length === 0 ? passesDateFilter : (passesTagFilter && passesDateFilter))) {
       exp.style.display = '';
     } else {
       exp.style.display = 'none';
@@ -189,8 +268,9 @@ var yearDepth = parseInt(document.getElementById('experience-filter').value);
   var lis = document.querySelectorAll('#cv-content li');
   lis.forEach(function(li) {
     var tagsAttr = li.getAttribute('data-tags');
-    var passesTagFilter = passesTagFiltering(tagsAttr);
-
+    var tags = tagsAttr ? decodeURIComponent(tagsAttr).split(',').map(tag => tag.trim()).filter(Boolean) : [];
+    // Show if no tags, otherwise only if tag matches selected
+    var passesTagFilter = tags.length === 0 || (selectedTags.length > 0 && tags.some(tag => selectedTags.includes(tag)));
     if (passesTagFilter) {
       li.style.display = '';
     } else {
@@ -201,26 +281,22 @@ var yearDepth = parseInt(document.getElementById('experience-filter').value);
 
 // Initialize filtering on page load
 window.addEventListener('DOMContentLoaded', function() {
-  // Wait for web components to be defined
   setTimeout(() => {
-    // Add change event listeners to all tag-toggle components
     document.querySelectorAll('tag-toggle').forEach(toggle => {
       toggle.addEventListener('change', () => {
-        console.log(`Toggle changed: ${toggle.name} is now ${toggle.checked ? 'checked' : 'unchecked'}`);
         filterCV();
+        onFilterChange();
       });
     });
-
-    // Add change event listener to time-filter component
     const timeFilter = document.getElementById('experience-filter');
     if (timeFilter) {
       timeFilter.addEventListener('change', () => {
-        console.log(`Time filter changed: ${timeFilter.value} years`);
         filterCV();
+        onFilterChange();
       });
     }
-
     filterCV();
+    onFilterChange();
   }, 100);
 });
 

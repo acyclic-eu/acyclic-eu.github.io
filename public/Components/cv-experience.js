@@ -22,7 +22,7 @@ export default define({
          data-exp-tags="${expTags}"
          data-end-date="${endDate}">
       <h2>${title} at ${company}</h2>
-      ${traits ? html`<p class="traits"><em>${traits}</em></p>` : ''}
+      <p class="traits">${traits ? html`<em class="traits">${traits}</em>` : ''}  ${expTags ? html` - <em class="tags">${expTags}</em>` : ''}</p>
       <p><strong>Location:</strong> ${location}<br>
       <strong>Period:</strong> ${startDate } - ${endDate} (${employmentType})</p>
       <slot></slot>
