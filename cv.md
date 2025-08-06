@@ -28,18 +28,45 @@ permalink: /cv/
 {% assign ordered_tags = site.data.cv.tag_filters | default: '' %}
 
 <!-- Calculate the maximum timespan based on the earliest start_date -->
-{% assign experiences = site.data.cv.experiences %}
-{% assign current_year = "now" | date: "%Y" | plus: 0 %}
-{% assign earliest_date = current_year %}
-{% for exp in experiences %}
-  {% if exp.start_date %}
-    {% assign year = exp.start_date | slice: 0, 4 | plus: 0 %}
-    {% if year < earliest_date %}
-      {% assign earliest_date = year %}
-    {% endif %}
-  {% endif %}
-{% endfor %}
-{% assign max_years = current_year | minus: earliest_date | plus: 1 %}
+<script>
+function getMaxYearsFromTagFilteredCvData() {
+  if (!tagFilteredCvData || !tagFilteredCvData.experiences || tagFilteredCvData.experiences.length === 0) return 1;
+  const years = tagFilteredCvData.experiences
+    .map(exp => exp.start_date)
+    .filter(Boolean)
+    .map(dateStr => {
+      const year = parseInt(dateStr?.slice(0, 4), 10);
+      return isNaN(year) ? null : year;
+    })
+    .filter(year => year !== null);
+  if (years.length === 0) return 1;
+  const currentYear = new Date().getFullYear();
+  const earliestYear = Math.min(...years);
+  return currentYear - earliestYear + 1;
+}
+
+function updateMaxYears() {
+  const maxYears = getMaxYearsFromTagFilteredCvData();
+  const timeFilter = document.getElementById('experience-filter');
+  if (timeFilter) {
+    timeFilter.max = maxYears;
+  }
+}
+
+// Call updateMaxYears after tagFilteredCvData is set
+fetch('/cv/cv.json')
+  .then(response => response.json())
+  .then(data => {
+    cvData = data;
+    tagFilteredCvData = filterTagCvData();
+    updateMaxYears();
+    filteredCvData = filterCvData();
+    console.log('cv:', cvData);
+    console.log('tagFilteredCvData:', tagFilteredCvData);
+    console.log('filteredCvData:', filteredCvData);
+  })
+  .catch(err => console.error('Failed to load cv.json', err));
+</script>
 
 <h2>Filter by Role</h2>
 <form id="cv-tags-form">
@@ -60,7 +87,7 @@ permalink: /cv/
       id="experience-filter"
       value="10"
       min="0"
-      max="{{ max_years }}"
+      max="10"
       label="Experience Timeframe"
       minLabel="Current only"
       maxLabel="All experience"
@@ -84,16 +111,68 @@ permalink: /cv/
 
 let cvData = null;
 let filteredCvData = null;
+let tagFilteredCvData = null;
 
 fetch('/cv/cv.json')
   .then(response => response.json())
   .then(data => {
     cvData = data;
+    tagFilteredCvData = filterTagCvData();
     filteredCvData = filterCvData();
     console.log('cv:', cvData);
+    console.log('tagFilteredCvData:', tagFilteredCvData);
     console.log('filteredCvData:', filteredCvData);
   })
   .catch(err => console.error('Failed to load cv.json', err));
+
+function filterTagCvData() {
+  if (!cvData) return null;
+  const availableTags = [{% for tag_filter in site.data.cv.tag_filters %}"{{ tag_filter.name }}"{% unless forloop.last %},{% endunless %}{% endfor %}];
+  const selectedTags = Array.from(document.querySelectorAll('#cv-tags-form tag-toggle'))
+    .filter(toggle => toggle.checked)
+    .map(toggle => toggle.name.trim());
+
+  function passesTagFiltering(tagsAttr) {
+    var tags = tagsAttr ? decodeURIComponent(tagsAttr).split(',').map(tag => tag.trim()) : [];
+    if (!tags.length) {
+      return true;
+    }
+    if (selectedTags.length === 0) {
+      return false;
+    }
+    const passes = tags.some(tag => {
+      const matches = availableTags.includes(tag) && selectedTags.includes(tag);
+      return matches;
+    });
+    return passes;
+  }
+
+  return {
+    ...cvData,
+    experiences: cvData.experiences
+      .filter(exp => {
+        if (!passesTagFiltering(exp.tags)) return false;
+        return true;
+      })
+      .sort((a, b) => {
+        function parseDate(dateStr, fallback) {
+          if (!dateStr || dateStr === "Present") return new Date(8640000000000000);
+          const d = new Date(dateStr);
+          return isNaN(d) ? fallback : d;
+        }
+        const aEnd = parseDate(a.end_date, new Date(0));
+        const bEnd = parseDate(b.end_date, new Date(0));
+        if (bEnd - aEnd !== 0) return bEnd - aEnd;
+        const aStart = parseDate(a.start_date, new Date(0));
+        const bStart = parseDate(b.start_date, new Date(0));
+        return bStart - aStart;
+      })
+      .map(exp => ({
+        ...exp,
+        descriptions: (exp.descriptions || []).filter(desc => passesTagFiltering(desc.tags))
+      }))
+  };
+}
 
 function filterCvData() {
   if (!cvData) return null;
@@ -207,6 +286,13 @@ function onFilterChange() {
   renderCvContent();
 }
 
+function onTagFilterChange() {
+  tagFilteredCvData = filterTagCvData();
+  updateMaxYears();
+  filterCV();
+  onFilterChange();
+}
+
 // Simple normalize function to trim whitespace
 function normalizeTag(tag) {
   return tag.trim();
@@ -224,9 +310,10 @@ function filterCV() {
   const availableTags = [{% for tag_filter in site.data.cv.tag_filters %}"{{ tag_filter.name }}"{% unless forloop.last %},{% endunless %}{% endfor %}];
 
   const selectedTags = getSelectedTags();
-console.log('Selected tags:', selectedTags);
+  console.log('Selected tags:', selectedTags);
 
-var yearDepth = parseInt(document.getElementById('experience-filter').value);
+  var timeFilterElem = document.getElementById('experience-filter');
+  var yearDepth = timeFilterElem ? parseInt(timeFilterElem.value) : 0;
 
   // Calculate cutoff date based on year depth
   var today = new Date();
@@ -298,8 +385,7 @@ window.addEventListener('DOMContentLoaded', function() {
   setTimeout(() => {
     document.querySelectorAll('tag-toggle').forEach(toggle => {
       toggle.addEventListener('change', () => {
-        filterCV();
-        onFilterChange();
+        onTagFilterChange();
       });
     });
     const timeFilter = document.getElementById('experience-filter');
