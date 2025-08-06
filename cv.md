@@ -97,21 +97,8 @@ fetch('/cv/cv.json')
 
 function filterCvData() {
   if (!cvData) return null;
-  const selectedTags = getSelectedTags ? getSelectedTags() : [];
   const yearDepth = parseInt(document.getElementById('experience-filter')?.value || '0');
   const today = new Date();
-  const cutoffYear = today.getFullYear() - yearDepth;
-  const cutoffDate = new Date(cutoffYear, today.getMonth(), today.getDate());
-
-  function passesTagFiltering(tags) {
-    if (!tags || !Array.isArray(tags) || tags.length === 0) {
-      return true;
-    }
-    if (selectedTags.length === 0) {
-      return false;
-    }
-    return tags.some(tag => selectedTags.includes(tag));
-  }
 
   return {
     ...cvData,
@@ -211,7 +198,6 @@ var yearDepth = parseInt(document.getElementById('experience-filter').value);
   var cutoffYear = today.getFullYear() - yearDepth;
   var cutoffDate = new Date(cutoffYear, today.getMonth(), today.getDate());
 
-  // Simple inline tag filtering function
   function passesTagFiltering(tagsAttr) {
     // Parse the tags from the attribute
     var tags = tagsAttr ? decodeURIComponent(tagsAttr).split(',').map(tag => tag.trim()) : [];
