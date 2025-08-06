@@ -6,8 +6,8 @@ permalink: /cv/
 
 
 <div style="display: flex; align-items: baseline; gap: 15px;">
-  <h1 style="margin-bottom: 0;">{{ site.data.cv.name }}</h1>
-  {% if site.data.cv.name %}<h3 style="margin-bottom: 0; font-weight: normal; color: #777;">Curriculum Vitae</h3>{% endif  %}
+  <h1 style="margin-bottom: 0;" id="cv-name">{{ site.data.cv.name }}</h1>
+  <h3 id="cv-title" style="margin-bottom: 0; font-weight: normal; color: #777; display: none;">Curriculum Vitae</h3>
 </div>
 
 
@@ -66,7 +66,7 @@ fetch('/cv/cv.json')
   .catch(err => console.error('Failed to load cv.json', err));
 </script>
 
-<h2>Filter by Role</h2>
+<h2>Expand by Role</h2>
 <form id="cv-tags-form">
   {% if ordered_tags != '' %}
     {% for tag_filter in ordered_tags %}
@@ -400,39 +400,41 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 function exportToMarkdown() {
-  // Get the active filters
-  const activeFilters = getSelectedTags();
-  const yearDepth = document.getElementById('experience-filter').value;
+  // Use filteredCvData for export
+  if (!filteredCvData || !filteredCvData.experiences) {
+    alert('No experiences to export.');
+    return;
+  }
 
-  // Start building the markdown content
-  let markdown = `# Curriculum Vitae\n\n`;
+  // Add name above Curriculum Vitae
+  let markdown = '';
+  if (cvData && cvData.name) {
+    markdown += `# ${cvData.name}\n`;
+    markdown += `#### Curriculum Vitae\n\n`;
+  } else {
+    markdown += `# Curriculum Vitae\n\n`;
+  }
+
+  // Add selected tags as Roles
+  const activeFilters = getSelectedTags();
+  if (activeFilters.length > 0) {
+    markdown += `**Roles:** ${activeFilters.join(', ')}\n\n`;
+  }
 
   // Add filter information
-  if (activeFilters.length > 0) {
-    markdown += `*Filtered by roles: ${activeFilters.join(', ')}*\n\n`;
-  }
+  const yearDepth = document.getElementById('experience-filter')?.value || '0';
   markdown += `*Experience timeframe: ${yearDepth} years*\n\n`;
 
-  // Get all visible experiences
-  const visibleExperiences = Array.from(document.querySelectorAll('.experience'))
-    .filter(exp => exp.style.display !== 'none');
-
-  visibleExperiences.forEach(exp => {
-    // Get the title
-    const title = exp.querySelector('h2').textContent;
-    markdown += `## ${title}\n\n`;
-
-    // Get location and period
-    const details = exp.querySelector('p').textContent;
-    markdown += `${details}\n\n`;
-
-    // Get the visible description items
-    const visibleItems = Array.from(exp.querySelectorAll('li'))
-      .filter(li => li.style.display !== 'none');
-
-    if (visibleItems.length > 0) {
-      visibleItems.forEach(item => {
-        markdown += `- ${item.textContent}\n`;
+  // Render experiences similar to page
+  filteredCvData.experiences.forEach(exp => {
+    markdown += `## ${exp.title} at ${exp.company}\n`;
+    markdown += `*${exp.location || 'N/A'}* | *${exp.start_date || 'N/A'} - ${exp.end_date || 'Present'}* | *${exp.employment_type || 'Employed'}*\n\n`;
+    if (exp.traits && exp.traits.length > 0) {
+      markdown += `**Traits:** ${exp.traits.join(', ')}\n\n`;
+    }
+    if (exp.descriptions && exp.descriptions.length > 0) {
+      exp.descriptions.forEach(desc => {
+        markdown += `- ${desc.text}\n`;
       });
       markdown += '\n';
     }
@@ -444,30 +446,15 @@ function exportToMarkdown() {
   const a = document.createElement('a');
   a.href = url;
 
-  // Create a filename with name and date
+  // Filename logic
   const now = new Date();
-  const dateStr = now.toISOString().split('T')[0]; // YYYY-MM-DD format
-
-  // Get name from data file or fallback to configured value
-  let nameForFilename = '{{ site.data.cv.name }}';
-
-  // If the template variable doesn't render, use site author name
-  if (!nameForFilename || nameForFilename === '{{ site.data.cv.name }}') {
-    nameForFilename = '{{ site.author.name }}';
-  }
-
-  // Slugify the name manually (convert to lowercase, replace spaces with hyphens)
+  const dateStr = now.toISOString().split('T')[0];
+  let nameForFilename = cvData?.name || 'cv';
   const nameSlug = nameForFilename.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-
-  // Create the filename with the name and selected filters
   let filename = nameSlug;
-
-  // Add selected filters to filename
   if (activeFilters.length > 0) {
     filename += '_' + activeFilters.map(tag => tag.toLowerCase().replace(/\s+/g, '-')).join('-');
   }
-
-  // Add date and extension
   filename += '_cv_' + dateStr + '.md';
 
   a.download = filename;
