@@ -127,7 +127,8 @@ fetch('/cv/cv.json')
 
 function filterTagCvData() {
   if (!cvData) return null;
-  const availableTags = [{% for tag_filter in site.data.cv.tag_filters %}"{{ tag_filter.name }}"{% unless forloop.last %},{% endunless %}{% endfor %}];
+  // Get available tags from cvData.tag_filters
+  const availableTags = Array.isArray(cvData.tag_filters) ? cvData.tag_filters.map(t => t.name) : [];
   const selectedTags = Array.from(document.querySelectorAll('#cv-tags-form tag-toggle'))
     .filter(toggle => toggle.checked)
     .map(toggle => toggle.name.trim());
@@ -176,8 +177,8 @@ function filterTagCvData() {
 
 function filterCvData() {
   if (!cvData) return null;
-  // Get available tags from the YAML file
-  const availableTags = [{% for tag_filter in site.data.cv.tag_filters %}"{{ tag_filter.name }}"{% unless forloop.last %},{% endunless %}{% endfor %}];
+  // Get available tags from cvData.tag_filters
+  const availableTags = Array.isArray(cvData.tag_filters) ? cvData.tag_filters.map(t => t.name) : [];
   // Get selected tags from the UI
   const selectedTags = Array.from(document.querySelectorAll('#cv-tags-form tag-toggle'))
     .filter(toggle => toggle.checked)
