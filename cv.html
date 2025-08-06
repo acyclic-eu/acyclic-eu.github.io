@@ -139,19 +139,17 @@ permalink: /cv/
       if (selectedTags.length === 0) {
         return false;
       }
-      const passes = tags.some(tag => {
-        const matches = availableTags.includes(tag) && selectedTags.includes(tag);
-        return matches;
+      return tags.some(tag => {
+        return availableTags.includes(tag) && selectedTags.includes(tag);
       });
-      return passes;
     }
 
     return {
       ...cvData,
       experiences: cvData.experiences
         .filter(exp => {
-          if (!passesTagFiltering(exp.tags)) return false;
-          return true;
+          return passesTagFiltering(exp.tags);
+
         })
         .sort((a, b) => {
           function parseDate(dateStr, fallback) {
@@ -196,23 +194,9 @@ permalink: /cv/
       if (selectedTags.length === 0) {
         return false;
       }
-      const passes = tags.some(tag => {
-        const matches = availableTags.includes(tag) && selectedTags.includes(tag);
-        return matches;
+      return tags.some(tag => {
+        return availableTags.includes(tag) && selectedTags.includes(tag);
       });
-      return passes;
-    }
-
-    // Helper for date filtering
-    function passesDateFiltering(endDateStr) {
-      if (!endDateStr || endDateStr === "Present") return true;
-      var endDate = new Date(endDateStr);
-      if (isNaN(endDate)) return false;
-      if (yearDepth === 0) {
-        return false;
-      } else {
-        return endDate >= cutoffDate;
-      }
     }
 
     return {
@@ -223,8 +207,8 @@ permalink: /cv/
           let endDateObj = isCurrent ? today : new Date(exp.end_date);
           let passesDate = yearDepth === 0 ? isCurrent : (isCurrent || endDateObj >= cutoffDate);
           if (!passesDate) return false;
-          if (!passesTagFiltering(exp.tags)) return false;
-          return true;
+          return passesTagFiltering(exp.tags);
+
         })
         .sort((a, b) => {
           function parseDate(dateStr, fallback) {
@@ -328,11 +312,9 @@ permalink: /cv/
       if (selectedTags.length === 0) {
         return false;
       }
-      const passes = tags.some(tag => {
-        const matches = availableTags.includes(tag) && selectedTags.includes(tag);
-        return matches;
+      return tags.some(tag => {
+        return availableTags.includes(tag) && selectedTags.includes(tag);
       });
-      return passes;
     }
 
     // Helper for date filtering
@@ -450,8 +432,7 @@ permalink: /cv/
     const now = new Date();
     const dateStr = now.toISOString().split('T')[0];
     let nameForFilename = cvData?.name || 'cv';
-    const nameSlug = nameForFilename.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-    let filename = nameSlug;
+    let filename = nameForFilename.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
     if (activeFilters.length > 0) {
       filename += '_' + activeFilters.map(tag => tag.toLowerCase().replace(/\s+/g, '-')).join('-');
     }
