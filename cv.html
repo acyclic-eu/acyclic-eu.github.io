@@ -1,0 +1,62 @@
+---
+layout: default
+title: CV
+permalink: /cv/
+---
+
+<div style="display: flex; align-items: baseline; gap: 15px;">
+  <h1 style="margin-bottom: 0;" id="cv-name">{{ site.data.cv.name }}</h1>
+  <h3 id="cv-title" style="margin-bottom: 0; font-weight: normal; color: #777; display: none;">Curriculum Vitae</h3>
+</div>
+
+<style>
+  :root {
+    --secondary: #d291ff;
+    --secondary-contrast: black;
+    --button-bg: #f0f0f0;
+    --button-text: black;
+  }
+</style>
+
+<h2>Expand by Role</h2>
+<form id="cv-tags-form">
+  {% assign ordered_tags = site.data.cv.tag_filters | default: '' %}
+  {% if ordered_tags != '' %}
+    {% for tag_filter in ordered_tags %}
+      <tag-toggle
+        id="tag-{{ tag_filter.name | slugify }}"
+        name="{{ tag_filter.name }}"
+        description="{{ tag_filter.description | escape }}"
+      ></tag-toggle>
+    {% endfor %}
+  {% else %}
+    <div><em>No filters available</em></div>
+  {% endif %}
+  <div style="margin-top:1em;">
+    <time-filter
+      id="experience-filter"
+      value="10"
+      min="0"
+      max="10"
+      label="Experience Timeframe"
+      minLabel="Current only"
+      maxLabel="All experience"
+    ></time-filter>
+    <div style="text-align: right; margin-top: 1em;">
+      <button id="export-markdown" class="btn" style="padding: 0.5em 1em; background-color: #f5f5f5; border: 1px solid #ddd; border-radius: 3px; cursor: pointer;" onclick="exportToMarkdown()">Export as Markdown</button>
+    </div>
+  </div>
+</form>
+
+<div id="cv-content"></div>
+
+<script type="module">
+  import "/public/Components/tag-toggle.js";
+  import "/public/Components/time-filter.js";
+  import "/public/Components/cv-experience.js";
+</script>
+
+<script>
+// ...existing JS code from cv.md...
+</script>
+
