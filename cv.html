@@ -139,10 +139,7 @@ permalink: /cv/
       const tags = exp.tags ? exp.tags.join(',') : '';
       const employmentType = exp.employment_type || 'Employed';
       const endDate = exp.end_date || 'Present';
-      const descriptions = (exp.descriptions || []).map(desc => {
-        const descTags = desc.tags ? desc.tags.join(',') : '';
-        return `<li data-tags="${encodeURIComponent(descTags)}">${desc.text}</li>`;
-      }).join('');
+      // Pass descriptions as a prop to cv-experience
       return `
       <cv-experience
         title="${exp.title}"
@@ -153,10 +150,9 @@ permalink: /cv/
         end-date="${endDate}"
         employment-type="${employmentType}"
         exp-tags="${encodeURIComponent(tags)}"
+        descriptions='${JSON.stringify(exp.descriptions.map((desc) => desc.text) || [])}'
         class="experience"
-      >
-        <ul>${descriptions}</ul>
-      </cv-experience>
+      ></cv-experience>
     `;
     }).join('');
   }
