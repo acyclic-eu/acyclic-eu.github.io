@@ -1,6 +1,5 @@
 ---
 layout: null
-permalink: /public/cv/cv.json
+permalink: /cv/cv.json
 ---
 {{ site.data.cv | jsonify }}
-

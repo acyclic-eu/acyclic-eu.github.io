@@ -85,7 +85,7 @@ permalink: /cv/
 let cvData = null;
 let filteredCvData = null;
 
-fetch('/public/cv/cv.json')
+fetch('/cv/cv.json')
   .then(response => response.json())
   .then(data => {
     cvData = data;
