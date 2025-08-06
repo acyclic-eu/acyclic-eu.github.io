@@ -97,14 +97,50 @@ fetch('/cv/cv.json')
 
 function filterCvData() {
   if (!cvData) return null;
+  // Get available tags from the YAML file
+  const availableTags = [{% for tag_filter in site.data.cv.tag_filters %}"{{ tag_filter.name }}"{% unless forloop.last %},{% endunless %}{% endfor %}];
+  // Get selected tags from the UI
+  const selectedTags = Array.from(document.querySelectorAll('#cv-tags-form tag-toggle'))
+    .filter(toggle => toggle.checked)
+    .map(toggle => toggle.name.trim());
   const yearDepth = parseInt(document.getElementById('experience-filter')?.value || '0');
   const today = new Date();
+  // Calculate cutoff date based on year depth
+  const cutoffYear = today.getFullYear() - yearDepth;
+  const cutoffDate = new Date(cutoffYear, today.getMonth(), today.getDate());
+
+  // Helper for tag filtering
+  function passesTagFiltering(tagsAttr) {
+    var tags = tagsAttr ? decodeURIComponent(tagsAttr).split(',').map(tag => tag.trim()) : [];
+    if (!tags.length) {
+      return true;
+    }
+    if (selectedTags.length === 0) {
+      return false;
+    }
+    const passes = tags.some(tag => {
+      const matches = availableTags.includes(tag) && selectedTags.includes(tag);
+      return matches;
+    });
+    return passes;
+  }
+
+  // Helper for date filtering
+  function passesDateFiltering(endDateStr) {
+    if (!endDateStr || endDateStr === "Present") return true;
+    var endDate = new Date(endDateStr);
+    if (isNaN(endDate)) return false;
+    if (yearDepth === 0) {
+      return false;
+    } else {
+      return endDate >= cutoffDate;
+    }
+  }
 
   return {
     ...cvData,
     experiences: cvData.experiences
       .filter(exp => {
-        // Date filter
         let isCurrent = exp.end_date === "Present" || !exp.end_date;
         let endDateObj = isCurrent ? today : new Date(exp.end_date);
         let passesDate = yearDepth === 0 ? isCurrent : (isCurrent || endDateObj >= cutoffDate);
@@ -113,9 +149,8 @@ function filterCvData() {
         return true;
       })
       .sort((a, b) => {
-        // Sort by end_date (newest first), then start_date (newest first)
         function parseDate(dateStr, fallback) {
-          if (!dateStr || dateStr === "Present") return new Date(8640000000000000); // Far future
+          if (!dateStr || dateStr === "Present") return new Date(8640000000000000);
           const d = new Date(dateStr);
           return isNaN(d) ? fallback : d;
         }
@@ -198,26 +233,19 @@ var yearDepth = parseInt(document.getElementById('experience-filter').value);
   var cutoffYear = today.getFullYear() - yearDepth;
   var cutoffDate = new Date(cutoffYear, today.getMonth(), today.getDate());
 
+  // Helper for tag filtering
   function passesTagFiltering(tagsAttr) {
-    // Parse the tags from the attribute
     var tags = tagsAttr ? decodeURIComponent(tagsAttr).split(',').map(tag => tag.trim()) : [];
-
-    // If no tags, show it regardless of filters
     if (!tags.length) {
       return true;
     }
-
-    // If no filters selected, always hide tagged items
     if (selectedTags.length === 0) {
       return false;
     }
-
-    // Check if any tag matches the checked filters
     const passes = tags.some(tag => {
       const matches = availableTags.includes(tag) && selectedTags.includes(tag);
       return matches;
     });
-
     return passes;
   }
 
