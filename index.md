@@ -18,7 +18,7 @@ Patrik has extensive experience leading multidisciplinary teams, including devel
 ## Business Developer & Agile Coach:
 Driven by a passion for building cultures that prioritize learning, innovation, and collaboration, Patrik works as a business developer and agile coach. He leverages his systems-thinking approach to guide the development of organizations through dialogue, supporting and inspiring people to contribute to their full potential. He has experience in supporting engineering managers, team leaders, product owners, and developers in their work.
 
-## Product Manager & Product Leader:
+## Head of Product & Product Manager:
 Patrik is driven by creating value through amazing products and adapting organizational design to specific needs. He connects the dots between user value, product vision, and scalable architecture, contributing strategically to both product strategy and organizational structure to build strong products.
 
 ---
