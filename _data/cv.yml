@@ -3,14 +3,12 @@
 name: "Patrik Gustafsson"
 
 tag_filters:
-  - name: "Leader"
-    description: "Leadership, management, product strategy, and organizational design"
   - name: "Developer"
     description: "Software development, technical implementation, and architectural design"
-  - name: "Teacher"
+  - name: "Leader"
+    description: "Leadership, management, product strategy, and organizational design"
+  - name: "Coach"
     description: "Mentoring, coaching, training, and knowledge sharing"
-  - name: "Other"
-    description: "Other roles and experiences not fitting into the main categories"
 
 experiences:
   - title: Technology and Leadership Consultant
@@ -21,7 +19,7 @@ experiences:
     employment_type: "Partner"
     descriptions:
       - text: Elevated software development teams through code-centric training, coaching three automotive teams in principles like Law of Demeter, SOLID, TDD, and incremental development.
-        tags: [ "Teacher", "Developer" ]
+        tags: [ "Coach", "Developer" ]
       - text: Directly applied theoretical concepts in Kotlin and .NET with teams.
         tags: [ "Developer" ]
       - text: Cultivated a proactive, adaptive organizational culture through continuous learning and improved software architecture.
@@ -42,32 +40,32 @@ experiences:
       - text: Initiated a restructure of the product's configuration model, applying technical analysis to implement role and domain-based separation, improving maintainability and scalability.
         tags: [ "Developer", "Leader" ]
       - text: Coached lead developers through technical improvement dialogues to ensure architectural alignment.
-        tags: [ "Leader", "Teacher", "Developer" ]
+        tags: [ "Leader", "Coach", "Developer" ]
       - text: Guided a new team through complex technical challenges, uniting their technical vision and optimizing performance through mentorship and technical guidance.
-        tags: [ "Leader", "Teacher", "Developer" ]
+        tags: [ "Leader", "Coach", "Developer" ]
   - title: Software Engineering Manager
-    traits: [Agency, Finance, SaaS]
+    traits: [Agency, Finance, SaaS, Java]
     company: Piktiv
     location: Skövde, Sweden
     start_date: "2024-01-01"
     end_date: "2024-09-30"
     descriptions:
       - text: Mentored technical staff in technologies including .NET, Java, TypeScript, and Kotlin, applying principles like Law of Demeter, SOLID, DDD, and systems thinking to reduce dependencies and foster innovation.
-        tags: [ "Teacher", "Developer" ]
+        tags: [ "Coach", "Developer" ]
       - text: Developed financial market products.
         tags: [ "Developer" ]
       - text: Collaborated with Sales and Marketing to convert two key leads into clients.
         tags: [ "Leader" ]
       - text: Directed technical screenings and interviews, assessing candidates' skills in problem-solving, product modeling, and automated testing.
         tags: [ "Leader" ]
-  - title: CEO, Organisational & Leadership Coach, Developer
+  - title: Developer, Leader, Coach
     company: How To Know
     location: Gothenburg, Sweden
     start_date: "2021-07-01"
     employment_type: "Owner"
     descriptions:
       - text: Operating my own side business, focused on coaching, training, and product development.
-        tags: [ "Leader", "Teacher", "Developer" ]
+        tags: [ "Leader", "Coach", "Developer" ]
   - title: Interim Lead Product Manager & Payments Product Manager
     company: Avinode
     via: ProAgile
@@ -77,7 +75,7 @@ experiences:
     employment_type: "Contract"
     descriptions:
       - text: Leveraged extensive coaching and software development expertise to foster agility and adaptability as a Product Coach.
-        tags: [ "Leader", "Teacher" ]
+        tags: [ "Leader", "Coach" ]
       - text: Ensured company success in dynamic situations by guiding development teams and aligning their work with overarching business goals.
         tags: [ "Leader" ]
       - text: Collaborated closely with stakeholders to prioritize transparency and discover user and business value with the team, while maintaining focus on established goals.
@@ -91,11 +89,11 @@ experiences:
     end_date: "2022-05-31"
     descriptions:
       - text: Empowered teams to enhance their capability and autonomy by adopting robust software development practices.
-        tags: [ "Leader", "Teacher" ]
+        tags: [ "Leader", "Coach" ]
       - text: Encouraged team self-organization and aligned their efforts to achieve company business goals.
         tags: [ "Leader" ]
       - text: Fostered a culture of continuous improvement and self-reliance, enabling teams to thrive in dynamic environments and deliver high-quality products effectively.
-        tags: [ "Leader", "Teacher" ]
+        tags: [ "Leader", "Coach" ]
   - title: Software Department Program Manager
     traits: [AI, UI, SaaS, Legal]
     company: Seal Software
@@ -123,7 +121,7 @@ experiences:
       - text: Led three multidisciplinary teams in creating integrated software solutions with a strong emphasis on architectural design and system performance. Managed a total of 14 developers, SDETs, and UX professionals.
         tags: [ "Leader", "Developer" ]
       - text: Effectively removed impediments and facilitated team discussions to enhance workflow and ensure projects aligned with stakeholder goals.
-        tags: [ "Leader", "Teacher" ]
+        tags: [ "Leader", "Coach" ]
       - text: Established and strengthened a culture of self-leadership, self-organization, and strong collaboration within the teams.
         tags: [ "Leader" ]
       - text: Defined the technical choices for software solutions, leveraging technologies such as React, Java, and Scala.
@@ -163,8 +161,8 @@ experiences:
     end_date: "2016-09-30"
     descriptions:
       - text: Taught basic and advanced Git and Gerrit skills to software development professionals.
-        tags: [ "Teacher", "Developer" ]
-    tags: [ "Teacher" ]
+        tags: [ "Coach", "Developer" ]
+    tags: [ "Coach" ]
   - title: Java EE Senior Developer
     company: Skanova
     via: Purple Scout
@@ -190,7 +188,7 @@ experiences:
       - text: I drove technical excellence, designing financial BI systems for Skanova (Java, GWT, .NET, JavaScript) and developing Ericsson's E4B Eclipse IDE to boost developer productivity.
         tags: [ "Developer" ]
       - text: I also led Git/Gerrit training for European software professionals, improving code standards.
-        tags: [ "Teacher" ]
+        tags: [ "Coach" ]
   - title: Software Development Teacher
     company: Neueda Consulting
     location: Europe
@@ -200,8 +198,8 @@ experiences:
     via: Purple Scout
     descriptions:
       - text: Taught intermediate Git and Gerrit skills to software development professionals.
-        tags: [ "Teacher", "Developer" ]
-    tags: [ "Teacher" ]
+        tags: [ "Coach", "Developer" ]
+    tags: [ "Coach" ]
   - title: Eclipse Plugin Developer
     company: Ericsson
     location: Gothenburg, Sweden
@@ -222,23 +220,23 @@ experiences:
     end_date: "2012-02-29"
     descriptions:
       - text: Taught software development and computer science.
-        tags: [ "Teacher", "Developer" ]
+        tags: [ "Coach", "Developer" ]
       - text: Responsible for advanced courses in programming, including teaching database development, user interface programming, object-oriented development and multithread programming.
-        tags: [ "Teacher", "Developer" ]
+        tags: [ "Coach", "Developer" ]
       - text: Education focused on empowering students, using individual and group projects where they built their own software based on their own ideas.
-        tags: [ "Teacher", "Leader" ]
+        tags: [ "Coach", "Leader" ]
       - text: Guided student projects that included 2D and 3D games, communication platforms, and scheduling applications, utilizing technologies such as Java, MySQL, Linux, JavaScript, HTML, and CSS.
-        tags: [ "Teacher", "Developer" ]
+        tags: [ "Coach", "Developer" ]
   - title: Software Development & Computer Science Teacher
     company: Strömstad Gymnasium
     location: Strömstad, Sweden
     start_date: "2006-08-01"
     end_date: "2007-06-30"
     descriptions:
-      - text: Head of all computer education, deciding which courses to run and helping other computer teachers to coordinate their courses.
-        tags: [ "Leader", "Teacher" ]
+      - text: Head of all computer education, deciding which courses to run and helping other computer Coachs to coordinate their courses.
+        tags: [ "Leader", "Coach" ]
       - text: Taught courses in programming, web design, personal computers, operating systems, and local networks, utilizing open source software and the Java programming language.
-        tags: [ "Teacher", "Developer" ]
+        tags: [ "Coach", "Developer" ]
       - text: Involvement increased interest in the computer engineering programs in the municipality.
         tags: [ "Leader" ]
   - title: Computer Technician

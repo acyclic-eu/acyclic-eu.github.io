@@ -303,6 +303,34 @@ permalink: /cv/
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   }
+
+  // Helper to get tags from URL
+  function getTagsFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const tagsParam = params.get('tags');
+    if (!tagsParam) return [];
+    return tagsParam.split(',').map(tag => tag.trim()).filter(Boolean);
+  }
+
+  window.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+      // Select tags from URL parameter
+      const urlTags = getTagsFromUrl();
+      if (urlTags.length > 0) {
+        document.querySelectorAll('tag-toggle').forEach(toggle => {
+          if (urlTags.includes(toggle.name.trim())) {
+            toggle.checked = true;
+          }
+        });
+      }
+
+      document.querySelectorAll('tag-toggle').forEach(toggle => {
+        toggle.addEventListener('change', () => {
+          onTagFilterChange();
+        })
+      })
+    })
+  })
 </script>
 <style>
   :root {
