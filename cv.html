@@ -150,7 +150,7 @@ permalink: /cv/
         end-date="${endDate}"
         employment-type="${employmentType}"
         exp-tags="${encodeURIComponent(tags)}"
-        descriptions='${JSON.stringify(exp.descriptions.map((desc) => desc.text) || [])}'
+        descriptions="${JSON.stringify(exp.descriptions.map((desc) => desc.text)).replace(/"/g, '&quot;')}"
         class="experience"
       ></cv-experience>
     `;

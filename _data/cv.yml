@@ -18,17 +18,17 @@ experiences:
     end_date: "2024-01-31"
     employment_type: "Partner"
     descriptions:
-      - text: Elevated software development teams through code-centric training, coaching three automotive teams in principles like Law of Demeter, SOLID, TDD, and incremental development.
+      - text: "Elevated software development teams through code-centric training, coaching three automotive teams in principles like Law of Demeter, SOLID, TDD, and incremental development."
         tags: [ "Coach", "Developer" ]
-      - text: Directly applied theoretical concepts in Kotlin and .NET with teams.
+      - text: "Directly applied theoretical concepts in Kotlin and .NET with teams."
         tags: [ "Developer" ]
-      - text: Cultivated a proactive, adaptive organizational culture through continuous learning and improved software architecture.
+      - text: "Cultivated a proactive, adaptive organizational culture through continuous learning and improved software architecture."
         tags: [ "Leader", "Developer" ]
-      - text: Aligned software architecture with organizational strategy and scalability.
+      - text: "Aligned software architecture with organizational strategy and scalability."
         tags: [ "Leader", "Developer" ]
-      - text: Guided product strategy to boost transparency, engagement, and value, championing feedback loops that aligned with business and technical goals.
+      - text: "Guided product strategy to boost transparency, engagement, and value, championing feedback loops that aligned with business and technical goals."
         tags: [ "Leader" ]
-      - text: Grew existing business and secured new deals through active, hands-on participation in Sales and Marketing initiatives.
+      - text: "Grew existing business and secured new deals through active, hands-on participation in Sales and Marketing initiatives."
         tags: [ "Leader" ]
   - title: Software Engineering Manager
     traits: [Scaleup, AI, Annotations, Data, Automotive]
@@ -37,11 +37,11 @@ experiences:
     start_date: "2024-10-01"
     end_date: "2025-03-31"
     descriptions:
-      - text: Initiated a restructure of the product's configuration model, applying technical analysis to implement role and domain-based separation, improving maintainability and scalability.
+      - text: "Initiated a restructure of the product's configuration model, applying technical analysis to implement role and domain-based separation, improving maintainability and scalability."
         tags: [ "Developer", "Leader" ]
-      - text: Coached lead developers through technical improvement dialogues to ensure architectural alignment.
+      - text: "Coached lead developers through technical improvement dialogues to ensure architectural alignment."
         tags: [ "Leader", "Coach", "Developer" ]
-      - text: Guided a new team through complex technical challenges, uniting their technical vision and optimizing performance through mentorship and technical guidance.
+      - text: "Guided a new team through complex technical challenges, uniting their technical vision and optimizing performance through mentorship and technical guidance."
         tags: [ "Leader", "Coach", "Developer" ]
   - title: Software Engineering Manager
     traits: [Agency, Finance, SaaS, Java]
@@ -50,13 +50,13 @@ experiences:
     start_date: "2024-01-01"
     end_date: "2024-09-30"
     descriptions:
-      - text: Mentored technical staff in technologies including .NET, Java, TypeScript, and Kotlin, applying principles like Law of Demeter, SOLID, DDD, and systems thinking to reduce dependencies and foster innovation.
+      - text: "Mentored technical staff in technologies including .NET, Java, TypeScript, and Kotlin, applying principles like Law of Demeter, SOLID, DDD, and systems thinking to reduce dependencies and foster innovation."
         tags: [ "Coach", "Developer" ]
-      - text: Developed financial market products.
+      - text: "Developed financial market products."
         tags: [ "Developer" ]
-      - text: Collaborated with Sales and Marketing to convert two key leads into clients.
+      - text: "Collaborated with Sales and Marketing to convert two key leads into clients."
         tags: [ "Leader" ]
-      - text: Directed technical screenings and interviews, assessing candidates' skills in problem-solving, product modeling, and automated testing.
+      - text: "Directed technical screenings and interviews, assessing candidates' skills in problem-solving, product modeling, and automated testing."
         tags: [ "Leader" ]
   - title: Developer, Leader, Coach
     company: How To Know
@@ -64,7 +64,7 @@ experiences:
     start_date: "2021-07-01"
     employment_type: "Owner"
     descriptions:
-      - text: Operating my own side business, focused on coaching, training, and product development.
+      - text: "Operating my own side business, focused on coaching, training, and product development."
         tags: [ "Leader", "Coach", "Developer" ]
   - title: Interim Lead Product Manager & Payments Product Manager
     company: Avinode
@@ -74,11 +74,11 @@ experiences:
     end_date: "2023-05-31"
     employment_type: "Contract"
     descriptions:
-      - text: Leveraged extensive coaching and software development expertise to foster agility and adaptability as a Product Coach.
+      - text: "Leveraged extensive coaching and software development expertise to foster agility and adaptability as a Product Coach."
         tags: [ "Leader", "Coach" ]
-      - text: Ensured company success in dynamic situations by guiding development teams and aligning their work with overarching business goals.
+      - text: "Ensured company success in dynamic situations by guiding development teams and aligning their work with overarching business goals."
         tags: [ "Leader" ]
-      - text: Collaborated closely with stakeholders to prioritize transparency and discover user and business value with the team, while maintaining focus on established goals.
+      - text: "Collaborated closely with stakeholders to prioritize transparency and discover user and business value with the team, while maintaining focus on established goals."
         tags: [ "Leader" ]
     tags: [ "Leader" ]
   - title: Technical WoW Transformation Coach - Product Driven Organisations
@@ -88,11 +88,11 @@ experiences:
     start_date: "2021-10-01"
     end_date: "2022-05-31"
     descriptions:
-      - text: Empowered teams to enhance their capability and autonomy by adopting robust software development practices.
+      - text: "Empowered teams to enhance their capability and autonomy by adopting robust software development practices."
         tags: [ "Leader", "Coach" ]
-      - text: Encouraged team self-organization and aligned their efforts to achieve company business goals.
+      - text: "Encouraged team self-organization and aligned their efforts to achieve company business goals."
         tags: [ "Leader" ]
-      - text: Fostered a culture of continuous improvement and self-reliance, enabling teams to thrive in dynamic environments and deliver high-quality products effectively.
+      - text: "Fostered a culture of continuous improvement and self-reliance, enabling teams to thrive in dynamic environments and deliver high-quality products effectively."
         tags: [ "Leader", "Coach" ]
   - title: Software Department Program Manager
     traits: [AI, UI, SaaS, Legal]
@@ -101,15 +101,15 @@ experiences:
     start_date: "2019-01-01"
     end_date: "2021-09-30"
     descriptions:
-      - text: Guided 14 teams in aligning their software architecture with organizational strategy and scalability.
+      - text: "Guided 14 teams in aligning their software architecture with organizational strategy and scalability."
         tags: [ "Leader", "Developer" ]
-      - text: Fostered a culture of continuous improvement and proactive problem-solving for complex software systems.
+      - text: "Fostered a culture of continuous improvement and proactive problem-solving for complex software systems."
         tags: [ "Leader", "Developer" ]
-      - text: Spearheaded the implementation of risk management, security, and quality control standards, ensuring robust project outcomes and adherence to industry best practices in software development and deployments.
+      - text: "Spearheaded the implementation of risk management, security, and quality control standards, ensuring robust project outcomes and adherence to industry best practices in software development and deployments."
         tags: [ "Leader", "Developer" ]
-      - text: Drove departmental initiatives that fostered a culture of continuous improvement and proactive problem-solving.
+      - text: "Drove departmental initiatives that fostered a culture of continuous improvement and proactive problem-solving."
         tags: [ "Leader" ]
-      - text: Emphasized collaborative professional leadership to strengthen team autonomy within the context of complex software systems.
+      - text: "Emphasized collaborative professional leadership to strengthen team autonomy within the context of complex software systems."
         tags: [ "Leader" ]
   - title: Product Team Lead
     traits: [UI/UX, Backend, Search, AI, Server, Legal]
@@ -118,21 +118,21 @@ experiences:
     start_date: "2017-08-01"
     end_date: "2020-05-31"
     descriptions:
-      - text: Led three multidisciplinary teams in creating integrated software solutions with a strong emphasis on architectural design and system performance. Managed a total of 14 developers, SDETs, and UX professionals.
+      - text: "Led three multidisciplinary teams in creating integrated software solutions with a strong emphasis on architectural design and system performance. Managed a total of 14 developers, SDETs, and UX professionals."
         tags: [ "Leader", "Developer" ]
-      - text: Effectively removed impediments and facilitated team discussions to enhance workflow and ensure projects aligned with stakeholder goals.
+      - text: "Effectively removed impediments and facilitated team discussions to enhance workflow and ensure projects aligned with stakeholder goals."
         tags: [ "Leader", "Coach" ]
-      - text: Established and strengthened a culture of self-leadership, self-organization, and strong collaboration within the teams.
+      - text: "Established and strengthened a culture of self-leadership, self-organization, and strong collaboration within the teams."
         tags: [ "Leader" ]
-      - text: Defined the technical choices for software solutions, leveraging technologies such as React, Java, and Scala.
+      - text: "Defined the technical choices for software solutions, leveraging technologies such as React, Java, and Scala."
         tags: [ "Developer" ]
-      - text: Implemented technical choices to ensure high-quality software.
+      - text: "Implemented technical choices to ensure high-quality software."
         tags: [ "Developer" ]
-      - text: Orchestrated the use of modern DevOps technologies, including TypeScript, AWS, GCP, Docker, Docker Swarm, and Kubernetes, to ensure robust deployments.
+      - text: "Orchestrated the use of modern DevOps technologies, including TypeScript, AWS, GCP, Docker, Docker Swarm, and Kubernetes, to ensure robust deployments."
         tags: [ "Developer", "Leader" ]
-      - text: Proactively engaged in performance measurement and optimization, including re-architecting slow system parts, and made strategic architectural decisions to improve flow, efficiency, and responsiveness.
+      - text: "Proactively engaged in performance measurement and optimization, including re-architecting slow system parts, and made strategic architectural decisions to improve flow, efficiency, and responsiveness."
         tags: [ "Developer", "Leader" ]
-      - text: Orchestrated the integration of AI capabilities, ensuring that machine learning outputs directly enhanced user interaction and core product functionality.
+      - text: "Orchestrated the integration of AI capabilities, ensuring that machine learning outputs directly enhanced user interaction and core product functionality."
         tags: [ "Developer", "Leader" ]
   - title: Senior Software Developer
     traits: [UI/UX, Backend, Search, AI, Server, Legal]
@@ -141,17 +141,17 @@ experiences:
     start_date: "2016-10-01"
     end_date: "2019-01-31"
     descriptions:
-      - text: Designed and developed innovative AI software solutions using React, Java, TypeScript, and Scala, improving performance, user-friendliness, and brand identity.
+      - text: "Designed and developed innovative AI software solutions using React, Java, TypeScript, and Scala, improving performance, user-friendliness, and brand identity."
         tags: [ "Developer" ]
-      - text: Enhanced product quality by establishing end-to-end tests for system integrity, improving performance and user experience.
+      - text: "Enhanced product quality by establishing end-to-end tests for system integrity, improving performance and user experience."
         tags: [ "Developer" ]
-      - text: Collaborated with Data Scientists to technically integrate ML models for AI-driven features in text review.
+      - text: "Collaborated with Data Scientists to technically integrate ML models for AI-driven features in text review."
         tags: [ "Developer" ]
-      - text: Pioneered AI features to tag legal concepts, identify entities, and link ML output to user interaction, significantly boosting contract management capabilities.
+      - text: "Pioneered AI features to tag legal concepts, identify entities, and link ML output to user interaction, significantly boosting contract management capabilities."
         tags: [ "Developer" ]
-      - text: Collaborated with UX designers and cross-functional teams, adopting a full-stack approach to problem-solving.
+      - text: "Collaborated with UX designers and cross-functional teams, adopting a full-stack approach to problem-solving."
         tags: [ "Developer", "Leader" ]
-      - text: Defined core use cases and identified crucial user information, which led to improved overall product functionality and performance.
+      - text: "Defined core use cases and identified crucial user information, which led to improved overall product functionality and performance."
         tags: [ "Developer", "Leader" ]
   - title: Software Development Teacher
     company: Edument
@@ -160,7 +160,7 @@ experiences:
     start_date: "2015-08-01"
     end_date: "2016-09-30"
     descriptions:
-      - text: Taught basic and advanced Git and Gerrit skills to software development professionals.
+      - text: "Taught basic and advanced Git and Gerrit skills to software development professionals."
         tags: [ "Coach", "Developer" ]
     tags: [ "Coach" ]
   - title: Java EE Senior Developer
@@ -171,11 +171,11 @@ experiences:
     end_date: "2016-05-31"
     employment_type: "Contract"
     descriptions:
-      - text: Created a business intelligence system and a content management system used for strategic and financial analysis, working in a self-organizing team.
+      - text: "Created a business intelligence system and a content management system used for strategic and financial analysis, working in a self-organizing team."
         tags: [ "Developer" ]
-      - text: Part of a well functioning self-organising team, taking shared decisions on bigger issues like processes and architecture.
+      - text: "Part of a well functioning self-organising team, taking shared decisions on bigger issues like processes and architecture."
         tags: [ "Developer", "Leader" ]
-      - text: Software suite built on the Java EE platform with GWT, JPA2, Hibernate, PostgreSQL, GIS, POI, GIT, Gerrit, Jenkins, Jboss and Tomcat.
+      - text: "Software suite built on the Java EE platform with GWT, JPA2, Hibernate, PostgreSQL, GIS, POI, GIT, Gerrit, Jenkins, Jboss and Tomcat."
         tags: [ "Developer" ]
     tags: [ "Developer" ]
   - title: Senior Software Developer & Technical Coach
@@ -185,9 +185,9 @@ experiences:
     start_date: "2012-02-01"
     end_date: "2016-05-31"
     descriptions:
-      - text: I drove technical excellence, designing financial BI systems for Skanova (Java, GWT, .NET, JavaScript) and developing Ericsson's E4B Eclipse IDE to boost developer productivity.
+      - text: "I drove technical excellence, designing financial BI systems for Skanova (Java, GWT, .NET, JavaScript) and developing Ericsson's E4B Eclipse IDE to boost developer productivity."
         tags: [ "Developer" ]
-      - text: I also led Git/Gerrit training for European software professionals, improving code standards.
+      - text: "I also led Git/Gerrit training for European software professionals, improving code standards."
         tags: [ "Coach" ]
   - title: Software Development Teacher
     company: Neueda Consulting
@@ -197,7 +197,7 @@ experiences:
     employment_type: "Contract"
     via: Purple Scout
     descriptions:
-      - text: Taught intermediate Git and Gerrit skills to software development professionals.
+      - text: "Taught intermediate Git and Gerrit skills to software development professionals."
         tags: [ "Coach", "Developer" ]
     tags: [ "Coach" ]
   - title: Eclipse Plugin Developer
@@ -208,9 +208,9 @@ experiences:
     employment_type: "Contract"
     via: Purple Scout
     descriptions:
-      - text: Developed Eclipse plugins for developers, integrating Eclipse with the clients build system, debugging system, version control system and code coverage system.
+      - text: "Developed Eclipse plugins for developers, integrating Eclipse with the clients build system, debugging system, version control system and code coverage system."
         tags: [ "Developer" ]
-      - text: Enhanced developer productivity by seamlessly integrating multiple plugins within Eclipse.
+      - text: "Enhanced developer productivity by seamlessly integrating multiple plugins within Eclipse."
         tags: [ "Developer" ]
     tags: [ "Developer" ]
   - title: Software Development, Design & Computer Science Teacher
@@ -219,13 +219,13 @@ experiences:
     start_date: "2007-06-01"
     end_date: "2012-02-29"
     descriptions:
-      - text: Taught software development and computer science.
+      - text: "Taught software development and computer science."
         tags: [ "Coach", "Developer" ]
-      - text: Responsible for advanced courses in programming, including teaching database development, user interface programming, object-oriented development and multithread programming.
+      - text: "Responsible for advanced courses in programming, including teaching database development, user interface programming, object-oriented development and multithread programming."
         tags: [ "Coach", "Developer" ]
-      - text: Education focused on empowering students, using individual and group projects where they built their own software based on their own ideas.
+      - text: "Education focused on empowering students, using individual and group projects where they built their own software based on their own ideas."
         tags: [ "Coach", "Leader" ]
-      - text: Guided student projects that included 2D and 3D games, communication platforms, and scheduling applications, utilizing technologies such as Java, MySQL, Linux, JavaScript, HTML, and CSS.
+      - text: "Guided student projects that included 2D and 3D games, communication platforms, and scheduling applications, utilizing technologies such as Java, MySQL, Linux, JavaScript, HTML, and CSS."
         tags: [ "Coach", "Developer" ]
   - title: Software Development & Computer Science Teacher
     company: Strömstad Gymnasium
@@ -233,11 +233,11 @@ experiences:
     start_date: "2006-08-01"
     end_date: "2007-06-30"
     descriptions:
-      - text: Head of all computer education, deciding which courses to run and helping other computer Coachs to coordinate their courses.
+      - text: "Head of all computer education, deciding which courses to run and helping other computer Coachs to coordinate their courses."
         tags: [ "Leader", "Coach" ]
-      - text: Taught courses in programming, web design, personal computers, operating systems, and local networks, utilizing open source software and the Java programming language.
+      - text: "Taught courses in programming, web design, personal computers, operating systems, and local networks, utilizing open source software and the Java programming language."
         tags: [ "Coach", "Developer" ]
-      - text: Involvement increased interest in the computer engineering programs in the municipality.
+      - text: "Involvement increased interest in the computer engineering programs in the municipality."
         tags: [ "Leader" ]
   - title: Computer Technician
     company: PM-data
@@ -245,6 +245,6 @@ experiences:
     start_date: "1995-01-01"
     end_date: "1999-12-31"
     descriptions:
-      - text: Built computers and managed customer database.
+      - text: "Built computers and managed customer database."
         tags: [ "Other" ]
     tags: [ "Other" ]
