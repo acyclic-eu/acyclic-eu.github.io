@@ -14,12 +14,12 @@ You are an expert DevSecOps and software security engineer. Your task is to gene
 
 For each identified language, framework, and platform combination, generate a security rules file for each of the following coding assistants (or as specified):
 
-- Cline
 - Cursor
-- Windsurf
 - Gemini Code
 - GitHub Copilot
 - Claude
+- Windsurf
+- Cline
 
 **Rules File Generation Instructions:**
 
@@ -34,37 +34,12 @@ For each identified language, framework, and platform combination, generate a se
 
 - **Agent-Specific Formatting Requirements:**
   - **Cline:** The rules file must be a well-formed Markdown (.md) file. No frontmatter required.
-  - **Cursor:** The rules file must be a well-formed MDC (.mdc) file, starting with a YAML frontmatter section containing metadata and required fields:
-    ```
-    ---
-    version: 1.0
-    author: Your Name
-    date: 2026-01-27
-    description: Brief description of what the rule does
-    globs: **/*.js, **/*.ts
-    alwaysApply: false
-    references:
-      - https://owasp.org/ASVS/
-    changelog:
-      - 2026-01-27: Initial version
-    ---
-    ```
-  - **Windsurf:** The rules file must be a Markdown (.md) file with a YAML frontmatter section containing metadata and required fields:
-    ```
-    ---
-    version: 1.0
-    author: Your Name
-    date: 2026-01-27
-    trigger: glob
-    description: Brief description of what the rule does
-    globs: **/*.js, **/*.ts
-    references:
-      - https://owasp.org/ASVS/
-    changelog:
-      - 2026-01-27: Initial version
-    ---
-    ```
-  - **Gemini Code:** The rules file must be a well-formed Markdown (.md) file. Start with a metadata block (version, author, date, references, changelog). No frontmatter required.
+  - **Cursor:** The rules file must be a well-formed MDC (.mdc) file, starting with a YAML frontmatter section containing metadata and required fields. **The frontmatter must be the very first section in the file, before any other content.**
+  - **Windsurf:** The rules file must be a Markdown (.md) file starting with a YAML frontmatter section containing metadata and required fields. The frontmatter must be the very first section in the file.
+  - **Gemini Code:**
+    - The rules file must be a well-formed Markdown (.md) file.
+    - Start with a metadata block (version, author, date, references, changelog). No frontmatter required.
+    - **Best Practice:** Place the Gemini rules file at `.gemini/security.md` in your project root. Reference this file in your main `AGENTS.md` to ensure discoverability and consistency.
   - **GitHub Copilot:** The rules file must be a well-formed Markdown (.md) file. Start with a metadata block (version, author, date, references, changelog). No frontmatter required.
   - **Claude:** The rules file must be a well-formed Markdown (.md) file. Start with a metadata block (version, author, date, references, changelog). No frontmatter required.
 
@@ -119,6 +94,7 @@ For each identified language, framework, and platform combination, generate a se
     ## Security Risks / CWEs
     (risk/CWE sections)
     ```
+    *The YAML frontmatter must be the very first section in the file.*
   - For all other agents:
     ```
     ### Metadata
@@ -140,7 +116,9 @@ For each identified language, framework, and platform combination, generate a se
 **Step 3: Output**
 
 - For each agent, place the generated rules file in the location and filename where that agent expects to find it within the repository. Use the agent’s standard conventions for file placement and naming.
-
----
-
-End of prompt. Paste this into Copilot, Gemini, Claude, or other supported agents to generate all required security rules templates for your repository.
+- **For Gemini:** Place the rules file at `.gemini/security.md` in your project root and reference it in your main `AGENTS.md`.
+- **For GitHub Copilot:** Place the rules file at .github/copilot-instructions.md in your project root to provide repository-wide context.
+- **For Cursor:** Place the rules file at .cursor/rules/security.mdc in your project root. (Use the .mdc extension to support advanced rule triggering and frontmatter).
+- **For Windsurf:** Place the rules file at .windsurf/rules/security.md in your project root to guide the Cascade engine.
+- **For Cline:** Place the rules file at .clinerules in your project root to act as the agent's persistent instructions.
+- **For Claude:** Place the rules file at CLAUDE.md in your project root (or within .claude/rules/security.md for specific Claude Code CLI configurations).
