@@ -24,32 +24,48 @@ For each identified language, framework, and platform combination, generate a se
 **Rules File Generation Instructions:**
 
 - **Required Section Order for Every Rules File:**
-  1. Metadata (version, author, date, references, changelog; for Cursor/Windsurf, include in YAML frontmatter)
+  1. Metadata (version, author, date, references, changelog; for Cursor/Windsurf, include as YAML frontmatter and place as the very first section in the file)
   2. Security Context / Threat Model
   3. Assumptions and Limitations
-  4. Agent-required frontmatter (YAML or other, only for Cursor and Windsurf; must be the very first section if present)
-  5. Foundational LLM Instructions (see below)
+  4. Foundational LLM Instructions (see below)
+  5. General Security Considerations (tailored to the tech stack; see example below)
   6. Security Risks (for IaC) or CWEs (for application code), each with required subfields, in the order listed
   7. (Optional) Additional agent-specific requirements
 
-- **Agent-Specific Formatting Requirements:**
-  - **Gemini Code:**
-    - The rules file must be a well-formed Markdown (.md) file.
-    - Start with a metadata block (version, author, date, references, changelog). No frontmatter required.
-    - **Best Practice:** Place the Gemini rules file at `.gemini/security.md` in your project root. Reference this file in your main `AGENTS.md` to ensure discoverability and consistency.
-  - **GitHub Copilot:** The rules file must be a well-formed Markdown (.md) file. Start with a metadata block (version, author, date, references, changelog). No frontmatter required.
-  - **Claude:** The rules file must be a well-formed Markdown (.md) file. Start with a metadata block (version, author, date, references, changelog). No frontmatter required.
-  - **Cursor:** The rules file must be a well-formed MDC (.mdc) file, starting with a YAML frontmatter section containing metadata and required fields. **The frontmatter must be the very first section in the file, before any other content.**
-  - **Windsurf:** The rules file must be a Markdown (.md) file starting with a YAML frontmatter section containing metadata and required fields. The frontmatter must be the very first section in the file.
-  - **Cline:** The rules file must be a well-formed Markdown (.md) file. No frontmatter required.
+- **Section Order Example:**
+    ```
+      ---
+    # (YAML frontmatter with metadata where applicable)
+    ---
+    ### Metadata
+    - version: 1.0
+    - author: Your Name
+    - date: 2026-01-27 (date of generation)
+    - references: [https://owasp.org/ASVS/]
+    - changelog: [2026-01-27: Initial version] (add today.. keep previus)
+    ## Security Context / Threat Model
+    (context)
+    ## Assumptions and Limitations
+    (assumptions)
+    ## Foundational LLM Instructions
+    (instructions)
+    ## General Security Considerations
+    (general security principles)
+    ## Security Risks / CWEs
+    (risk/CWE sections)
+    ```
 
-- **Foundational LLM Instructions (MUST be included as Section 5 in every rules file):**
-  - As a security-aware developer, generate secure code that inherently prevents top security weaknesses for the target language and framework.
-  - Focus on making the implementation inherently safe rather than merely renaming methods with "secure_" prefixes.
-  - Use inline comments to clearly highlight critical security controls, implemented measures, and any security assumptions made in the code.
-  - Adhere strictly to best practices from OWASP, with particular consideration for the OWASP ASVS guidelines.
-  - **Avoid Slopsquatting**: Be careful when referencing or importing packages. Do not guess if a package exists. Comment on any low reputation or uncommon packages you have included.
-  - These foundational instructions must appear after metadata, context, and assumptions, and after the frontmatter (if present), before any risk or CWE sections, and should be adapted for the specific language, framework, and agent as appropriate.
+- **General Security Considerations Section:**
+  - This section should summarize high-level security principles relevant to the tech stack.
+  - Example for JavaScript:
+    ```markdown
+    ## General Security Considerations
+    *   **Memory Safety**: JavaScript is a garbage-collected, memory-safe language. Focus on preventing logical vulnerabilities rather than low-level memory errors.
+    *   **Defense-in-Depth**: Implement security controls at multiple layers (frontend, backend, network) to provide comprehensive protection.
+    *   **Least Privilege**: Design components and user roles with the minimum necessary permissions to perform their functions.
+    *   **Secure by Default**: Choose libraries, frameworks, and configurations that prioritize security and safe defaults.
+    ```
+  - Adapt this section for each language/framework as appropriate.
 
 - **For infrastructure-as-code** (e.g., HCL, YAML):
   - Identify the top 7-10 security risks relevant to the language and framework.
@@ -76,49 +92,39 @@ For each identified language, framework, and platform combination, generate a se
 - **General Formatting:**
   - Each rules file must be concise, actionable, and logically structured.
   - Return only the rules file content, properly formatted for the target agent.
+  - The rules file must be a well-formed Markdown (.md) file.
   - Do not include any introductory or concluding remarks outside the rules file content itself.
-  - For MDC files, ensure the YAML frontmatter is present and well-formed, with all required fields as specified above.
-
-- **Section Order Example:**
-  - For Cursor and Windsurf:
-    ```
-    ---
-    # (YAML frontmatter with metadata)
-    ---
-    ## Security Context / Threat Model
-    (context)
-    ## Assumptions and Limitations
-    (assumptions)
-    ## Foundational LLM Instructions
-    (instructions)
-    ## Security Risks / CWEs
-    (risk/CWE sections)
-    ```
-    *The YAML frontmatter must be the very first section in the file.*
-  - For all other agents:
-    ```
-    ### Metadata
-    - version: 1.0
-    - author: Your Name
-    - date: 2026-01-27
-    - references: [https://owasp.org/ASVS/]
-    - changelog: [2026-01-27: Initial version]
-    ## Security Context / Threat Model
-    (context)
-    ## Assumptions and Limitations
-    (assumptions)
-    ## Foundational LLM Instructions
-    (instructions)
-    ## Security Risks / CWEs
-    (risk/CWE sections)
-    ```
 
 **Step 3: Output**
 
-- For each agent, place the generated rules file in the location and filename where that agent expects to find it within the repository. Use the agent’s standard conventions for file placement and naming.
-- **For Gemini:** Place the rules file at `.gemini/security.md` in your project root and reference it in your main `AGENTS.md`.
-- **For GitHub Copilot:** Place the rules file at .github/copilot-instructions.md in your project root to provide repository-wide context.
-- **For Claude:** Place the rules file at CLAUDE.md in your project root (or within .claude/rules/security.md for specific Claude Code CLI configurations).
-- **For Cursor:** Place the rules file at .cursor/rules/security.mdc in your project root. (Use the .mdc extension to support advanced rule triggering and frontmatter).
-- **For Windsurf:** Place the rules file at .windsurf/rules/security.md in your project root to guide the Cascade engine.
-- **For Cline:** Place the rules file at .clinerules in your project root to act as the agent's persistent instructions.
+- For all agents, rely on the common standard above for shared instructions and structure.
+- For each agent, here follow a clear section with only the instructions that differ from the standard.
+
+**Agent-Specific Formatting Requirements:**
+
+- **Gemini Code:**
+  - Place the generated rules file at `.gemini/security.md` in your project root and reference it in your main `AGENTS.md`.
+
+- **GitHub Copilot:**
+  - Place the generated rules file at `.github/copilot-instructions.md` in your project root to provide repository-wide context.
+
+- **Claude:**
+  - Place the generated rules file at `CLAUDE.md` in your project root (or within `.claude/rules/security.md` for specific Claude Code CLI configurations).
+
+- **Cursor:**
+  - The rules file must be a well-formed MDC (.mdc) file.
+    -   Ensure the YAML frontmatter is present, first and well-formed, with all required fields:
+      - description: "Critical security protocols and best practices for all code changes, dependency management, and repository operations."
+      - alwaysApply: true
+  - Place the generated rules file at `.cursor/rules/security.mdc` in your project root. (Use the .mdc extension to support advanced rule triggering and frontmatter).
+
+- **Windsurf:**
+  - The rules file must be a Markdown (.md) file.
+  - Ensure the YAML frontmatter is present, first and well-formed, with all required fields:
+    - description: "Critical security protocols and best practices for all code changes, dependency management, and repository operations."
+    - always_on: true
+  - Place the generated rules file at `.windsurf/rules/security.md` in your project root to guide the Cascade engine.
+
+- **Cline:**
+  - The rules file must be a well-formed Markdown (.md) file. No frontmatter required.
+  - Place the generated rules file at `.clinerules` in your project root to act as the agent's persistent instructions.
