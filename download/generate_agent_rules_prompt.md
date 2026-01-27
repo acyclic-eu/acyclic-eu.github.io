@@ -120,9 +120,9 @@ For each identified language, framework, and platform combination, generate a se
 
 - **Windsurf:**
   - The rules file must be a Markdown (.md) file.
-  - Ensure the YAML frontmatter is present, first and well-formed, with all required fields:
-    - description: "Critical security protocols and best practices for all code changes, dependency management, and repository operations."
-    - always_on: true
+    - Ensure the YAML frontmatter is present, first and well-formed, with all required fields:
+      - description: "Critical security protocols and best practices for all code changes, dependency management, and repository operations."
+      - always_on: true
   - Place the generated rules file at `.windsurf/rules/security.md` in your project root to guide the Cascade engine.
 
 - **Cline:**
