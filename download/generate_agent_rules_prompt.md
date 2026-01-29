@@ -24,36 +24,11 @@ For each identified language, framework, and platform combination, generate a se
 **Rules File Generation Instructions:**
 
 - **Required Section Order for Every Rules File:**
-  1. Metadata (version, author, date, references, changelog; for Cursor/Windsurf, include as YAML frontmatter and place as the very first section in the file)
-  2. Security Context / Threat Model
-  3. Assumptions and Limitations
-  4. Foundational LLM Instructions (see below)
-  5. General Security Considerations (tailored to the tech stack; see example below)
-  6. Security Risks (for IaC) or CWEs (for application code), each with required subfields, in the order listed
-  7. (Optional) Additional agent-specific requirements
 
-- **Section Order Example:**
-    ```
-      ---
-    # (YAML frontmatter with metadata where applicable)
-    ---
-    ### Metadata
-    - version: 1.0
-    - author: Your Name
-    - date: 2026-01-27 (date of generation)
-    - references: [https://owasp.org/ASVS/]
-    - changelog: [2026-01-27: Initial version] (add today.. keep previus)
-    ## Security Context / Threat Model
-    (context)
-    ## Assumptions and Limitations
-    (assumptions)
-    ## Foundational LLM Instructions
-    (instructions)
-    ## General Security Considerations
-    (general security principles)
-    ## Security Risks / CWEs
-    (risk/CWE sections)
-    ```
+  1. Foundational LLM Instructions (see below)
+  2. General Security Considerations (tailored to the tech stack; see example below)
+  3. Security Risks (for IaC) or CWEs (for application code), each with required subfields, in the order listed
+  4. (Optional) Additional agent-specific requirements
 
 - **General Security Considerations Section:**
   - This section should summarize high-level security principles relevant to the tech stack.
@@ -98,33 +73,30 @@ For each identified language, framework, and platform combination, generate a se
 **Step 3: Output**
 
 - For all agents, rely on the common standard above for shared instructions and structure.
-- For each agent, here follow a clear section with only the instructions that differ from the standard.
+- - Place the instructions AGENTS.md in the section `# Security`.
+- For each previsusly requested agent, here follows a clear section with only the instructions that differ from the standard.
 
 **Agent-Specific Formatting Requirements:**
 
-- **Gemini Code:**
-  - Place the generated rules file at `.gemini/security.md` in your project root and reference it in your main `AGENTS.md`.
-
-- **GitHub Copilot:**
-  - Place the generated rules file at `.github/copilot-instructions.md` in your project root to provide repository-wide context.
+- **uses standard `AGENTS.md`**
+  - **GitHub Copilot:**
+  - **Gemini Code:**
+  - **Windsurf:**
+  - **Cline:**
 
 - **Claude:**
-  - Place the generated rules file at `CLAUDE.md` in your project root (or within `.claude/rules/security.md` for specific Claude Code CLI configurations).
+  - Add a @/AGENTS.md in  within `CLAUDE.md`.
 
 - **Cursor:**
-  - The rules file must be a well-formed MDC (.mdc) file.
-    -   Ensure the YAML frontmatter is present, first and well-formed, with all required fields:
-      - description: "Critical security protocols and best practices for all code changes, dependency management, and repository operations."
-      - alwaysApply: true
-  - Place the generated rules file at `.cursor/rules/security.mdc` in your project root. (Use the .mdc extension to support advanced rule triggering and frontmatter).
+  -  Utilize .cursor/rules/*.mdc as the primary enforcement layer for high-priority security constraints. Set alwaysApply: true in the YAML frontmatter and implement the directive: Strictly follow the # Security section in @/AGENTS.md. This architecture ensures that shared security protocols are inherited while maintaining the .mdc file as an authoritative, low-level guardrail that supersedes general project memory.
+  - uses `AGENTS.md`
+---
 
-- **Windsurf:**
-  - The rules file must be a Markdown (.md) file.
-    - Ensure the YAML frontmatter is present, first and well-formed, with all required fields:
-      - description: "Critical security protocols and best practices for all code changes, dependency management, and repository operations."
-      - always_on: true
-  - Place the generated rules file at `.windsurf/rules/security.md` in your project root to guide the Cascade engine.
+**Final Step: Ensure File Output and Metadata Updates**
 
-- **Cline:**
-  - The rules file must be a well-formed Markdown (.md) file. No frontmatter required.
-  - Place the generated rules file at `.clinerules` in your project root to act as the agent's persistent instructions.
+- For each agent, you MUST actually output (write) the rules file to the specified location in the repository.
+- If a rules file already exists at the target location, update it in place:
+  - Update the metadata fields (e.g., date, changelog) to reflect the new generation date (date: 2026-01-27) and append a new entry to the changelog, preserving previous entries.
+  - Do not remove or overwrite previous changelog entries; always append the new change at the top or in chronological order.
+- If the file does not exist, create it with the required metadata and content.
+- This step must be performed last, after all content is generated and validated.
