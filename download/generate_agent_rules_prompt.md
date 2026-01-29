@@ -20,53 +20,34 @@ You are a **Senior Security Architect and DevSecOps Engineer**. Your task is to 
 - **Required Section Order for the agents.md File:**
 
   1. Foundational LLM Instructions
-     * Define the agent persona as a **Senior Security Architect**.
-  2. General Security Considerations (tailored to the tech stack, using best practices for the language. Using a format as the following example)
-     - Example for Javascript:
-       * **Memory Safety**: JavaScript is a garbage-collected, memory-safe language. Focus on preventing logical vulnerabilities rather than low-level memory errors.
-       * **Defense-in-Depth**: Implement security controls at multiple layers (frontend, backend, network) to provide comprehensive protection.
-       * **Least Privilege**: Design components and user roles with the minimum necessary permissions to perform their functions.
-       * **Secure by Default**: Choose libraries, frameworks, and configurations that prioritize security and safe defaults.
-
-  3. Security Risks CWEs, each with required subfields, in the order listed.
-     - Do this tailord for the tech-stack and project type
+     * Include this exactly:
+       * As a security-aware developer, generate secure JavaScript code using React that inherently prevents top security weaknesses.
+         Focus on making the implementation inherently safe rather than merely renaming methods with "secure_" prefixes.
+         Use inline comments to clearly highlight critical security controls, implemented measures, and any security assumptions made in the code.
+         Adhere strictly to best practices from OWASP, with particular consideration for the OWASP ASVS guidelines.
+         Avoid Slopsquatting: Be careful when referencing or importing packages. Do not guess if a package exists. Comment on any low reputation or uncommon packages you have included.
+  2. Security Risks CWEs, each with required subfields, in the order listed.
+     - Do this tailored for the tech-stack and project type
         - Identify the top 7-10 security risks relevant to the language and framework.
         - Do **not** include code examples.
         - Structure the file with clear, numbered headings for each risk, in the order you list them.
         - For each risk, include:
           1. Risk Category
           2. Summary (one sentence)
-          3. Mitigation Rule (actionable, cloud-agnostic, with provider-specific notes if needed)
+          3. Mitigation Rule (actionable, for the tech-stack/project type, with provider-specific notes if needed)
           4. References (links to standards, docs, etc.)
 
 
 **Step 3: Output**
 
 - For all agents, rely on the common standard above for shared instructions and structure.
-  - Place the instructions AGENTS.md in the section `# Security`.
+  - Place the instructions AGENTS.md in the section `## Security`.
 
 - For each agent, here follows a clear section with only the instructions that differ from the standard.
-
-**Agent-Specific Formatting Requirements:**
-
-- **uses standard `AGENTS.md`**
-  - **GitHub Copilot:**
-  - **Gemini Code:**
-  - **Windsurf:**
-  - **Cline:**
-
-- **Claude:**
-  - Add a @/AGENTS.md in  within `CLAUDE.md`. With the following instruction: Strictly follow the # Security section in @/AGENTS.md.
-
-- **Cursor:**
-  - Utilize .cursor/rules/security.mdc as the primary enforcement layer for high-priority security constraints.
-  - Set alwaysApply: true in the YAML frontmatter and implement the directive: Strictly follow the # Security section in @/AGENTS.md.
-  - uses `AGENTS.md`
 ---
 
 **Final Step: Ensure File Output and Metadata Updates**
 
-- For each agent, you MUST actually output (write) the rules file to the specified location in the repository.
 - If a rules file already exists at the target location, update it in place. Keeping non-security-related instructions in place.
 - If the file does not exist, create it with the required metadata and content.
 - This step must be performed last, after all content is generated and validated.
