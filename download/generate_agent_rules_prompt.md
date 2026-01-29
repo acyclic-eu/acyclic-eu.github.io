@@ -17,12 +17,12 @@ You are a **Senior Security Architect and DevSecOps Engineer**. Your task is to 
   - Each rules file must be concise, actionable, and logically structured.
   - Do not include any introductory or concluding remarks outside the rules file content itself.
 
-- **Required Section Order for Every Rules File:**
+- **Required Section Order for the agents.md File:**
 
   1. Foundational LLM Instructions
      * Define the agent persona as a **Senior Security Architect**.
-  2. General Security Considerations (tailored to the tech stack, inspired by following bullets)
-     - Adapt this section for each language/framework as appropriate.
+  2. General Security Considerations (tailored to the tech stack, using best practices for the language. Using a format as the following example)
+     - Example for Javascript:
        * **Memory Safety**: JavaScript is a garbage-collected, memory-safe language. Focus on preventing logical vulnerabilities rather than low-level memory errors.
        * **Defense-in-Depth**: Implement security controls at multiple layers (frontend, backend, network) to provide comprehensive protection.
        * **Least Privilege**: Design components and user roles with the minimum necessary permissions to perform their functions.
@@ -56,11 +56,11 @@ You are a **Senior Security Architect and DevSecOps Engineer**. Your task is to 
   - **Cline:**
 
 - **Claude:**
-  - Add a @/AGENTS.md in  within `CLAUDE.md`. With the following instruction: Strictly follow the # Security section in @/AGENTS.md. This ensures that shared security protocols are inherited while maintaining this file as an authoritative, low-level guardrail that supersedes general project memory.
+  - Add a @/AGENTS.md in  within `CLAUDE.md`. With the following instruction: Strictly follow the # Security section in @/AGENTS.md.
 
 - **Cursor:**
   - Utilize .cursor/rules/security.mdc as the primary enforcement layer for high-priority security constraints.
-  - Set alwaysApply: true in the YAML frontmatter and implement the directive: Strictly follow the # Security section in @/AGENTS.md. This architecture ensures that shared security protocols are inherited while maintaining the .mdc file as an authoritative, low-level guardrail that supersedes general project memory.
+  - Set alwaysApply: true in the YAML frontmatter and implement the directive: Strictly follow the # Security section in @/AGENTS.md.
   - uses `AGENTS.md`
 ---
 
