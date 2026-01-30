@@ -19,7 +19,7 @@ You are a **Senior Security Architect and DevSecOps Engineer**. Your task is to 
 
 - **Required Section Order for the agents.md File:**
   1. Foundational LLM Instructions
-     * Include this exactly:
+     * Include this as close as posible while adaptiong for the current tech stack and project type:
        * As a security-aware developer, generate secure JavaScript code using React that inherently prevents top security weaknesses.
          Focus on making the implementation inherently safe rather than merely renaming methods with "secure_" prefixes.
          Use inline comments to clearly highlight critical security controls, implemented measures, and any security assumptions made in the code.
