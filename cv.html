@@ -248,25 +248,33 @@ permalink: /cv/
     return tagsParam.split(',').map(tag => tag.trim()).filter(Boolean);
   }
 
-  window.addEventListener('DOMContentLoaded', function() {
-    setTimeout(() => {
-      // Select tags from URL parameter
-      const urlTags = getTagsFromUrl();
-      if (urlTags.length > 0) {
-        document.querySelectorAll('tag-toggle').forEach(toggle => {
-          if (urlTags.includes(toggle.name.trim())) {
-            toggle.checked = true;
-          }
-        });
-      }
-
+  // Initialize once custom elements are registered
+  Promise.all([
+    customElements.whenDefined('tag-toggle'),
+    customElements.whenDefined('time-filter')
+  ]).then(() => {
+    // Apply URL tag state before binding listeners
+    const urlTags = getTagsFromUrl();
+    if (urlTags.length > 0) {
       document.querySelectorAll('tag-toggle').forEach(toggle => {
-        toggle.addEventListener('change', () => {
-          onTagFilterChange();
-        })
-      })
-    })
-  })
+        if (urlTags.includes(toggle.name.trim())) {
+          toggle.checked = true;
+        }
+      });
+    }
+
+    // Bind filter listeners
+    document.querySelectorAll('tag-toggle').forEach(toggle => {
+      toggle.addEventListener('change', () => onTagFilterChange());
+    });
+    const timeFilter = document.getElementById('experience-filter');
+    if (timeFilter) {
+      timeFilter.addEventListener('change', () => onFilterChange());
+    }
+
+    // Run initial filter
+    onFilterChange();
+  });
 </script>
 <style>
   :root {
