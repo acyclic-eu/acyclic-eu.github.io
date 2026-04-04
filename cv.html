@@ -269,8 +269,8 @@ permalink: /cv/
       timeFilter.addEventListener('change', () => onFilterChange());
     }
 
-    // Run initial filter
-    onFilterChange();
+    // Run initial filter (recomputes tagFilteredCvData and time slider max)
+    onTagFilterChange();
   });
 </script>
 <style>
