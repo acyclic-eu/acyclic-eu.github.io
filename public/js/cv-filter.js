@@ -1,4 +1,4 @@
-import { passesTagFiltering, sortByDateDesc } from './cv-filter-utils.js';
+import { passesTagFiltering, sortByDateDesc, passesTimeFilter, applyTagsAndSort } from './cv-filter-utils.js';
 
 let cvData = null;
 let filteredCvData = null;
@@ -39,16 +39,6 @@ function updateMaxYears() {
 }
 
 
-function applyTagsAndSort(experiences, selectedTags) {
-  return experiences
-    .filter(exp => passesTagFiltering(exp.tags, selectedTags))
-    .sort(sortByDateDesc)
-    .map(exp => ({
-      ...exp,
-      descriptions: (exp.descriptions || []).filter(desc => passesTagFiltering(desc.tags, selectedTags))
-    }));
-}
-
 function filterTagCvData() {
   if (!cvData) return null;
   return { ...cvData, experiences: applyTagsAndSort(cvData.experiences, getSelectedTags()) };
@@ -58,14 +48,7 @@ function filterCvData() {
   if (!cvData) return null;
   const selectedTags = getSelectedTags();
   const yearDepth = parseInt(document.getElementById('experience-filter')?.value || '0', 10);
-  const today = new Date();
-  const cutoffDate = new Date(today.getFullYear() - yearDepth, today.getMonth(), today.getDate());
-
-  const timeFiltered = cvData.experiences.filter(exp => {
-    const isCurrent = exp.end_date === 'Present' || !exp.end_date;
-    return yearDepth === 0 ? isCurrent : (isCurrent || new Date(exp.end_date) >= cutoffDate);
-  });
-
+  const timeFiltered = cvData.experiences.filter(exp => passesTimeFilter(exp, yearDepth));
   return { ...cvData, experiences: applyTagsAndSort(timeFiltered, selectedTags) };
 }
 
