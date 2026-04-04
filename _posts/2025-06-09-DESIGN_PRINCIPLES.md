@@ -39,25 +39,23 @@ This project follows established software design paradigms to ensure maintainabi
 10.1 [Continuous Delivery](https://continuousdelivery.com/)
 
 
-## 12. KISS (Keep It Simple, Stupid)
-12.1 [KISS Principle (Wikipedia)](https://en.wikipedia.org/wiki/KISS_principle)
+## 11. KISS (Keep It Simple, Stupid)
+11.1 [KISS Principle (Wikipedia)](https://en.wikipedia.org/wiki/KISS_principle)
 
-## 13. Principle of Least Astonishment
-13.1 [Principle of Least Astonishment (Wikipedia)](https://en.wikipedia.org/wiki/Principle_of_least_astonishment)
+## 12. Principle of Least Astonishment
+12.1 [Principle of Least Astonishment (Wikipedia)](https://en.wikipedia.org/wiki/Principle_of_least_astonishment)
 
-## 14. Separation of Concerns
-14.1 [Separation of Concerns (Wikipedia)](https://en.wikipedia.org/wiki/Separation_of_concerns)
+## 13. Separation of Concerns
+13.1 [Separation of Concerns (Wikipedia)](https://en.wikipedia.org/wiki/Separation_of_concerns)
 
+## 14. Composition Over Inheritance
+14.1 [Composition Over Inheritance (Wikipedia)](https://en.wikipedia.org/wiki/Composition_over_inheritance)
 
+## 15. Best Simple System for Now
+15.1 [Best Simple System for Now (Dan North)](https://dannorth.net/best-simple-system-for-now/)
 
-## 15. Composition Over Inheritance
-15.1 [Composition Over Inheritance (Wikipedia)](https://en.wikipedia.org/wiki/Composition_over_inheritance)
-
-## 16. Best Simple System for Now
-16.1 [Best Simple System for Now (Dan North)](https://dannorth.net/best-simple-system-for-now/)
-
-## 17. Minimum Viable Product (MVP)
-17.1 [Minimum Viable Product (Wikipedia)](https://en.wikipedia.org/wiki/Minimum_viable_product)
+## 16. Minimum Viable Product (MVP)
+16.1 [Minimum Viable Product (Wikipedia)](https://en.wikipedia.org/wiki/Minimum_viable_product)
 
 ---
 
