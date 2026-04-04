@@ -110,6 +110,7 @@ function filterCvData() {
 
 function renderCvContent() {
   const container = document.getElementById('cv-content');
+  if (!container) return;
   if (!filteredCvData || !filteredCvData.experiences) {
     container.innerHTML = '<em>No experiences to display.</em>';
     return;
