@@ -22,5 +22,3 @@
 - Branch from `main`; name branches `fix/`, `refactor/`, `docs/`, `feat/`
 - Author: Patrik Gustafsson `<patrik@acyclic.eu>`
 - No AI attribution in commits or PRs
-- `wwwBase.css` is shared across acyclic.eu, howtoknow.eu, regin.se — only add styles that apply to all three
-- Site-specific styles go in `justYours.css`

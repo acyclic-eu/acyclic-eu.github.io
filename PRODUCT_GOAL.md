@@ -23,4 +23,3 @@ Recruiters, clients, and collaborators assessing fit for a specific engagement.
 
 - Personal portfolio and blog — not a product for other users
 - No backend, no auth, no user data
-- Three sites share a base: **acyclic.eu**, **howtoknow.eu**, **regin.se** — common infrastructure lives in [`public/css/wwwBase.css`](public/css/wwwBase.css); site-specific overrides in `public/css/justYours.css`
