@@ -27,7 +27,7 @@ export default define({
         try {
           return JSON.parse(val);
         } catch (e) {
-          return [];
+          return [val.trim()];
         }
       }
       // If val is a non-empty string but not valid JSON, treat as single description
