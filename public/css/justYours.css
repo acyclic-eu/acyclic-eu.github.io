@@ -1,6 +1,6 @@
 
-/* CV component theme tokens */
-:root {
+/* CV component theme tokens — scoped to CV page to avoid global collisions */
+.cv-page {
   --secondary: #d291ff;
   --secondary-contrast: black;
   --button-bg: #f0f0f0;
