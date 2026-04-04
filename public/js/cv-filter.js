@@ -1,3 +1,5 @@
+import { passesTagFiltering, parseDate, sortByDateDesc } from './cv-filter-utils.js';
+
 let cvData = null;
 let filteredCvData = null;
 let tagFilteredCvData = null;
@@ -36,31 +38,6 @@ function updateMaxYears() {
   }
 }
 
-function passesTagFiltering(tagsAttr, selectedTags) {
-  var tags = tagsAttr ? decodeURIComponent(tagsAttr).split(',').map(tag => tag.trim()) : [];
-  if (!tags.length) {
-    return true;
-  }
-  if (selectedTags.length === 0) {
-    return false;
-  }
-  return tags.some(tag => selectedTags.includes(tag));
-}
-
-function parseDate(dateStr, fallback) {
-  if (!dateStr || dateStr === "Present") return new Date(8640000000000000);
-  const d = new Date(dateStr);
-  return isNaN(d) ? fallback : d;
-}
-
-function sortByDateDesc(a, b) {
-  const aEnd = parseDate(a.end_date, new Date(0));
-  const bEnd = parseDate(b.end_date, new Date(0));
-  if (bEnd - aEnd !== 0) return bEnd - aEnd;
-  const aStart = parseDate(a.start_date, new Date(0));
-  const bStart = parseDate(b.start_date, new Date(0));
-  return bStart - aStart;
-}
 
 function filterTagCvData() {
   if (!cvData) return null;
@@ -240,6 +217,9 @@ Promise.all([
   if (timeFilter) {
     timeFilter.addEventListener('change', () => onFilterChange());
   }
+
+  // Bind export button
+  document.getElementById('export-markdown')?.addEventListener('click', exportToMarkdown);
 
   // Run initial filter (recomputes tagFilteredCvData and time slider max)
   onTagFilterChange();
