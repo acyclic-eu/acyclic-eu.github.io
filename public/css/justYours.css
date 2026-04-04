@@ -1,4 +1,12 @@
 
+/* CV component theme tokens */
+:root {
+  --secondary: #d291ff;
+  --secondary-contrast: black;
+  --button-bg: #f0f0f0;
+  --button-text: black;
+}
+
 body {
   background-color: #f5f5f5; /* subtle light grey */
 }
