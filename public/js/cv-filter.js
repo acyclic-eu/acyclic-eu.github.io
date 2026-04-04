@@ -226,7 +226,7 @@ Promise.all([
   // Apply URL tag state before binding listeners
   const urlTags = getTagsFromUrl();
   if (urlTags.length > 0) {
-    document.querySelectorAll('tag-toggle').forEach(toggle => {
+    document.querySelectorAll('#cv-tags-form tag-toggle').forEach(toggle => {
       if (urlTags.includes(toggle.name.trim())) {
         toggle.checked = true;
       }
@@ -234,7 +234,7 @@ Promise.all([
   }
 
   // Bind filter listeners
-  document.querySelectorAll('tag-toggle').forEach(toggle => {
+  document.querySelectorAll('#cv-tags-form tag-toggle').forEach(toggle => {
     toggle.addEventListener('change', () => onTagFilterChange());
   });
   const timeFilter = document.getElementById('experience-filter');
