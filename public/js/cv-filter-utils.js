@@ -24,3 +24,20 @@ export function sortByDateDesc(a, b) {
   const bStart = parseDate(b.start_date, new Date(0));
   return bStart - aStart;
 }
+
+export function passesTimeFilter(exp, yearDepth, today = new Date()) {
+  const isCurrent = exp.end_date === 'Present' || !exp.end_date;
+  if (yearDepth === 0) return isCurrent;
+  const cutoffDate = new Date(today.getFullYear() - yearDepth, today.getMonth(), today.getDate());
+  return isCurrent || new Date(exp.end_date) >= cutoffDate;
+}
+
+export function applyTagsAndSort(experiences, selectedTags) {
+  return experiences
+    .filter(exp => passesTagFiltering(exp.tags, selectedTags))
+    .sort(sortByDateDesc)
+    .map(exp => ({
+      ...exp,
+      descriptions: (exp.descriptions || []).filter(desc => passesTagFiltering(desc.tags, selectedTags))
+    }));
+}
