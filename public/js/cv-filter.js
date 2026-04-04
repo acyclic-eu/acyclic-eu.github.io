@@ -39,50 +39,34 @@ function updateMaxYears() {
 }
 
 
+function applyTagsAndSort(experiences, selectedTags) {
+  return experiences
+    .filter(exp => passesTagFiltering(exp.tags, selectedTags))
+    .sort(sortByDateDesc)
+    .map(exp => ({
+      ...exp,
+      descriptions: (exp.descriptions || []).filter(desc => passesTagFiltering(desc.tags, selectedTags))
+    }));
+}
+
 function filterTagCvData() {
   if (!cvData) return null;
-  const selectedTags = Array.from(document.querySelectorAll('#cv-tags-form tag-toggle'))
-    .filter(toggle => toggle.checked)
-    .map(toggle => (toggle.name || toggle.getAttribute('name') || '').trim());
-
-  return {
-    ...cvData,
-    experiences: cvData.experiences
-      .filter(exp => passesTagFiltering(exp.tags, selectedTags))
-      .sort(sortByDateDesc)
-      .map(exp => ({
-        ...exp,
-        descriptions: (exp.descriptions || []).filter(desc => passesTagFiltering(desc.tags, selectedTags))
-      }))
-  };
+  return { ...cvData, experiences: applyTagsAndSort(cvData.experiences, getSelectedTags()) };
 }
 
 function filterCvData() {
   if (!cvData) return null;
-  const selectedTags = Array.from(document.querySelectorAll('#cv-tags-form tag-toggle'))
-    .filter(toggle => toggle.checked)
-    .map(toggle => (toggle.name || toggle.getAttribute('name') || '').trim());
+  const selectedTags = getSelectedTags();
   const yearDepth = parseInt(document.getElementById('experience-filter')?.value || '0', 10);
   const today = new Date();
-  const cutoffYear = today.getFullYear() - yearDepth;
-  const cutoffDate = new Date(cutoffYear, today.getMonth(), today.getDate());
+  const cutoffDate = new Date(today.getFullYear() - yearDepth, today.getMonth(), today.getDate());
 
-  return {
-    ...cvData,
-    experiences: cvData.experiences
-      .filter(exp => {
-        let isCurrent = exp.end_date === "Present" || !exp.end_date;
-        let endDateObj = isCurrent ? today : new Date(exp.end_date);
-        let passesDate = yearDepth === 0 ? isCurrent : (isCurrent || endDateObj >= cutoffDate);
-        if (!passesDate) return false;
-        return passesTagFiltering(exp.tags, selectedTags);
-      })
-      .sort(sortByDateDesc)
-      .map(exp => ({
-        ...exp,
-        descriptions: (exp.descriptions || []).filter(desc => passesTagFiltering(desc.tags, selectedTags))
-      }))
-  };
+  const timeFiltered = cvData.experiences.filter(exp => {
+    const isCurrent = exp.end_date === 'Present' || !exp.end_date;
+    return yearDepth === 0 ? isCurrent : (isCurrent || new Date(exp.end_date) >= cutoffDate);
+  });
+
+  return { ...cvData, experiences: applyTagsAndSort(timeFiltered, selectedTags) };
 }
 
 function renderCvContent() {
