@@ -2,6 +2,6 @@
   "name": "acyclic-eu",
   "type": "module",
   "scripts": {
-    "test": "node --test public/js/cv-filter-utils.test.js"
+    "test": "node --test 'public/js/**/*.test.js'"
   }
 }
