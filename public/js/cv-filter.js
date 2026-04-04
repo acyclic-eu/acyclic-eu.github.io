@@ -66,7 +66,7 @@ function filterTagCvData() {
   if (!cvData) return null;
   const selectedTags = Array.from(document.querySelectorAll('#cv-tags-form tag-toggle'))
     .filter(toggle => toggle.checked)
-    .map(toggle => toggle.name.trim());
+    .map(toggle => (toggle.name || toggle.getAttribute('name') || '').trim());
 
   return {
     ...cvData,
@@ -84,7 +84,7 @@ function filterCvData() {
   if (!cvData) return null;
   const selectedTags = Array.from(document.querySelectorAll('#cv-tags-form tag-toggle'))
     .filter(toggle => toggle.checked)
-    .map(toggle => toggle.name.trim());
+    .map(toggle => (toggle.name || toggle.getAttribute('name') || '').trim());
   const yearDepth = parseInt(document.getElementById('experience-filter')?.value || '0', 10);
   const today = new Date();
   const cutoffYear = today.getFullYear() - yearDepth;
@@ -151,7 +151,7 @@ function onTagFilterChange() {
 function getSelectedTags() {
   return Array.from(document.querySelectorAll('#cv-tags-form tag-toggle'))
     .filter(toggle => toggle.checked)
-    .map(toggle => toggle.name.trim());
+    .map(toggle => (toggle.name || toggle.getAttribute('name') || '').trim());
 }
 
 function exportToMarkdown() {
