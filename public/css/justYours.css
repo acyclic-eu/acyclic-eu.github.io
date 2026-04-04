@@ -26,7 +26,42 @@ body {
   }
 }
 
-/* Style for CV page */
+/* CV page */
+.cv-header {
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+}
+
+#cv-name {
+  margin-bottom: 0;
+}
+
+#cv-title {
+  margin-bottom: 0;
+  font-weight: normal;
+  color: #777;
+  display: none;
+}
+
+.cv-filter-footer {
+  margin-top: 1em;
+}
+
+.cv-export-wrapper {
+  text-align: right;
+  margin-top: 1em;
+}
+
+#export-markdown {
+  padding: 0.5em 1em;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* CV tag form */
 #cv-tags-form label {
   display: inline-block;
   margin: 0.5em;
