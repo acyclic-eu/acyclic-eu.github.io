@@ -28,8 +28,13 @@ export function sortByDateDesc(a, b) {
 export function passesTimeFilter(exp, yearDepth, today = new Date()) {
   const isCurrent = exp.end_date === 'Present' || !exp.end_date;
   if (yearDepth === 0) return isCurrent;
-  const cutoffDate = new Date(today.getFullYear() - yearDepth, today.getMonth(), today.getDate());
-  return isCurrent || new Date(exp.end_date) >= cutoffDate;
+  const cutoffDate = new Date(Date.UTC(
+    today.getUTCFullYear() - yearDepth,
+    today.getUTCMonth(),
+    today.getUTCDate()
+  ));
+  const endDate = parseDate(exp.end_date, new Date(0));
+  return isCurrent || endDate >= cutoffDate;
 }
 
 export function applyTagsAndSort(experiences, selectedTags) {

@@ -55,7 +55,7 @@ test('parseDate', async (t) => {
 });
 
 test('passesTimeFilter', async (t) => {
-  const TODAY = new Date('2024-06-01');
+  const TODAY = new Date(Date.UTC(2024, 5, 1));
 
   await t.test('yearDepth=0 passes current role (Present)', () => {
     assert.equal(passesTimeFilter({ end_date: 'Present' }, 0, TODAY), true);
