@@ -13,16 +13,16 @@ body {
 
 /* Make the view wider */
 .container {
-  max-width: 42rem !important; /* Increase from 38rem */
+  max-width: 42rem;
 }
 @media (min-width: 38em) {
   .container {
-    max-width: 46rem !important; /* Increase from 32rem */
+    max-width: 46rem;
   }
 }
 @media (min-width: 56em) {
   .container {
-    max-width: 52rem !important; /* Increase from 38rem */
+    max-width: 52rem;
   }
 }
 
