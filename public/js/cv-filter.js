@@ -112,29 +112,28 @@ function renderCvContent() {
   const container = document.getElementById('cv-content');
   if (!container) return;
   if (!filteredCvData || !filteredCvData.experiences) {
-    container.innerHTML = '<em>No experiences to display.</em>';
+    const msg = document.createElement('em');
+    msg.textContent = 'No experiences to display.';
+    container.replaceChildren(msg);
     return;
   }
-  container.innerHTML = filteredCvData.experiences.map(exp => {
-    const traits = exp.traits ? exp.traits.join(', ') : '';
-    const tags = exp.tags ? exp.tags.join(',') : '';
-    const employmentType = exp.employment_type || 'Employed';
-    const endDate = exp.end_date || 'Present';
-    return `
-      <cv-experience
-        title="${exp.title}"
-        company="${exp.company}"
-        traits="${traits}"
-        location="${exp.location || 'N/A'}"
-        start-date="${exp.start_date || 'N/A'}"
-        end-date="${endDate}"
-        employment-type="${employmentType}"
-        exp-tags="${encodeURIComponent(tags)}"
-        descriptions="${JSON.stringify(exp.descriptions.map((desc) => desc.text)).replace(/"/g, '&quot;')}"
-        class="experience"
-      ></cv-experience>
-    `;
-  }).join('');
+
+  const fragment = document.createDocumentFragment();
+  filteredCvData.experiences.forEach(exp => {
+    const el = document.createElement('cv-experience');
+    el.setAttribute('title', exp.title || '');
+    el.setAttribute('company', exp.company || '');
+    el.setAttribute('traits', exp.traits ? exp.traits.join(', ') : '');
+    el.setAttribute('location', exp.location || 'N/A');
+    el.setAttribute('start-date', exp.start_date || 'N/A');
+    el.setAttribute('end-date', exp.end_date || 'Present');
+    el.setAttribute('employment-type', exp.employment_type || 'Employed');
+    el.setAttribute('exp-tags', encodeURIComponent(exp.tags ? exp.tags.join(',') : ''));
+    el.setAttribute('descriptions', JSON.stringify(exp.descriptions.map(desc => desc.text)));
+    el.className = 'experience';
+    fragment.appendChild(el);
+  });
+  container.replaceChildren(fragment);
 }
 
 function onFilterChange() {
