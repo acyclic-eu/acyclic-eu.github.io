@@ -38,10 +38,7 @@ permalink: /cv/
       cvData = data;
       tagFilteredCvData = filterTagCvData();
       updateMaxYears();
-      filteredCvData = filterCvData();
-      console.log('cv:', cvData);
-      console.log('tagFilteredCvData:', tagFilteredCvData);
-      console.log('filteredCvData:', filteredCvData);
+      onFilterChange();
     })
     .catch(err => console.error('Failed to load cv.json', err));
 
