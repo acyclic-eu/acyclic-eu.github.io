@@ -1,4 +1,4 @@
-import { passesTagFiltering, parseDate, sortByDateDesc } from './cv-filter-utils.js';
+import { passesTagFiltering, sortByDateDesc } from './cv-filter-utils.js';
 
 let cvData = null;
 let filteredCvData = null;
