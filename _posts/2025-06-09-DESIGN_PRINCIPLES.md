@@ -50,14 +50,14 @@ This project follows established software design paradigms to ensure maintainabi
 
 
 
-## 17. Minimum Viable Product (MVP)
-17.1 [Minimum Viable Product (Wikipedia)](https://en.wikipedia.org/wiki/Minimum_viable_product)
+## 15. Composition Over Inheritance
+15.1 [Composition Over Inheritance (Wikipedia)](https://en.wikipedia.org/wiki/Composition_over_inheritance)
 
 ## 16. Best Simple System for Now
 16.1 [Best Simple System for Now (Dan North)](https://dannorth.net/best-simple-system-for-now/)
 
-## 15. Composition Over Inheritance
-15.1 [Composition Over Inheritance (Wikipedia)](https://en.wikipedia.org/wiki/Composition_over_inheritance)
+## 17. Minimum Viable Product (MVP)
+17.1 [Minimum Viable Product (Wikipedia)](https://en.wikipedia.org/wiki/Minimum_viable_product)
 
 ---
 
