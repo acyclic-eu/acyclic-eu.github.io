@@ -48,7 +48,8 @@ function filterCvData() {
   if (!cvData) return null;
   const selectedTags = getSelectedTags();
   const yearDepth = parseInt(document.getElementById('experience-filter')?.value || '0', 10);
-  const timeFiltered = cvData.experiences.filter(exp => passesTimeFilter(exp, yearDepth));
+  const today = new Date();
+  const timeFiltered = cvData.experiences.filter(exp => passesTimeFilter(exp, yearDepth, today));
   return { ...cvData, experiences: applyTagsAndSort(timeFiltered, selectedTags) };
 }
 
