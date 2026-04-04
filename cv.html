@@ -5,9 +5,9 @@ permalink: /cv/
 ---
 <script defer src="/public/js/cv-filter.js"></script>
 
-<div style="display: flex; align-items: baseline; gap: 15px;">
-  <h1 style="margin-bottom: 0;" id="cv-name">{{ site.data.cv.name }}</h1>
-  <h3 id="cv-title" style="margin-bottom: 0; font-weight: normal; color: #777; display: none;">Curriculum Vitae</h3>
+<div class="cv-header">
+  <h1 id="cv-name">{{ site.data.cv.name }}</h1>
+  <h3 id="cv-title">Curriculum Vitae</h3>
 </div>
 
 
@@ -30,7 +30,7 @@ permalink: /cv/
   <!-- No tag filters available -->
   <div><em>No filters available</em></div>
   {% endif %}
-  <div style="margin-top:1em;">
+  <div class="cv-filter-footer">
     <time-filter
       id="experience-filter"
       value="10"
@@ -40,8 +40,8 @@ permalink: /cv/
       minLabel="Current only"
       maxLabel="All experience"
     ></time-filter>
-    <div style="text-align: right; margin-top: 1em;">
-      <button id="export-markdown" class="btn" style="padding: 0.5em 1em; background-color: #f5f5f5; border: 1px solid #ddd; border-radius: 3px; cursor: pointer;" onclick="exportToMarkdown()">Export as Markdown</button>
+    <div class="cv-export-wrapper">
+      <button id="export-markdown" class="btn" onclick="exportToMarkdown()">Export as Markdown</button>
     </div>
   </div>
 </form>
