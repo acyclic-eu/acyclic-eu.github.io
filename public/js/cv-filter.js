@@ -85,7 +85,7 @@ function filterCvData() {
   const selectedTags = Array.from(document.querySelectorAll('#cv-tags-form tag-toggle'))
     .filter(toggle => toggle.checked)
     .map(toggle => toggle.name.trim());
-  const yearDepth = parseInt(document.getElementById('experience-filter')?.value || '0');
+  const yearDepth = parseInt(document.getElementById('experience-filter')?.value || '0', 10);
   const today = new Date();
   const cutoffYear = today.getFullYear() - yearDepth;
   const cutoffDate = new Date(cutoffYear, today.getMonth(), today.getDate());
