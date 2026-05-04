@@ -29,6 +29,13 @@ version:          0.0.2
 github:
   repo:           https://github.com/acyclic-eu/acyclic-eu.github.io
 
+exclude:
+  - AGENTS.md
+  - LICENSE.md
+  - PRODUCT_GOAL.md
+  - README.md
+  - toc.md
+
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
