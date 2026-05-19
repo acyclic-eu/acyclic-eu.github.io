@@ -63,4 +63,4 @@ curl -fsSL https://acyclic.eu/eijii/install.sh | bash
 
 ## Source
 
-[github.com/acyclic-eu/eijii](https://github.com/acyclic-eu/eijii)
+Source is not public.
