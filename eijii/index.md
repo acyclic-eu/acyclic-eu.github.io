@@ -51,7 +51,8 @@ It will change without notice. It may corrupt your workflow files, spawn process
 1. Download the `.dmg` from a channel above
 2. Open it and drag **eijii.app** to `/Applications`
 3. Launch eijii from Spotlight - it will start the daemon automatically on first run
-4. To also install the TUI and `eijii` CLI: open eijii.app, open the menu `⋮` and choose **Install CLI tools**
+4. **First launch**: macOS will block it - right-click → Open → Open anyway (or run `xattr -cr /Applications/eijii.app`)
+5. To also install the TUI and `eijii` CLI: open eijii.app, open the menu `⋮` and choose **Install CLI tools**
 
 ### TUI only
 
