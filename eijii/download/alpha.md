@@ -8,7 +8,11 @@ permalink: /eijii/download/alpha/
 
 **Channel:** alpha - latest build, updated up to once per hour
 
-> **Extra warning.** Raw edge. No version name. No promises. Definitely tried to kill a cat. If it breaks you were warned twice.
+> **You have been warned. Then warned again. This is the third warning.**
+>
+> alpha is raw, unnamed, and untested. It has no version number because no one wanted to claim it. It will corrupt your config, orphan your processes, eat files you cared about, and invoke things that should not be invoked. Running alpha has been known to summon dragons, set houses on fire, and cause neighbouring wifi networks to disconnect out of sympathy.
+>
+> If it breaks, you were warned three times. We feel nothing.
 
 <div id="build-meta" style="font-size:0.85em;color:#c04;margin:1em 0"></div>
 

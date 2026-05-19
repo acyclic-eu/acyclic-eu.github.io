@@ -8,7 +8,13 @@ permalink: /eijii/download/beta/
 
 **Channel:** beta - latest named version
 
-> This software may try to kill your cat. A version number exists. That is the extent of the guarantee.
+> beta is experimental software under active development.
+>
+> It will change without notice. It may corrupt your workflow files, spawn processes you did not ask for, forget sessions that mattered, and eat config you carefully tuned. There is no guarantee of backwards compatibility between versions.
+>
+> It will also try to kill your cat. The version number does not change this. It just means someone was willing to put their name on it.
+>
+> **Use at your own risk. We are not responsible for lost work, confused cats, or existential dread caused by watching too many AI agents at once.**
 
 <div id="build-meta" style="font-size:0.85em;color:#888;margin:1em 0"></div>
 
