@@ -24,6 +24,16 @@ It will change without notice. It may corrupt your workflow files, spawn process
 
 ---
 
+## Screenshots
+
+### Sessions
+![eijii TUI - Sessions view](/public/img/eijii/tui-sessions.png)
+
+### Tasks
+![eijii TUI - Tasks view](/public/img/eijii/tui-tasks.png)
+
+---
+
 ## What it does
 
 - Detects running pi and claude sessions automatically - no config needed
