@@ -6,7 +6,7 @@ permalink: /eijii/download/alpha/
 
 # eijii alpha
 
-**Channel:** alpha - latest build, updated up to once per hour
+**Channel:** alpha - latest build
 
 > **You have been warned. Then warned again. This is the third warning.**
 >
