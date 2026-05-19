@@ -48,7 +48,7 @@ It will change without notice. It may corrupt your workflow files, spawn process
 
 | Channel | Description |
 |---------|-------------|
-| [alpha](/eijii/download/alpha) | Latest build. Rough edges. May eat your config. Updated up to once per hour. |
+| [alpha](/eijii/download/alpha) | Latest build. Rough edges. May eat your config. |
 | [beta](/eijii/download/beta) | Latest named version. Still rough. At least someone named it. |
 | [0.0.1](/eijii/download/0.0.1) | First named version. All of the above still applies. |
 
@@ -62,9 +62,22 @@ It will change without notice. It may corrupt your workflow files, spawn process
 2. Open it and drag **eijii.app** to `/Applications`
 3. Launch eijii from Spotlight - it will start the daemon automatically on first run
 4. **First launch**: macOS will block it - right-click → Open → Open anyway (or run `xattr -cr /Applications/eijii.app`)
-5. To also install the TUI and `eijii` CLI: open eijii.app, open the menu `⋮` and choose **Install CLI tools**
 
-### TUI only
+### Install or update CLI tools
+
+```bash
+brew tap acyclic-eu/eijii
+brew install acyclic-eu/eijii/eijii-tui   # TUI + daemon
+```
+
+Or if you already have eijii installed:
+
+```bash
+eijii update          # latest beta
+eijii update alpha    # latest alpha
+```
+
+### TUI only (no brew)
 
 ```bash
 curl -fsSL https://acyclic.eu/eijii/install.sh | bash
