@@ -1,2 +1,4 @@
-{"channel":"alpha","version":"0.0.1-3436287-alpha","tag":"alpha","commit":"3436287182c9b8f2720870dd76c286bffa795d59","built":"2026-05-20T13:34:43Z",
- "dmg":"https://github.com/acyclic-eu/homebrew-eijii/releases/download/alpha/eijii-0.0.1-3436287-alpha-mac.dmg","tui":"https://github.com/acyclic-eu/homebrew-eijii/releases/download/alpha/eijii-tui-0.0.1-3436287-alpha-macos-arm64","jar":"https://github.com/acyclic-eu/homebrew-eijii/releases/download/alpha/eijii-daemon-0.0.1-3436287-alpha.jar"}
+{"channel":"alpha","version":"0.0.1","tag":"alpha","commit":"8ecb8b1","built":"2026-05-20T13:40:41Z",
+ "dmg":"https://github.com/acyclic-eu/homebrew-eijii/releases/download/alpha/eijii-0.0.1-mac.dmg",
+ "tui":"https://github.com/acyclic-eu/homebrew-eijii/releases/download/alpha/eijii-tui-0.0.1-macos-arm64",
+ "jar":"https://github.com/acyclic-eu/homebrew-eijii/releases/download/alpha/eijii-daemon-0.0.1.jar"}

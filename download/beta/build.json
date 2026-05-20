@@ -1,10 +1,4 @@
-{
-  "channel": "beta",
-  "version": "1.0.11",
-  "tag": "beta",
-  "commit": "1458d495e060ab8541f662c13e6e2ee23ebd5caf",
-  "built": "2026-05-19T15:48:27Z",
-  "dmg": "https://github.com/acyclic-eu/homebrew-eijii/releases/download/beta/eijii-mac.dmg",
-  "tui": "https://github.com/acyclic-eu/homebrew-eijii/releases/download/beta/eijii-tui-macos-arm64",
-  "jar": "https://github.com/acyclic-eu/homebrew-eijii/releases/download/beta/eijii-daemon.jar"
-}
+{"channel":"beta","version":"0.0.1","tag":"beta","commit":"8ecb8b1","built":"2026-05-20T13:40:26Z",
+ "dmg":"https://github.com/acyclic-eu/homebrew-eijii/releases/download/beta/eijii-0.0.1-mac.dmg",
+ "tui":"https://github.com/acyclic-eu/homebrew-eijii/releases/download/beta/eijii-tui-0.0.1-macos-arm64",
+ "jar":"https://github.com/acyclic-eu/homebrew-eijii/releases/download/beta/eijii-daemon-0.0.1.jar"}
