@@ -21,9 +21,9 @@ permalink: /eijii/download/alpha/
 ## Install via Homebrew
 
 ```bash
-brew tap acyclic-eu/eijii
+brew tap acyclic-eu/apps
 brew install --cask eijii-alpha   # GUI app
-brew install acyclic-eu/eijii/eijii-tui  # TUI + daemon (latest beta)
+brew install acyclic-eu/apps/eijii-tui  # TUI + daemon (latest beta)
 ```
 
 ---

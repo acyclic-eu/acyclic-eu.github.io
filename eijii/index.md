@@ -66,8 +66,8 @@ It will change without notice. It may corrupt your workflow files, spawn process
 ### Install or update CLI tools
 
 ```bash
-brew tap acyclic-eu/eijii
-brew install acyclic-eu/eijii/eijii-tui   # TUI + daemon
+brew tap acyclic-eu/apps
+brew install acyclic-eu/apps/eijii-tui   # TUI + daemon
 ```
 
 Or if you already have eijii installed:
