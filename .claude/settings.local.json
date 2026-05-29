@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:wezterm.org)",
+      "Bash(mkdir -p ~/Documents/WezTerm_Clickable_Status_Bar_Research_20260508)",
+      "Read(//Users/acyclic/Documents/**)",
+      "Bash(brew install *)",
+      "Bash(open -a WezTerm)",
+      "Bash(open -a Tabby)"
+    ]
+  }
+}

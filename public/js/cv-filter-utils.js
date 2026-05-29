@@ -6,7 +6,7 @@
 export function passesTagFiltering(tagsAttr, selectedTags) {
   const tags = tagsAttr ? decodeURIComponent(tagsAttr).split(',').map(tag => tag.trim()) : [];
   if (!tags.length) return true;
-  if (selectedTags.length === 0) return false;
+  if (selectedTags.length === 0) return true;
   return tags.some(tag => selectedTags.includes(tag));
 }
 
