@@ -28,20 +28,27 @@ body {
 
 /* CV page */
 .cv-header {
-  display: flex;
-  align-items: baseline;
-  gap: 15px;
+  margin-bottom: 2rem;
 }
 
 #cv-name {
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
+}
+
+#cv-tagline {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #333;
 }
 
 #cv-title {
+  margin-top: 0;
   margin-bottom: 0;
+  font-size: 1rem;
   font-weight: normal;
   color: #777;
-  display: none;
 }
 
 .cv-filter-footer {
