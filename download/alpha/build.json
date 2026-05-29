@@ -1,3 +1,0 @@
-{"channel":"alpha","version":"0.0.1-a4e3faa-alpha","tag":"alpha","commit":"a4e3faa9c24ed01a2c10d49e5425590e7c7a5f6b","built":"2026-05-20T08:58:02Z",
- "dmg":"https://github.com/acyclic-eu/homebrew-apps/releases/download/alpha/eijii-mac.dmg",
-"install_instructions": "To install via Homebrew, use: brew tap acyclic-eu/apps && brew install --cask acyclic-eu/apps/eijii-alpha. After installation, manually allow the app by right-clicking on eijii.app in the Applications folder and selecting 'Open'.","tui":"https://github.com/acyclic-eu/homebrew-eijii/releases/download/alpha/eijii-tui-macos-arm64","jar":"https://github.com/acyclic-eu/homebrew-eijii/releases/download/alpha/eijii-daemon.jar"}

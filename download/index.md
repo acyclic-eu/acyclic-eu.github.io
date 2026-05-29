@@ -14,11 +14,8 @@ AI agent session manager for people who run too many agents.
 |---------|-------------|
 | [alpha](/eijii/download/alpha) | Latest build - rough edges |
 | [beta](/eijii/download/beta) | Latest named version |
-| [0.0.3](/eijii/download/0.0.3) | Latest named version |
-| [0.0.2](/eijii/download/0.0.2) | Previous named version |
-| [0.0.1](/eijii/download/0.0.1) | First named version |
 
-[More about eijii &rarr;](/eijii/)
+[All versions &rarr;](https://github.com/acyclic-eu/homebrew-eijii/tags) - [More about eijii &rarr;](/eijii/)
 
 ---
 

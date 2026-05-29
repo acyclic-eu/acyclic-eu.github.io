@@ -1,0 +1,30 @@
+---
+layout: page
+---
+
+{% assign ch = site.data.eijii.channels[page.channel] %}
+
+{{ content }}
+
+{% if ch %}
+<p style="font-size:0.85em;color:#888;margin:1em 0">
+  Version: <strong>{{ ch.version }}</strong> &nbsp;|&nbsp;
+  Built: <strong>{{ ch.built | date: "%Y-%m-%d" }}</strong> &nbsp;|&nbsp;
+  Commit: <code>{{ ch.commit }}</code>
+</p>
+
+---
+
+## Direct download
+
+| File | Description |
+|------|-------------|
+| [eijii-{{ ch.version }}-mac.dmg](https://github.com/acyclic-eu/homebrew-eijii/releases/download/{{ ch.tag }}/eijii-{{ ch.version }}-mac.dmg) | macOS app (GUI + daemon) |
+| [eijii-tui-{{ ch.version }}-macos-arm64](https://github.com/acyclic-eu/homebrew-eijii/releases/download/{{ ch.tag }}/eijii-tui-{{ ch.version }}-macos-arm64) | TUI binary (Apple Silicon) |
+| [eijii-daemon-{{ ch.version }}.jar](https://github.com/acyclic-eu/homebrew-eijii/releases/download/{{ ch.tag }}/eijii-daemon-{{ ch.version }}.jar) | Daemon jar (Java 21+) |
+
+[All versions &rarr;](https://github.com/acyclic-eu/homebrew-eijii/tags)
+
+{% else %}
+*No build available yet for this channel.*
+{% endif %}

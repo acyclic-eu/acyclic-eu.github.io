@@ -1,0 +1,7 @@
+{
+  "channels": {
+    "alpha": { "version": "0.0.3", "tag": "alpha", "commit": "a4e3faa9", "built": "2026-05-22T19:09:08Z" },
+    "beta":  { "version": "0.0.3", "tag": "beta",  "commit": "901b175c", "built": "2026-05-22T19:07:00Z" },
+    "stable": null
+  }
+}
