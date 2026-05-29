@@ -1,11 +1,4 @@
-{
-  "channel": "beta",
-  "version": "1.0.11",
-  "tag": "beta",
-  "commit": "1458d495e060ab8541f662c13e6e2ee23ebd5caf",
-  "built": "2026-05-19T15:48:27Z",
-  "dmg": "https://github.com/acyclic-eu/homebrew-apps/releases/download/beta/eijii-mac.dmg",
+{"channel":"beta","version":"0.0.3","tag":"beta","commit":"901b175c","built":"2026-05-22T19:07:00Z",
+ "dmg":"https://github.com/acyclic-eu/homebrew-eijii/releases/download/beta/eijii-0.0.3-mac.dmg",
 "install_instructions": "To install via Homebrew, use: brew tap acyclic-eu/apps && brew install --cask acyclic-eu/apps/eijii-beta. After installation, manually allow the app by right-clicking on eijii.app in the Applications folder and selecting 'Open'.",
-  "tui": "https://github.com/acyclic-eu/homebrew-eijii/releases/download/beta/eijii-tui-macos-arm64",
-  "jar": "https://github.com/acyclic-eu/homebrew-eijii/releases/download/beta/eijii-daemon.jar"
-}
+"tui":"https://github.com/acyclic-eu/homebrew-eijii/releases/download/beta/eijii-tui-0.0.3-macos-arm64","jar":"https://github.com/acyclic-eu/homebrew-eijii/releases/download/beta/eijii-daemon-0.0.3.jar"}
