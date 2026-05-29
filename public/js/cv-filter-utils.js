@@ -4,7 +4,10 @@
  */
 
 export function passesTagFiltering(tagsAttr, selectedTags) {
-  const tags = tagsAttr ? decodeURIComponent(tagsAttr).split(',').map(tag => tag.trim()) : [];
+  // Handle both arrays (from JSON data) and strings (from DOM attributes)
+  const tags = Array.isArray(tagsAttr) 
+    ? tagsAttr 
+    : (tagsAttr ? decodeURIComponent(tagsAttr).split(',').map(tag => tag.trim()) : []);
   if (!tags.length) return true;
   if (selectedTags.length === 0) return true;
   return tags.some(tag => selectedTags.includes(tag));
