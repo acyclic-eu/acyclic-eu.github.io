@@ -69,15 +69,16 @@ function renderCvContent() {
   const fragment = document.createDocumentFragment();
   filteredCvData.experiences.forEach(exp => {
     const el = document.createElement('cv-experience');
-    el.setAttribute('title', exp.title || '');
-    el.setAttribute('company', exp.company || '');
-    el.setAttribute('traits', exp.traits ? exp.traits.join(', ') : '');
-    el.setAttribute('location', exp.location || 'N/A');
-    el.setAttribute('start-date', exp.start_date || 'N/A');
-    el.setAttribute('end-date', exp.end_date || 'Present');
-    el.setAttribute('employment-type', exp.employment_type || 'Employed');
-    el.setAttribute('exp-tags', encodeURIComponent(exp.tags ? exp.tags.join(',') : ''));
-    el.setAttribute('descriptions', JSON.stringify(exp.descriptions.map(desc => desc.text)));
+    // Set properties directly instead of attributes for Hybrids
+    el.title = exp.title || '';
+    el.company = exp.company || '';
+    el.traits = exp.traits ? exp.traits.join(', ') : '';
+    el.location = exp.location || 'N/A';
+    el.startDate = exp.start_date || 'N/A';
+    el.endDate = exp.end_date || 'Present';
+    el.employmentType = exp.employment_type || 'Employed';
+    el.expTags = encodeURIComponent(exp.tags ? exp.tags.join(',') : '');
+    el.descriptions = exp.descriptions.map(desc => desc.text);
     el.className = 'experience';
     fragment.appendChild(el);
   });
