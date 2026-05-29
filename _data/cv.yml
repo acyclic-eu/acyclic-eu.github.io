@@ -11,6 +11,19 @@ tag_filters:
     description: "Mentoring, coaching, training, and knowledge sharing"
 
 experiences:
+  - title: Fullstack Software Developer
+    traits: [Graph Database, Data Import, Data Modeling, TypeScript, React]
+    company: Neo4j
+    location: Gothenburg, Sweden
+    start_date: "2025-10-01"
+    employment_type: "Employed"
+    descriptions:
+      - text: "Building import and modeling capabilities for the leading graph database platform."
+        tags: [ "Developer" ]
+      - text: "Developing full-stack features for Neo4j Data Importer, enabling users to efficiently import and model data in graph databases."
+        tags: [ "Developer" ]
+      - text: "Contributing to the graph database ecosystem through technical implementation and architectural design."
+        tags: [ "Developer" ]
   - title: Technology and Leadership Consultant
     company: ProAgile
     location: Gothenburg, Sweden
