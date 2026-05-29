@@ -131,22 +131,12 @@ body {
 }
 
 /* Timeline — line sits between date column and content column */
-/* Date: 0 → 4rem | line at 4.5rem | content: 5rem → end */
+/* Date: 0 → 4rem | line at 4.5rem | content: 5rem → end      */
+/* Line is drawn per-element (::after) so it renders above      */
+/* the element's own background. Dot uses ::before.             */
 
-/* One continuous line across all year groups */
 #archive-content {
   position: relative;
-}
-
-#archive-content::before {
-  content: "";
-  position: absolute;
-  left: 4.5rem;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background-color: #aaa;
-  z-index: 0;
 }
 
 .archive-year-group {
@@ -157,25 +147,38 @@ body {
 .archive-year {
   position: relative;
   padding-left: 5.25rem;
-  margin: 1.75rem 0 0.25rem 0;
+  padding-top: 1.75rem;
+  margin: 0 0 0.25rem 0;
   font-size: 1.4rem;
   font-weight: bold;
   border-bottom: none;
 }
 
-/* Year dot — 12px, centered on line at 4.5rem */
+/* Year line segment */
+.archive-year::after {
+  content: "";
+  position: absolute;
+  left: calc(4.5rem - 1px);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #C0007A;
+  z-index: 0;
+}
+
+/* Year dot — 12px, centered on line */
 .archive-year::before {
   content: "";
   position: absolute;
   left: calc(4.5rem - 6px);
-  top: 0.3rem;
+  top: calc(1.75rem + 0.25rem);
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: #444;
+  background-color: #C0007A;
   border: 3px solid #f5f5f5;
-  box-shadow: 0 0 0 2px #bbb;
-  z-index: 1;
+  box-shadow: 0 0 0 2px #C0007A;
+  z-index: 2;
 }
 
 .archive-posts {
@@ -191,19 +194,31 @@ body {
   border: none;
 }
 
-/* Post dot — 8px, centered on line at 4.5rem */
+/* Item line segment — renders above item background */
+.archive-item::after {
+  content: "";
+  position: absolute;
+  left: calc(4.5rem - 1px);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #C0007A;
+  z-index: 0;
+}
+
+/* Post dot — 8px, centered on line */
 .archive-item::before {
   content: "";
   position: absolute;
   left: calc(4.5rem - 4px);
-  top: 0.95rem;
+  top: 0.9rem;
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #888;
+  background-color: #C0007A;
   border: 2px solid #f5f5f5;
-  box-shadow: 0 0 0 1px #bbb;
-  z-index: 1;
+  box-shadow: 0 0 0 1px #C0007A;
+  z-index: 2;
 }
 
 /* Alternating rows: white / body grey */
