@@ -51,6 +51,26 @@ body {
   color: #777;
 }
 
+/* CV experience entries */
+.experience {
+  margin-bottom: 2.5rem;
+}
+
+.experience .tagline {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #333;
+}
+
+.experience .job-title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: normal;
+  color: #777;
+}
+
 .cv-filter-footer {
   margin-top: 1em;
 }

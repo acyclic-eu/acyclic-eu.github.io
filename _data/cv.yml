@@ -12,6 +12,7 @@ tag_filters:
 
 experiences:
   - title: Fullstack Software Developer
+    tagline: "Building import and modeling for the leading Graph database."
     traits: [Graph Database, Data Import, Data Modeling, TypeScript, React]
     company: Neo4j
     location: Remote, Malmö, Sweden
@@ -25,6 +26,7 @@ experiences:
       - text: "Contributing to the graph database ecosystem through technical implementation and architectural design."
         tags: [ "Developer" ]
   - title: Technology and Leadership Consultant
+    tagline: "Trained, coached and lead people, teams and organisations to product success"
     company: ProAgile
     location: Gothenburg, Sweden
     start_date: "2021-10-01"
@@ -44,6 +46,7 @@ experiences:
       - text: "Grew existing business and secured new deals through active, hands-on participation in Sales and Marketing initiatives."
         tags: [ "Leader" ]
   - title: Software Engineering Manager
+    tagline: "Leading two teams in data ingestion and product configuration"
     traits: [Scaleup, AI, Annotations, Data, Automotive]
     company: Kognic
     location: Gothenburg, Sweden
@@ -57,6 +60,7 @@ experiences:
       - text: "Guided a new team through complex technical challenges, uniting their technical vision and optimizing performance through mentorship and technical guidance."
         tags: [ "Leader", "Coach", "Developer" ]
   - title: Software Engineering Manager
+    tagline: "Managed a group of developers, and developed a bank solution."
     traits: [Agency, Finance, SaaS, Java]
     company: Piktiv
     location: Skövde, Sweden
@@ -72,6 +76,7 @@ experiences:
       - text: "Directed technical screenings and interviews, assessing candidates' skills in problem-solving, product modeling, and automated testing."
         tags: [ "Leader" ]
   - title: Developer, Leader, Coach
+    tagline: "Leader leveraging technical depth, and organizational design to develop exceptional products"
     company: How To Know
     location: Gothenburg, Sweden
     start_date: "2021-07-01"

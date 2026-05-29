@@ -5,6 +5,8 @@ export default define({
   /** @type {string} */
   title: "",
   /** @type {string} */
+  tagline: "",
+  /** @type {string} */
   company: "",
   /** @type {string} */
   traits: null,
@@ -41,12 +43,13 @@ export default define({
     },
     value: []
   },
-  render: ({ title, company, traits, location, startDate, endDate, employmentType, expTags, descriptions }) => {
+  render: ({ title, tagline, company, traits, location, startDate, endDate, employmentType, expTags, descriptions }) => {
     return html`
       <div class="experience"
            data-exp-tags="${expTags}"
            data-end-date="${endDate}">
-        <h2>${title} at ${company}</h2>
+        ${tagline ? html`<h2 class="tagline">${tagline}</h2>` : ''}
+        <h3 class="job-title">${title} at ${company}</h3>
         <p class="traits">${traits ? html`<em class="traits">${traits}</em>` : ''}  ${expTags ? html` - <em class="tags">${expTags}</em>` : ''}</p>
         <p><strong>Location:</strong> ${location}<br>
         <strong>Period:</strong> ${startDate } - ${endDate} (${employmentType})</p>

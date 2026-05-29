@@ -71,6 +71,7 @@ function renderCvContent() {
     const el = document.createElement('cv-experience');
     // Set properties directly instead of attributes for Hybrids
     el.title = exp.title || '';
+    el.tagline = exp.tagline || '';
     el.company = exp.company || '';
     el.traits = exp.traits ? exp.traits.join(', ') : '';
     el.location = exp.location || 'N/A';
