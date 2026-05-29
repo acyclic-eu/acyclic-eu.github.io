@@ -4,15 +4,18 @@ let cvData = null;
 let filteredCvData = null;
 let tagFilteredCvData = null;
 
-fetch('/cv/cv.json')
-  .then(response => response.json())
-  .then(data => {
-    cvData = data;
-    tagFilteredCvData = filterTagCvData();
-    updateMaxYears();
-    onFilterChange();
-  })
-  .catch(err => console.error('Failed to load cv.json', err));
+// Wait for cv-experience component before loading data
+customElements.whenDefined('cv-experience').then(() => {
+  fetch('/cv/cv.json')
+    .then(response => response.json())
+    .then(data => {
+      cvData = data;
+      tagFilteredCvData = filterTagCvData();
+      updateMaxYears();
+      onFilterChange();
+    })
+    .catch(err => console.error('Failed to load cv.json', err));
+});
 
 function getMaxYearsFromTagFilteredCvData() {
   if (!tagFilteredCvData || !tagFilteredCvData.experiences || tagFilteredCvData.experiences.length === 0) return 1;
