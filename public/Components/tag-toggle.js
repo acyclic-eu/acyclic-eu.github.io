@@ -42,6 +42,7 @@ export default define({
       .toggle-label {
         padding: 0.3em 0.5em;
         border-radius: 3px;
+        border: 1px solid transparent;
         transition: all 0.2s ease;
         /*noinspection CssUnresolvedCustomProperty*/
         background-color: var(--tag-toggle-unselected-bg);
