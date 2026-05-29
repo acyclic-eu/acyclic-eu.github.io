@@ -65,7 +65,7 @@ None of this is easy. It requires organizational discipline and the willingness 
 
 I'm publishing a series of deep dives into the research behind these concepts. Each post explores one concept in detail - the science, the implications for software teams, and what to do about it.
 
-**Part 1:** [Attention Residue: The Cost of Context Switching](https://acyclic.eu/2026/05/27/attention-residue.html)
+**Part 1:** [Attention Residue: The Cost of Context Switching](https://acyclic.eu/2026/05/27/attention-residue/)
 
 More coming soon.
 
