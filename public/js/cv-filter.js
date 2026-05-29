@@ -165,7 +165,8 @@ function getTagsFromUrl() {
 // Initialize once custom elements are registered
 Promise.all([
   customElements.whenDefined('tag-toggle'),
-  customElements.whenDefined('time-filter')
+  customElements.whenDefined('time-filter'),
+  customElements.whenDefined('cv-experience')
 ]).then(() => {
   // Apply URL tag state before binding listeners
   const urlTags = getTagsFromUrl();
