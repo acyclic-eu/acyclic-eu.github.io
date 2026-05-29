@@ -167,13 +167,13 @@ body {
   z-index: 0;
 }
 
-/* Year dot — 12px, centered on line */
-/* top = padding-top + (1.4rem × 1.25 / 2) - 6px = 1.75rem + 0.875rem - 6px */
+/* Year dot — 12px content + 3px border × 2 = 18px total → left = 4.5rem - 9px */
+/* top = padding-top + (1.4rem × 1.25 / 2) - (18px / 2) = 2.625rem - 9px */
 .archive-year::before {
   content: "";
   position: absolute;
-  left: calc(4.5rem - 6px);
-  top: calc(2.625rem - 6px);
+  left: calc(4.5rem - 9px);
+  top: calc(2.625rem - 9px);
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -208,13 +208,13 @@ body {
   z-index: 0;
 }
 
-/* Post dot — 8px, centered on line */
-/* top = padding-top + (1.1rem × 1.25 / 2) - 4px = 0.55rem + 0.6875rem - 4px */
+/* Post dot — 8px content + 2px border × 2 = 12px total → left = 4.5rem - 6px */
+/* top = padding-top + (1.1rem × 1.25 / 2) - (12px / 2) = 1.2375rem - 6px */
 .archive-item::before {
   content: "";
   position: absolute;
-  left: calc(4.5rem - 4px);
-  top: calc(1.2375rem - 4px);
+  left: calc(4.5rem - 6px);
+  top: calc(1.2375rem - 6px);
   width: 8px;
   height: 8px;
   border-radius: 50%;
