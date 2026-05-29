@@ -31,34 +31,36 @@ title: Blog Archive
   <div id="archive-content">
   {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
   {% for year in posts_by_year %}
-    <h2 class="archive-year" data-year="{{ year.name }}">{{ year.name }}</h2>
-    
-    <div class="archive-posts" data-year="{{ year.name }}">
-      {% for post in year.items %}
-        <article class="archive-item" data-tags="{{ post.tags | join: ',' }}">
-          <time class="archive-date" datetime="{{ post.date | date_to_xmlschema }}">
-            {{ post.date | date: "%b %d" }}
-          </time>
-          
-          <div class="archive-content">
-            <h3 class="archive-title">
-              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-            </h3>
-            
-            {% if post.excerpt %}
-              <p class="archive-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-            {% endif %}
-            
-            {% if post.tags.size > 0 %}
-              <div class="archive-tags">
-                {% for tag in post.tags %}
-                  <span class="archive-tag">{{ tag }}</span>
-                {% endfor %}
-              </div>
-            {% endif %}
-          </div>
-        </article>
-      {% endfor %}
+    <div class="archive-year-group">
+      <h2 class="archive-year" data-year="{{ year.name }}">{{ year.name }}</h2>
+
+      <div class="archive-posts" data-year="{{ year.name }}">
+        {% for post in year.items %}
+          <article class="archive-item" data-tags="{{ post.tags | join: ',' }}">
+            <time class="archive-date" datetime="{{ post.date | date_to_xmlschema }}">
+              {{ post.date | date: "%b %d" }}
+            </time>
+
+            <div class="archive-content">
+              <h3 class="archive-title">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              </h3>
+
+              {% if post.excerpt %}
+                <p class="archive-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+              {% endif %}
+
+              {% if post.tags.size > 0 %}
+                <div class="archive-tags">
+                  {% for tag in post.tags %}
+                    <span class="archive-tag">{{ tag }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      </div>
     </div>
   {% endfor %}
   </div>
