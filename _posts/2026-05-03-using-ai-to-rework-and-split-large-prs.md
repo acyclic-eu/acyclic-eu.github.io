@@ -2,6 +2,7 @@
 layout: post
 title: "Using AI to Rework Commits and Split Large Pull Requests"
 date: 2026-05-03
+tags: [Developer]
 ---
 
 I recently discovered a useful pattern while exploring a new feature. I had been creating commits along the way, but because I pivoted a lot during the exploration, the Git history became a messy work log. What I really needed was a purposeful change log.

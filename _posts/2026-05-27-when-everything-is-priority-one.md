@@ -2,6 +2,7 @@
 layout: post
 title: "When Everything Is Priority One"
 date: 2026-05-27
+tags: [Leader]
 ---
 
 I gave a talk at Agila Sverige this week about what happens when you don't prioritize. Or more precisely, when everything is marked as priority one.

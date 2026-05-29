@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Design Principles"
+date: 2025-06-09
+tags: [Developer]
+---
+
 Following is my design system principles as part of my [AI coding Prompt]({% post_url 2025-06-09-AI-coding-prompt %}). Feel free to add suggestions of improvement.
 
 # Design Principles

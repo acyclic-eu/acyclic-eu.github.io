@@ -1,4 +1,11 @@
 
+---
+layout: post
+title: "How I Structure AI Instructions for My Codebase"
+date: 2025-06-09
+tags: [Developer]
+---
+
 # How I Structure AI Instructions for My Codebase
 
 As AI tools like GitHub Copilot and automated code review agents become more integrated into my development workflow, the way I instruct these tools is just as important as how I instruct human collaborators. After several iterations, I’ve settled on a structure that keeps my project’s AI guidance clear, maintainable, and always in sync with my core goals and principles.

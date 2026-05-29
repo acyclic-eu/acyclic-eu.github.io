@@ -2,6 +2,7 @@
 layout: post
 title: "Fixing Synology btrfs Replication with a Linux Kernel ioctl"
 date: 2026-05-13
+tags: [Developer]
 ---
 
 I run a Synology NAS (skattkistan) and a NixOS home server (skattkammaren). The plan was simple: use `btrfs send | btrfs receive` to replicate 128 daily snapshots from the Synology to NixOS over SSH. A well-understood, efficient, built-in feature of btrfs.

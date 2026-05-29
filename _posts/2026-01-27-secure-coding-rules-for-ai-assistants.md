@@ -4,6 +4,7 @@ date: 2026-01-27
 author: acyclic
 description: "A practical guide to creating robust, security-focused rules files for Copilot, Gemini, Claude, and more."
 categories: [security, AI, devsecops, best-practices]
+tags: [Developer]
 ---
 
 # How to Write Secure, Predictable Coding Rules Files for AI Assistants

@@ -2,6 +2,7 @@
 layout: post
 title: "Attention Residue: The Cost of Context Switching"
 date: 2026-05-27
+tags: [Leader]
 ---
 
 When we switch context between tasks, part of our attention remains with the previous task - "attention residue" - which impairs performance on the new task.
