@@ -3,17 +3,39 @@ layout: default
 title: Blog Archive
 ---
 
+<script type="module" src="/public/js/blog-filter.js"></script>
+
 <div class="blog-archive">
   <h1>Blog Archive</h1>
   <p class="archive-intro">Articles on software development, leadership, and organizational design.</p>
 
+  <h2>Filter by Role</h2>
+  <form id="blog-tags-form">
+    <tag-toggle
+      id="tag-developer"
+      name="Developer"
+      description="Software development, technical implementation, and architectural design"
+    ></tag-toggle>
+    <tag-toggle
+      id="tag-leader"
+      name="Leader"
+      description="Leadership, management, product strategy, and organizational design"
+    ></tag-toggle>
+    <tag-toggle
+      id="tag-coach"
+      name="Coach"
+      description="Mentoring, coaching, training, and knowledge sharing"
+    ></tag-toggle>
+  </form>
+
+  <div id="archive-content">
   {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
   {% for year in posts_by_year %}
-    <h2 class="archive-year">{{ year.name }}</h2>
+    <h2 class="archive-year" data-year="{{ year.name }}">{{ year.name }}</h2>
     
-    <div class="archive-posts">
+    <div class="archive-posts" data-year="{{ year.name }}">
       {% for post in year.items %}
-        <article class="archive-item">
+        <article class="archive-item" data-tags="{{ post.tags | join: ',' }}">
           <time class="archive-date" datetime="{{ post.date | date_to_xmlschema }}">
             {{ post.date | date: "%b %d" }}
           </time>
@@ -39,4 +61,10 @@ title: Blog Archive
       {% endfor %}
     </div>
   {% endfor %}
+  </div>
 </div>
+
+<!-- Import the tag-toggle web component -->
+<script type="module">
+  import "/public/Components/tag-toggle.js";
+</script>
