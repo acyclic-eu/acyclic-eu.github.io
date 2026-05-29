@@ -3,7 +3,9 @@
 {% assign sorted_pages = include.pages | sort: 'title'  %}
 
 {% for p in sorted_pages %}
-{% if p.parent == include.parent and p.navigation != false and p.title  %}
+{% assign is_download_subpage = false %}
+{% if p.url contains '/download/' and p.url != '/download/' %}{% assign is_download_subpage = true %}{% endif %}
+{% if p.parent == include.parent and p.navigation != false and p.title and is_download_subpage == false %}
 {% assign clean_baseurl = site.baseurl %}
 {% if clean_baseurl == '/' %}
   {% assign clean_baseurl = '' %}
