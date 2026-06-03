@@ -11,6 +11,13 @@ body {
   background-color: #f3f3f3; /* subtle light grey */
 }
 
+a {
+  color: #b43d63;
+}
+a:hover,
+a:focus {
+  color: #7a2840;
+}
 
 /* Make the view wider */
 .container {
