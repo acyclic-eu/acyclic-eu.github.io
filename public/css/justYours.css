@@ -11,43 +11,6 @@ body {
   background-color: #f5f5f5; /* subtle light grey */
 }
 
-/* Remove sidebar drop shadow and toggle ring */
-.sidebar-overlay #sidebar-checkbox:checked ~ .sidebar {
-  box-shadow: none;
-}
-.sidebar-overlay #sidebar-checkbox:checked ~ .sidebar-toggle {
-  box-shadow: none;
-}
-
-/* Banner stays fixed when sidebar opens — counter the wrap translateX */
-.banner {
-  transition: transform .3s ease-in-out;
-}
-
-#sidebar-checkbox:checked ~ .wrap .banner {
-  transform: translateX(-14rem);
-}
-
-/* Fixed banner clip — position: fixed so unaffected by sidebar transform.
-   Shows the leftmost 14rem of the full-width banner. z-index above sidebar. */
-.sidebar-banner-clip {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 14rem;
-  height: 12.02vw;
-  background-image: url('/public/banner_sidebar.png');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  z-index: 11;
-  pointer-events: none;
-}
-
-#sidebar-checkbox:checked ~ .sidebar-banner-clip {
-  display: block;
-}
 
 /* Make the view wider */
 .container {
