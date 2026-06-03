@@ -1,8 +1,8 @@
 
 /* CV component theme tokens — scoped to CV page to avoid global collisions */
 .cv-page {
-  --secondary: #d291ff;
-  --secondary-contrast: black;
+  --secondary: #b43d63;
+  --secondary-contrast: white;
   --button-bg: #f0f0f0;
   --button-text: black;
 }
