@@ -31,7 +31,7 @@ But many teams carry multiple projects in parallel - different maturity stages, 
 
 For your highest-priority project - or your only project - ask:
 
-> "What can we do today to bring this as close to goal as possible?"
+> "What can we do today to bring this as close to the goal as possible?"
 
 If you have lower-priority projects running in parallel, ask for each of them:
 
