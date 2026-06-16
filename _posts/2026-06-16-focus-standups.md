@@ -64,4 +64,4 @@ Tasks are how the work gets done. The goal is why.
 
 Patrik Gustafsson
 Software Engineer & Organisational Designer
-[acyclic.eu](https://acyclic.eu) | [LinkedIn](https://www.linkedin.com/in/patrikgustafsson/)
+[acyclic.eu](https://acyclic.eu) | [LinkedIn](https://www.linkedin.com/in/acyclic/)

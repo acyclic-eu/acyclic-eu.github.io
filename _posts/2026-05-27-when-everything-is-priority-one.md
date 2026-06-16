@@ -74,4 +74,4 @@ More coming soon.
 
 Patrik Gustafsson  
 Software Engineer & Organizational Designer  
-[acyclic.eu](https://acyclic.eu) | [LinkedIn](https://www.linkedin.com/in/patrikgustafsson/)
+[acyclic.eu](https://acyclic.eu) | [LinkedIn](https://www.linkedin.com/in/acyclic/)
