@@ -205,11 +205,11 @@ experiences:
     descriptions:
       - text: "I drove technical excellence, designing financial BI systems for Skanova (Java, GWT, .NET, JavaScript) and developing Ericsson's E4B Eclipse IDE to boost developer productivity."
         tags: [ "Developer" ]
-      - text: "I also led Git/Gerrit training for European software professionals, improving code standards."
+      - text: "I also led Git/Gerrit training for software professionals in Lithuania and Sweden, improving code standards."
         tags: [ "Coach" ]
   - title: Software Development Teacher
     company: Neueda Consulting
-    location: Europe
+    location: Lithuania and Sweden
     start_date: "2015-11-01"
     end_date: "2016-04-30"
     employment_type: "Contract"

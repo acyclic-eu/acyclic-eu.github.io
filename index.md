@@ -14,8 +14,8 @@ With a strong background as a hands-on developer, Patrik has deep technical expe
 
 [Developer CV](/cv/?tags=Developer)
 
-## Head of Development & Facilitator:
-Patrik has extensive experience leading multidisciplinary teams, including developers, SDETs, UX experts, and product managers, to achieve shared goals. He acts as a facilitator for cross-team discussions and is involved in strategic decision-making for the development organization. He has experience leading a large organization with 14 agile teams.
+## Engineering Manager & Head of Development:
+Patrik has extensive experience leading multidisciplinary teams, including developers, SDETs, UX experts, and product managers, to achieve shared goals. He is a people-first leader who thrives on developing people - through coaching, one-on-ones, recruitment, and creating the conditions for high-performing teams. He acts as a facilitator for cross-team discussions and is involved in strategic decision-making for the development organization. He has experience leading a large organization with 14 agile teams.
 
 [Leader CV](/cv/?tags=Leader)
 ## Business Developer & Agile Coach:
