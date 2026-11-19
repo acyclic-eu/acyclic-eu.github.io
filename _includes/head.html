@@ -13,9 +13,25 @@
     {% endif %}
   </title>
 
+  {% capture page_description %}{% if page.description %}{{ page.description | strip_html | normalize_whitespace }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | normalize_whitespace }}{% else %}{{ site.description }}{% endif %}{% endcapture %}
+  <meta name="description" content="{{ page_description }}">
+
   {% if page.url and site.baseurl %}
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   {% endif %}
+
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{% if page.title == 'Home' %}{{ site.title }} &middot; {{ site.tagline }}{% else %}{{ page.title }} &middot; {{ site.title }}{% endif %}">
+  <meta property="og:description" content="{{ page_description }}">
+  <meta property="og:url" content="{{ page.url | default: '/' | absolute_url }}">
+  <meta property="og:image" content="{{ '/public/banner.png' | absolute_url }}">
+  <meta property="og:image:alt" content="{{ site.title }} — {{ site.tagline }}">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if page.title == 'Home' %}{{ site.title }} &middot; {{ site.tagline }}{% else %}{{ page.title }} &middot; {{ site.title }}{% endif %}">
+  <meta name="twitter:description" content="{{ page_description }}">
+  <meta name="twitter:image" content="{{ '/public/banner.png' | absolute_url }}">
 
   <link rel="stylesheet" href="{{ '/public/css/poole.css' | absolute_url }}">
   <link rel="stylesheet" href="{{ '/public/css/syntax.css' | absolute_url }}">
